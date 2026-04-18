@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admin Panel</title>
+
+    <link rel="stylesheet" href="/admin-static/admin.css" />
+  </head>
+  <body>
+    <header class="admin-header">
+      <h1>Admin Panel</h1>
+    </header>
+
+    <main class="admin-container">
+      <!-- Блок создания галереи -->
+      <section class="create-gallery">
+        <h2>Create New Gallery</h2>
+
+        <div class="form-row">
+          <input
+            type="text"
+            id="gallery-title"
+            placeholder="Gallery Title *"
+            required
+          />
+          <input
+            type="date"
+            id="gallery-date"
+            placeholder="Event Date *"
+            required
+          />
+          <button id="create-gallery-btn" disabled>Create</button>
+        </div>
+
+        <p id="create-gallery-status"></p>
+      </section>
+
+      <hr />
+
+      <!-- Список галерей -->
+      <section class="gallery-list">
+        <h2>Galleries</h2>
+        <div id="galleries-container">
+          <!-- Галереи будут подгружаться сюда через JS -->
+        </div>
+      </section>
+    </main>
+
+    <script src="/admin-static/admin.js"></script>
+  </body>
+</html>

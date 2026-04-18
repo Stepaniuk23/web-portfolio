@@ -1,0 +1,92 @@
+.footer {
+  width: 100%;
+  background: #f7f7f7;
+  padding: 15px 0 10px; /* убираем боковые паддинги */
+}
+
+/* Верхняя линия */
+.footer-top {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px; /* небольшой внутренний отступ */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Левый блок — бренд */
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  color: var(--color-dark);
+}
+
+.footer-brand-name {
+  font-family: var(--font-title);
+  font-size: 20px;
+}
+
+.footer-brand-tagline {
+  font-family: var(--font-main);
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* Правый блок — телефон + соцсети */
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+/* Телефон */
+.footer-phone {
+  font-size: 18px;
+  color: var(--color-dark);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-phone:hover {
+  color: var(--color-accent);
+}
+
+/* Соцсети */
+.footer-socials {
+  display: flex;
+  gap: 12px;
+}
+
+.footer-icon {
+  width: 22px;
+  height: 22px;
+  color: var(--color-dark);
+  transition: color 0.3s ease;
+}
+
+.footer-icon:hover {
+  color: var(--color-accent);
+}
+
+/* Нижняя линия — копирайт */
+.footer-copy {
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.6;
+  margin-top: 10px;
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+  .footer-right {
+    flex-direction: column;
+    align-items: flex-end; /* телефон и соцсети справа */
+    gap: 10px;
+  }
+
+  .footer-phone {
+    font-size: 14px; /* уменьшаем шрифт, чтобы поместился */
+  }
+}

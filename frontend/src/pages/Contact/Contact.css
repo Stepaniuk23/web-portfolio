@@ -1,0 +1,143 @@
+/* Контейнер как в About */
+.contact-outer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px 60px;
+}
+
+.contact-wrapper {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  gap: 30px;
+  align-items: stretch; /* обе колонки одинаковой высоты */
+}
+
+/* Фото слева */
+.contact-photo {
+  flex: 1;
+  overflow: hidden;
+  border-radius: 10px;
+  max-height: 800px; /* ← уменьшаем фото */
+  display: flex;
+}
+
+.contact-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Форма справа */
+.contact-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* растягиваем форму и соцсети */
+}
+
+.contact-title {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.contact-subtitle {
+  font-size: 18px;
+  margin-bottom: 25px;
+  opacity: 0.8;
+}
+
+/* Форма */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  /* мягкое свечение в тоне accent */
+}
+
+.contact-form textarea {
+  height: 300px;
+  resize: none;
+}
+
+.contact-submit {
+  padding: 14px;
+  background: var(--color-accent);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact-submit:hover {
+  background: #c08f5f;
+}
+
+/* Соцсети */
+.contact-socials {
+  display: flex;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.contact-social-link {
+  width: 46px;
+  height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.04);
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
+  color: var(--color-dark);
+}
+
+.contact-social-link:hover {
+  transform: translateY(-2px);
+  background: var(--color-accent);
+  color: inherit;
+}
+
+.contact-social-link:hover .social-icon {
+  color: #fff;
+}
+
+.social-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--color-dark);
+}
+
+/* Адаптивность */
+@media (max-width: 900px) {
+  .contact-wrapper {
+    flex-direction: column;
+  }
+
+  .contact-photo {
+    height: 300px;
+  }
+}

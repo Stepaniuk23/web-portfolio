@@ -1,0 +1,19 @@
+/* Сброс отступов и box-sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Убираем подчёркивания у ссылок по умолчанию */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Картинки адаптивные */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
