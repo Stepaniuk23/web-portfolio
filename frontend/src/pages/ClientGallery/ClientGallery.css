@@ -1,0 +1,177 @@
+/* Контейнер галереи */
+.gallery-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* Masonry */
+.masonry {
+  column-count: 3;
+  column-gap: 20px;
+}
+
+.gallery-img {
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: none;
+  transform: none;
+}
+
+.gallery-img:hover {
+  opacity: 1;
+  transform: none;
+}
+
+/* Обёртка фото */
+.photo-wrapper {
+  position: relative;
+  break-inside: avoid;
+}
+
+/* --- ИКОНКИ НА ФОТО --- */
+
+.like-btn,
+.download-photo-btn {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease;
+  color: white;
+}
+
+.like-btn:hover,
+.download-photo-btn:hover {
+  opacity: 0.7;
+}
+
+/* Сердечко — внизу слева */
+.like-btn {
+  bottom: 12px;
+  right: 44px;
+}
+
+/* Скачать — внизу справа */
+.download-photo-btn {
+  bottom: 12px;
+  right: 12px;
+}
+
+/* --- КНОПКИ УПРАВЛЕНИЯ --- */
+.controls-container {
+  display: flex;
+  gap: 15px;
+  justify-content: flex-end;
+  margin: 20px auto;
+  padding: 0 20px;
+  max-width: 1400px;
+  width: 100%;
+}
+
+.filter-btn {
+  color: var(--color-dark);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 8px 16px;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  transition: color 0.2s ease;
+}
+
+.filter-btn:hover {
+  color: var(--color-accent);
+}
+
+.download-btn {
+  color: var(--color-dark);
+  border: none;
+  background: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.2s ease;
+}
+
+.download-btn:hover {
+  color: var(--color-accent);
+}
+
+/* --- LIGHTBOX --- */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox-img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 6px;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  font-size: 40px;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.lightbox-arrow {
+  position: absolute;
+  top: 50%;
+  font-size: 50px;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.lightbox-arrow.left {
+  left: 40px;
+}
+
+.lightbox-arrow.right {
+  right: 40px;
+}
+
+/* --- АДАПТИВНОСТЬ --- */
+@media (max-width: 900px) {
+  .masonry {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .masonry {
+    column-count: 1;
+  }
+}

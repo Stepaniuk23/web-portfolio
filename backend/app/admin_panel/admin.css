@@ -1,0 +1,249 @@
+/* === GLOBAL === */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+}
+
+.admin-header {
+  background: #222;
+  color: white;
+  padding: 20px;
+}
+
+.admin-container {
+  max-width: 1800px;
+  margin: 30px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+/* === UPLOAD BLOCK === */
+.dropzone {
+  border: 2px dashed #888;
+  padding: 40px;
+  text-align: center;
+  border-radius: 10px;
+  background: #fafafa;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.dropzone.dragover {
+  background: #e0e0e0;
+  border-color: #333;
+}
+
+/* === CREATE GALLERY STATUS === */
+#create-gallery-status {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  display: none;
+}
+
+#create-gallery-status[style*="display: block"] {
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === PHOTOS GRID === */
+.photos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* Photo card */
+.photo-item {
+  position: relative;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #ddd;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.photo-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Thumbnail */
+.photo-item img.thumb {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+}
+
+/* === ACTION BUTTONS === */
+.photo-actions {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.55);
+  color: white;
+  padding: 6px 10px;
+  display: flex;
+  justify-content: space-between;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.photo-item:hover .photo-actions {
+  opacity: 1;
+}
+
+.photo-actions button {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.photo-actions button:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.photo-actions button svg,
+.photo-actions button svg path {
+  color: white;
+  fill: white;
+  stroke: white;
+}
+
+.photo-filename {
+  font-size: 12px;
+  color: #555;
+  margin-top: 6px;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* === GALLERY CARDS (Admin main page) === */
+
+#galleries-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 22px;
+  margin-top: 25px;
+}
+
+.gallery-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e0e0e0;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.gallery-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* Cover image */
+.gallery-cover {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  background: #f5f5f5;
+}
+
+.gallery-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.gallery-card:hover .gallery-cover img {
+  transform: scale(1.08);
+}
+
+/* Info block */
+.gallery-info {
+  padding: 16px 16px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.gallery-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: #222;
+  margin: 0 0 8px 0;
+  line-height: 1.4;
+  max-height: 52px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.gallery-date {
+  font-size: 12px;
+  color: #999;
+  margin: 0;
+}
+
+/* Delete button */
+.gallery-delete-btn {
+  padding: 11px 16px;
+  background: none;
+  border-top: 1px solid #f0f0f0;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  color: #d32f2f;
+  font-size: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+  font-weight: 500;
+}
+
+.gallery-delete-btn:hover {
+  background-color: #ffebee;
+  color: #c62828;
+}

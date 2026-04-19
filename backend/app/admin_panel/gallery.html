@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Gallery Editor</title>
+    <link rel="stylesheet" href="/admin-static/admin.css" />
+  </head>
+  <body>
+    <header class="admin-header">
+      <h1 id="gallery-title">Gallery</h1>
+      <p id="gallery-date" class="gallery-date"></p>
+      <div class="gallery-actions">
+        <a href="/admin" style="color: white">← Back to Admin</a>
+
+        <button
+          id="delete-gallery-btn"
+          style="
+            margin-left: 20px;
+            padding: 6px 12px;
+            background: #e74c3c;
+            border: none;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+          "
+        >
+          Delete Gallery
+        </button>
+
+        <button
+          id="share-gallery-btn"
+          style="
+            margin-left: 10px;
+            padding: 6px 12px;
+            background: #3498db;
+            border: none;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+          "
+        >
+          Share
+        </button>
+      </div>
+    </header>
+
+    <main class="admin-container">
+      <section>
+        <h2>Upload Photos</h2>
+
+        <div id="dropzone" class="dropzone">Drag & Drop photos here</div>
+
+        <input type="file" id="file-input" multiple style="margin-top: 10px" />
+        <p id="upload-status"></p>
+      </section>
+
+      <hr />
+
+      <section>
+        <h2>Photos</h2>
+        <div id="photos-container" class="photos-grid"></div>
+      </section>
+    </main>
+
+    <script src="/admin-static/gallery.js"></script>
+  </body>
+</html>
