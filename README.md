@@ -5,7 +5,7 @@ Portfolio website with React frontend and FastAPI backend.
 ## Stack
 
 - Frontend: React (Create React App)
-- Backend: FastAPI + SQLAlchemy + SQLite
+- Backend: FastAPI + SQLAlchemy + PostgreSQL
 
 ## Project Structure
 
@@ -69,6 +69,12 @@ Frontend runs on http://localhost:3000
 
 See backend/.env.example
 
+Expected database format:
+
+```bash
+DATABASE_URL=postgresql+psycopg2://postgres:your-password@localhost:5432/wedding_portfolio
+```
+
 ### Frontend (.env.local)
 
 - REACT_APP_API_BASE_URL - backend base URL (default: http://localhost:8000)
@@ -83,5 +89,5 @@ npm run build
 
 ## Notes
 
-- uploads and local database files are ignored by git.
+- uploads are ignored by git.
 - local virtual environments and node_modules are ignored by git.
