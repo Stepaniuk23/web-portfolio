@@ -21,12 +21,13 @@ import zipfile
 import io
 from pathlib import Path
 from app.models.client_photo import ClientPhoto
+from app.config.storage import UPLOADS_ROOT
 
 
 
 
 router = APIRouter(prefix="/api/client-galleries", tags=["Client Galleries"])
-UPLOADS_DIR = Path(__file__).resolve().parents[2] / "uploads"
+UPLOADS_DIR = UPLOADS_ROOT
 
 
 # ---------------------------------------------------------

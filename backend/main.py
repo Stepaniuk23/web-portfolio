@@ -19,6 +19,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from app.config.database import Base, engine, SessionLocal
+from app.config.storage import UPLOADS_ROOT
 from app.models import contact_request, client_gallery, client_photo
 from app.models.client_photo import ClientPhoto
 from app.routes import contact_routes
@@ -36,8 +37,7 @@ app.mount(
 )
 
 # Создаём папку uploads если её нет
-UPLOADS_DIR = BASE_DIR / "uploads"
-UPLOADS_DIR.mkdir(parents=True, exist_ok=True)
+UPLOADS_ROOT.mkdir(parents=True, exist_ok=True)
 
 # CORS
 app.add_middleware(
@@ -87,7 +87,7 @@ def admin_entry(authorized: bool = Depends(admin_auth)):
 # 👉 Монтируем папку uploads (для фотографий)
 app.mount(
     "/uploads",
-    StaticFiles(directory="uploads"),
+    StaticFiles(directory=str(UPLOADS_ROOT)),
     name="uploads"
 )
 

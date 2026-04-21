@@ -1,20 +1,15 @@
 import os
-from pathlib import Path
 from typing import List
 from fastapi import UploadFile
 from PIL import Image, ImageOps
+from app.config.storage import UPLOADS_ROOT, GALLERIES_ROOT
 
-# Корень backend (там, где лежит main.py)
-BASE_DIR = Path(__file__).resolve().parents[2]
-
-# Папка для галерей: backend/uploads/galleries
-GALLERIES_ROOT = BASE_DIR / "uploads" / "galleries"
 GALLERIES_ROOT.mkdir(parents=True, exist_ok=True)
 
 
 def save_gallery_photos(slug: str, files: List[UploadFile]) -> List[str]:
     """
-    Сохраняет файлы в папку backend/uploads/galleries/<slug>/
+    Сохраняет файлы в папку uploads/galleries/<slug>/
     Возвращает список относительных путей (относительно папки uploads).
     """
     gallery_dir = GALLERIES_ROOT / slug
@@ -42,7 +37,7 @@ def save_gallery_photos(slug: str, files: List[UploadFile]) -> List[str]:
 
 def create_thumbnail(original_relative_path: str, size: int = 1600) -> str:
     try:
-        abs_original = BASE_DIR / "uploads" / original_relative_path
+        abs_original = UPLOADS_ROOT / original_relative_path
 
         if not abs_original.exists():
             raise FileNotFoundError(f"Original file not found: {abs_original}")
@@ -66,7 +61,7 @@ def create_thumbnail(original_relative_path: str, size: int = 1600) -> str:
             # Путь миниатюры
             base, _ = os.path.splitext(original_relative_path)
             thumbnail_relative = f"{base}_thumb.jpg"
-            abs_thumbnail = BASE_DIR / "uploads" / thumbnail_relative
+            abs_thumbnail = UPLOADS_ROOT / thumbnail_relative
 
             abs_thumbnail.parent.mkdir(parents=True, exist_ok=True)
 
@@ -82,7 +77,7 @@ def delete_file(relative_path: str | None) -> None:
     if not relative_path:
         return
 
-    abs_path = BASE_DIR / "uploads" / relative_path
+    abs_path = UPLOADS_ROOT / relative_path
     try:
         if abs_path.exists():
             abs_path.unlink()
