@@ -1,0 +1,24 @@
+{
+  "rewrites": [
+    {
+      "source": "/admin",
+      "destination": "https://wedding-backend-z6m1.onrender.com/admin"
+    },
+    {
+      "source": "/admin/(.*)",
+      "destination": "https://wedding-backend-z6m1.onrender.com/admin/$1"
+    },
+    {
+      "source": "/admin-static/(.*)",
+      "destination": "https://wedding-backend-z6m1.onrender.com/admin-static/$1"
+    },
+    {
+      "source": "/api/(.*)",
+      "destination": "https://wedding-backend-z6m1.onrender.com/api/$1"
+    },
+    {
+      "source": "/uploads/(.*)",
+      "destination": "https://wedding-backend-z6m1.onrender.com/uploads/$1"
+    }
+  ]
+}
