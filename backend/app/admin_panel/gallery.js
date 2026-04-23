@@ -1,5 +1,30 @@
 console.log("Gallery page loaded");
 
+let frontendPublicUrl = null;
+
+async function resolveFrontendPublicUrl() {
+  if (frontendPublicUrl) return frontendPublicUrl;
+
+  try {
+    const res = await fetch("/api/public-config", {
+      credentials: "same-origin",
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      if (data?.frontend_public_url) {
+        frontendPublicUrl = data.frontend_public_url.replace(/\/$/, "");
+        return frontendPublicUrl;
+      }
+    }
+  } catch (err) {
+    console.warn("Failed to load public config", err);
+  }
+
+  frontendPublicUrl = "https://denysstepaniuk.com";
+  return frontendPublicUrl;
+}
+
 // Получаем slug из URL
 const params = new URLSearchParams(window.location.search);
 const slug = params.get("slug");
@@ -21,9 +46,9 @@ async function loadGallery() {
   // --- Share button ---
   const shareBtn = document.getElementById("share-gallery-btn");
   if (shareBtn) {
-    shareBtn.onclick = () => {
-      const FRONTEND_URL = "http://localhost:3000";
-      const url = `${FRONTEND_URL}/gallery/${data.slug}`;
+    shareBtn.onclick = async () => {
+      const baseUrl = await resolveFrontendPublicUrl();
+      const url = `${baseUrl}/gallery/${data.slug}`;
       navigator.clipboard.writeText(url);
       alert("Ссылка скопирована:\n" + url);
     };

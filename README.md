@@ -75,6 +75,12 @@ Expected database format:
 DATABASE_URL=postgresql+psycopg2://postgres:your-password@localhost:5432/wedding_portfolio
 ```
 
+Also set frontend public URL used by admin Share button:
+
+```bash
+FRONTEND_PUBLIC_URL=https://denysstepaniuk.com
+```
+
 ### Frontend (.env.local)
 
 - REACT_APP_API_BASE_URL - backend base URL (default: http://localhost:8000)

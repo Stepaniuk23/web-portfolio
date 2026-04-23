@@ -1,4 +1,5 @@
 import sys
+import os
 from pathlib import Path
 
 # Добавляем корневую папку в path
@@ -27,6 +28,8 @@ from app.routes import client_gallery_routes
 from app.services.file_storage import create_thumbnail
 
 app = FastAPI()
+
+FRONTEND_PUBLIC_URL = os.getenv("FRONTEND_PUBLIC_URL", "https://denysstepaniuk.com").rstrip("/")
 
 # 👉 Монтируем статические файлы админки с абсолютным путём
 ADMIN_PANEL_DIR = BASE_DIR / "app" / "admin_panel"
@@ -102,6 +105,11 @@ app.include_router(client_gallery_routes.router)
 @app.get("/")
 def read_root():
     return {"message": "Hello World"}
+
+
+@app.get("/api/public-config")
+def public_config():
+    return {"frontend_public_url": FRONTEND_PUBLIC_URL}
 
 def home():
     return {"message": "Backend is working"}
