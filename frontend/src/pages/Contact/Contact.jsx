@@ -12,23 +12,33 @@ function Contact() {
 
     const formData = new FormData(e.target);
 
-    const response = await fetch(apiUrl("/api/contact/"), {
-      method: "POST",
-      body: formData,
-    });
+    try {
+      const response = await fetch(apiUrl("/api/contact/"), {
+        method: "POST",
+        body: formData,
+      });
 
-    if (response.ok) {
-      setStatus("Thank you for your message! I will get back to you shortly.");
-      e.target.reset();
+      if (response.ok) {
+        setStatus(
+          "Thank you for your message! I will get back to you shortly.",
+        );
+        e.target.reset();
 
-      // Скрыть сообщение через 4 секунды
-      setTimeout(() => {
-        setStatus("");
-      }, 4000);
-    } else {
-      setStatus("Something went wrong. Please try again later.");
+        // Скрыть сообщение через 4 секунды
+        setTimeout(() => {
+          setStatus("");
+        }, 4000);
+      } else {
+        setStatus("Something went wrong. Please try again later.");
 
-      // Скрыть сообщение об ошибке через 4 секунды
+        // Скрыть сообщение об ошибке через 4 секунды
+        setTimeout(() => {
+          setStatus("");
+        }, 4000);
+      }
+    } catch (error) {
+      setStatus("Network error. Please check your connection and try again.");
+
       setTimeout(() => {
         setStatus("");
       }, 4000);
