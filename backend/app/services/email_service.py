@@ -13,6 +13,11 @@ def send_contact_email(name: str, email: str, message: str):
         app_password = os.getenv("SMTP_PASSWORD")
         receiver_email = os.getenv("SMTP_RECEIVER")
 
+        if not sender_email or not app_password or not receiver_email:
+            raise RuntimeError(
+                "SMTP configuration is incomplete. Expected SMTP_USER, SMTP_PASSWORD, and SMTP_RECEIVER."
+            )
+
         subject = "New Contact Form Submission"
 
         body = f"""

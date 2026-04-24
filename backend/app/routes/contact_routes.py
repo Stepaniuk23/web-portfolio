@@ -2,7 +2,7 @@ import time
 
 rate_limit_cache = {}
 
-from fastapi import APIRouter, Depends, status, Request
+from fastapi import APIRouter, Depends, status, Request, HTTPException
 from sqlalchemy.orm import Session
 from fastapi.responses import HTMLResponse  # ← добавили
 import time
@@ -46,7 +46,7 @@ def submit_contact_form(
     # 1. Сохраняем в базу
     create_contact_request(db, data)
 
-    # 2. Отправляем письмо с обработкой ошибок
+    # 2. Отправляем письмо. Если SMTP сломан, не маскируем это как успех.
     try:
         send_contact_email(
             name=data.name,
@@ -55,8 +55,10 @@ def submit_contact_form(
         )
     except Exception as e:
         print(f"❌ Email error: {str(e)}")
-        # Письмо не отправилось, но ответ всё равно успешный (данные сохранены)
-        return {"status": "success", "note": "Message saved but email sending failed"}
+        raise HTTPException(
+            status_code=status.HTTP_502_BAD_GATEWAY,
+            detail="Message was saved, but email delivery failed. Please check SMTP settings on the server."
+        )
 
     # ⭐ Возвращаем JSON ответ
     return {"status": "success"}

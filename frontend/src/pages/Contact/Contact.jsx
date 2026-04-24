@@ -18,7 +18,19 @@ function Contact() {
         body: formData,
       });
 
+      const result = await response.json().catch(() => null);
+
       if (response.ok) {
+        if (result?.note) {
+          setStatus(result.note);
+
+          setTimeout(() => {
+            setStatus("");
+          }, 4000);
+
+          return;
+        }
+
         setStatus(
           "Thank you for your message! I will get back to you shortly.",
         );
@@ -29,7 +41,9 @@ function Contact() {
           setStatus("");
         }, 4000);
       } else {
-        setStatus("Something went wrong. Please try again later.");
+        setStatus(
+          result?.detail || "Something went wrong. Please try again later.",
+        );
 
         // Скрыть сообщение об ошибке через 4 секунды
         setTimeout(() => {
