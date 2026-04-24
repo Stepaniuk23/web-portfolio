@@ -85,43 +85,44 @@ function Gallery() {
       </div>
 
       {/* Лайтбокс */}
-      {selectedIndex !== null && (
-        <div className="lightbox" onClick={closeLightbox}>
-          <img
-            src={images[selectedIndex]}
-            alt=""
-            className="lightbox-img"
-            onClick={(e) => e.stopPropagation()}
-          />
+      <div
+        className={`lightbox${selectedIndex !== null ? " active" : ""}`}
+        onClick={closeLightbox}
+      >
+        <img
+          src={images[selectedIndex]}
+          alt=""
+          className="lightbox-img"
+          onClick={(e) => e.stopPropagation()}
+        />
 
-          {/* Кнопка закрытия */}
-          <button className="lightbox-close" onClick={closeLightbox}>
-            ✕
-          </button>
+        {/* Кнопка закрытия */}
+        <button className="lightbox-close" onClick={closeLightbox}>
+          ✕
+        </button>
 
-          {/* Стрелка влево */}
-          <button
-            className="lightbox-arrow left"
-            onClick={(e) => {
-              e.stopPropagation();
-              prevPhoto();
-            }}
-          >
-            ‹
-          </button>
+        {/* Стрелка влево */}
+        <button
+          className="lightbox-arrow left"
+          onClick={(e) => {
+            e.stopPropagation();
+            prevPhoto();
+          }}
+        >
+          ‹
+        </button>
 
-          {/* Стрелка вправо */}
-          <button
-            className="lightbox-arrow right"
-            onClick={(e) => {
-              e.stopPropagation();
-              nextPhoto();
-            }}
-          >
-            ›
-          </button>
-        </div>
-      )}
+        {/* Стрелка вправо */}
+        <button
+          className="lightbox-arrow right"
+          onClick={(e) => {
+            e.stopPropagation();
+            nextPhoto();
+          }}
+        >
+          ›
+        </button>
+      </div>
     </div>
   );
 }
