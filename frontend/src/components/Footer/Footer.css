@@ -24,14 +24,25 @@
 }
 
 .footer-brand-name {
-  font-family: var(--font-title);
-  font-size: 20px;
+  font-family: "Playfair Display", serif;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  line-height: 1;
+  display: inline-block;
+  transform: scaleY(1.15);
+  transform-origin: top left;
+  color: var(--color-dark);
 }
 
 .footer-brand-tagline {
-  font-family: var(--font-main);
-  font-size: 14px;
-  opacity: 0.8;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  font-size: 7px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  opacity: 0.75;
+  margin-top: 4px;
 }
 
 /* Правый блок — телефон + соцсети */

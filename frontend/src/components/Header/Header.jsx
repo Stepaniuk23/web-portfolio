@@ -21,7 +21,8 @@ function Header() {
       <div className="header-container">
         {/* Логотип — всегда на главную */}
         <Link to="/" className="logo" onClick={() => setMenuOpen(false)}>
-          Denys Stepaniuk
+          <span className="logo-name">Denys Stepaniuk</span>
+          <span className="logo-tagline">visual storytelling</span>
         </Link>
 
         {/* Навигация */}

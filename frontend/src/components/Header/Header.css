@@ -26,11 +26,34 @@
 
 /* ===== LOGO ===== */
 .logo {
-  font-family: "Pinyon Script", cursive;
-  font-size: 36px;
-  font-weight: 400; /* у Pinyon Script нет других весов */
-  letter-spacing: 1px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  text-decoration: none;
   color: var(--color-text);
+}
+
+.logo-name {
+  font-family: "Playfair Display", serif;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  line-height: 1;
+  display: inline-block;
+  transform: scaleY(1.15);
+  transform-origin: top left;
+  color: var(--color-dark);
+}
+
+.logo-tagline {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--color-text);
+  margin-top: 4px;
 }
 
 /* ===== DESKTOP NAV ===== */
