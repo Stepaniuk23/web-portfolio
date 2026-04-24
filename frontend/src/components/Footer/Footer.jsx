@@ -7,7 +7,7 @@ function Footer() {
       <div className="footer-top">
         <div className="footer-brand">
           <span className="footer-brand-name">Denys Stepaniuk</span>
-          <span className="footer-brand-tagline">Wedding Photography</span>
+          <span className="footer-brand-tagline">visual storytelling</span>
         </div>
 
         <div className="footer-right">
