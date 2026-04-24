@@ -13,13 +13,13 @@
 /* Masonry layout */
 .masonry {
   column-count: 5;
-  column-gap: 25px;
+  column-gap: 14px;
 }
 
 .masonry img {
   width: 100%;
-  margin-bottom: 25px;
-  border-radius: 10px;
+  margin-bottom: 14px;
+  border-radius: 0;
   display: block;
   break-inside: avoid;
 }

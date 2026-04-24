@@ -9,13 +9,13 @@
 /* Masonry */
 .masonry {
   column-count: 3;
-  column-gap: 20px;
+  column-gap: 14px;
 }
 
 .gallery-img {
   width: 100%;
-  margin-bottom: 20px;
-  border-radius: 6px;
+  margin-bottom: 14px;
+  border-radius: 0;
   cursor: pointer;
   transition: none;
   transform: none;

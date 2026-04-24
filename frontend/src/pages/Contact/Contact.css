@@ -18,7 +18,7 @@
 .contact-photo {
   flex: 1;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 0;
   max-height: 800px; /* ← уменьшаем фото */
   display: flex;
 }
