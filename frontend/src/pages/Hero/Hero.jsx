@@ -5,9 +5,7 @@ function Hero() {
     <section id="home" className="hero">
       <div className="hero-overlay">
         <div className="hero-text">
-          <h1 className="hero-name">Denys Stepaniuk</h1>
-          <p className="hero-subtitle">Wedding photography</p>
-
+          <h1 className="hero-name">Capturing moments that live forever</h1>
           <a href="#contact" className="hero-button">
             Book now
           </a>
