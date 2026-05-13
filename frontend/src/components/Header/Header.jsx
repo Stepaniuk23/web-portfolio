@@ -1,55 +1,93 @@
-import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { FaInstagram, FaFacebookF } from "react-icons/fa";
+import { SiThreads } from "react-icons/si";
 import "./Header.css";
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const location = useLocation();
+  const [shrink, setShrink] = useState(false);
 
-  const isHome = location.pathname === "/";
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setShrink(true);
+      } else {
+        setShrink(false);
+      }
+    };
 
-  const scrollLink = (hash) => {
-    if (isHome) {
-      return hash; // "#about"
-    } else {
-      return "/" + hash; // "/#about"
-    }
-  };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="header">
+    <header className={`header ${shrink ? "shrink" : ""}`}>
+      {/* DESKTOP HEADER — VOGUE STYLE */}
+      <div className="desktop-header">
+        <div className="desktop-logo-block">
+          <div className="logo-name-block">
+            <span className="logo-name-main">Denys Stepaniuk</span>
+            <span className="logo-name-tagline">visual storytelling</span>
+          </div>
+        </div>
+
+        <div className="desktop-separator"></div>
+
+        <nav className="nav-desktop">
+          <Link to="/about">ABOUT</Link>
+          <Link to="/weddings">WEDDINGS</Link>
+          <Link to="/portraits">PORTRAITS</Link>
+          <Link to="/stories">STORIES</Link>
+          <Link to="/contact">CONTACT</Link>
+        </nav>
+      </div>
+
+      {/* MOBILE HEADER */}
       <div className="header-container">
-        {/* Логотип — всегда на главную */}
         <Link to="/" className="logo" onClick={() => setMenuOpen(false)}>
-          <span className="logo-name">Denys Stepaniuk</span>
-          <span className="logo-tagline">visual storytelling</span>
+          <div className="logo-name-block">
+            <span className="logo-name-main">Denys Stepaniuk</span>
+            <span className="logo-name-tagline">visual storytelling</span>
+          </div>
         </Link>
 
-        {/* Навигация */}
-        <nav className={`nav ${menuOpen ? "open" : ""}`}>
-          <a href={scrollLink("#home")} onClick={() => setMenuOpen(false)}>
-            Home
-          </a>
-          <a href={scrollLink("#about")} onClick={() => setMenuOpen(false)}>
-            About
-          </a>
-          <a href={scrollLink("#gallery")} onClick={() => setMenuOpen(false)}>
-            Gallery
-          </a>
-          <a href={scrollLink("#contact")} onClick={() => setMenuOpen(false)}>
-            Contact
-          </a>
-        </nav>
-
-        {/* Бургер */}
         <div
           className={`burger ${menuOpen ? "active" : ""}`}
           onClick={() => setMenuOpen(!menuOpen)}
         >
-          <span className="line line1"></span>
-          <span className="line line2"></span>
-          <span className="line line3"></span>
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
+
+        <aside className={`mobile-menu ${menuOpen ? "open" : ""}`}>
+          <button className="close-btn" onClick={() => setMenuOpen(false)}>
+            ×
+          </button>
+
+          <Link to="/about" onClick={() => setMenuOpen(false)}>
+            ABOUT
+          </Link>
+          <Link to="/weddings" onClick={() => setMenuOpen(false)}>
+            WEDDINGS
+          </Link>
+          <Link to="/portraits" onClick={() => setMenuOpen(false)}>
+            PORTRAITS
+          </Link>
+          <Link to="/stories" onClick={() => setMenuOpen(false)}>
+            STORIES
+          </Link>
+          <Link to="/contact" onClick={() => setMenuOpen(false)}>
+            CONTACT
+          </Link>
+
+          <div className="socials">
+            <FaInstagram />
+            <FaFacebookF />
+            <SiThreads />
+          </div>
+        </aside>
       </div>
     </header>
   );

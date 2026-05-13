@@ -1,4 +1,4 @@
-import "./Gallery.css";
+import "./Portfolio.css";
 import { useState } from "react";
 
 import img1 from "../../assets/gallery/gallery1.jpg";

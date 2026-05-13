@@ -1,13 +1,16 @@
-import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 
-import Hero from "./pages/Hero/Hero";
+import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
-import Gallery from "./pages/Gallery/Gallery";
+import Portfolio from "./pages/Portfolio/Portfolio";
 import Contact from "./pages/Contact/Contact";
+
+import Weddings from "./pages/Weddings/Weddings";
+import Portraits from "./pages/Portraits/Portraits";
+import Stories from "./pages/Stories/Stories";
 
 import ClientGallery from "./pages/ClientGallery/ClientGallery";
 
@@ -17,32 +20,21 @@ function App() {
       <Header />
 
       <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <Hero />
+        <Route path="/" element={<Home />} />
 
-              <section id="about">
-                <About />
-              </section>
+        <Route path="/about" element={<About />} />
+        <Route path="/portfolio" element={<Portfolio />} />
 
-              <section id="gallery">
-                <Gallery />
-              </section>
+        <Route path="/weddings" element={<Weddings />} />
+        <Route path="/portraits" element={<Portraits />} />
+        <Route path="/stories" element={<Stories />} />
 
-              <section id="contact">
-                <Contact />
-              </section>
+        <Route path="/contact" element={<Contact />} />
 
-              <Footer />
-            </>
-          }
-        />
-
-        {/* Новый маршрут для клиентской галереи */}
         <Route path="/gallery/:slug" element={<ClientGallery />} />
       </Routes>
+
+      <Footer />
     </BrowserRouter>
   );
 }

@@ -1,5 +1,5 @@
 import "./About.css";
-import myPhoto from "../../assets/about.jpg";
+import myPhoto from "../../assets/about/portrait.jpg";
 import { useEffect, useRef, useState } from "react";
 import { useCounter } from "../../hooks/useCounter";
 

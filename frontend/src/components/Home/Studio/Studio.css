@@ -1,0 +1,138 @@
+.studio {
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 140px auto;
+  padding: 0 var(--container-padding);
+}
+
+.studio-inner {
+  max-width: 920px;
+  margin: 0 auto;
+  text-align: center;
+
+  /* Fade-in как в Philosophy */
+  opacity: 0;
+  transform: translateY(34px);
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.studio.is-visible .studio-inner {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Заголовок THE STUDIO */
+.studio-title {
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--color-black-45);
+  line-height: 1.5;
+  max-width: 740px;
+  margin: 0 auto 20px;
+}
+
+/* Подзаголовок — твоя фраза */
+.studio-subtitle {
+  font-family: var(--font-title);
+  font-size: clamp(48px, 6vw, 62px);
+  font-weight: 400;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--color-dark);
+  line-height: 1.08;
+  max-width: 920px;
+  margin: 0 auto 52px;
+}
+
+.studio-subtitle-and {
+  font-style: italic;
+  text-transform: none;
+}
+
+/* Слайдер-контейнер */
+.studio-slider {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  aspect-ratio: 4 / 5;
+  margin: 0 auto 60px;
+  border: 1px solid var(--color-black-25);
+  background: linear-gradient(
+    180deg,
+    var(--color-studio-slider-bg-start),
+    var(--color-studio-slider-bg-end)
+  );
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Каждое изображение */
+.studio-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+.studio-slide.active {
+  opacity: 1;
+}
+
+/* Подводка */
+.studio-text {
+  font-family: var(--font-main);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.86;
+  color: var(--color-text);
+  max-width: 740px;
+  margin: 0 auto 24px;
+}
+
+/* CTA */
+.studio-cta {
+  border-color: var(--color-black-25);
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+  .studio {
+    margin: 100px auto;
+  }
+
+  .studio-title {
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    margin-bottom: 14px;
+  }
+
+  .studio-subtitle {
+    font-size: 42px;
+    line-height: 1.14;
+    margin-bottom: 38px;
+  }
+
+  .studio-slider {
+    max-width: 100%;
+    aspect-ratio: 4 / 5;
+    margin-bottom: 42px;
+  }
+
+  .studio-text {
+    font-size: 16px;
+    line-height: 1.74;
+    max-width: 94%;
+    margin-bottom: 18px;
+  }
+}

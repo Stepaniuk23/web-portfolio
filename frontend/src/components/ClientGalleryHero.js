@@ -1,4 +1,4 @@
-import "../pages/Hero/Hero.css";
+import "./Home/Hero/Hero.css";
 
 function ClientGalleryHero({ title, eventDate, coverPhoto }) {
   return (
