@@ -1,0 +1,140 @@
+.final-cta {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: hidden; /* Критично для параллакса */
+  background-color: var(--color-bg); /* Твой светлый фон */
+  padding: clamp(120px, 15vw, 180px) 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  --cta-parallax-scale: 1;
+  --cta-parallax-speed: 4.25;
+}
+
+/* ФОНОВЫЕ СЛОИ (Как в Philosophy) */
+.cta-bg-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 1; /* Самый нижний слой */
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.cta-parallax-img {
+  display: block;
+  width: 100vw;
+  min-width: 100vw;
+  max-width: none;
+  min-height: calc(100% + 560px);
+  height: auto;
+  flex-shrink: 0;
+  object-fit: cover;
+  will-change: transform;
+  opacity: 1;
+}
+
+/* Оверлей-затемнение поверх фото */
+.cta-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(7, 7, 7, 0.34) 0%,
+    rgba(7, 7, 7, 0.52) 100%
+  );
+  z-index: 2;
+}
+
+/* КОНТЕНТ (Поверх всего) */
+.final-cta-container {
+  position: relative;
+  z-index: 3; /* Текст выше фона */
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  text-align: center;
+
+  /* Анимация появления как у KT Merry */
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.final-cta.is-visible .final-cta-container {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ТИПОГРАФИКА (Твой оригинальный стиль) */
+.cta-kicker {
+  display: block;
+  font-family: var(--font-main);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 24px;
+}
+
+.cta-title {
+  font-family: var(--font-title);
+  font-size: clamp(42px, 6vw, 72px);
+  font-weight: 400;
+  line-height: 1.05;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 56px;
+  letter-spacing: 0.5px;
+}
+
+.cta-title .italic-word {
+  font-style: italic;
+  text-transform: none;
+}
+
+.btn-ghost.btn-standard {
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: transparent;
+  cursor: pointer;
+}
+/* Hover эффект в стиле "Ghost" */
+.btn-ghost.btn-standard:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.9);
+  color: #fff;
+}
+
+/* Mobile адаптация */
+@media (max-width: 768px) {
+  .final-cta {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    left: 0;
+    padding: 100px 0;
+    --cta-parallax-scale: 1;
+    --cta-parallax-speed: 1.4;
+  }
+
+  .cta-title {
+    font-size: 38px;
+    margin-bottom: 40px;
+  }
+}
+
+.btn-ghost.btn-standard {
+  padding: 14px 42px;
+  font-size: 14px;
+  letter-spacing: 0.18em;
+}

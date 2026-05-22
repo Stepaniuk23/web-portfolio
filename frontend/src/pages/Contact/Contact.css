@@ -90,7 +90,7 @@
 }
 
 .contact-submit:hover {
-  background: #c08f5f;
+  background: var(--color-accent-hover);
 }
 
 /* Соцсети */

@@ -11,7 +11,20 @@ body {
   font-family: var(--font-main);
   background-color: var(--color-bg);
   color: var(--color-text);
-  line-height: 1.6;
+  line-height: var(--font-body-line-height);
+  font-weight: var(--font-body-weight);
+  overflow-x: hidden;
+}
+
+p,
+li,
+blockquote,
+figcaption,
+small {
+  font-family: var(--font-main);
+  font-size: var(--font-body-size);
+  line-height: var(--font-body-line-height);
+  font-weight: var(--font-body-weight);
 }
 
 /* Чтобы секции не прятались под фиксированным Header */

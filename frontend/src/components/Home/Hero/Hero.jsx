@@ -5,27 +5,26 @@ function Hero() {
   return (
     <section className="hero">
       <div className="hero-left">
-        <img src={heroImage} alt="Wedding" className="hero-photo" />
+        <img
+          src={heroImage}
+          alt="Editorial wedding photography by Denys Stepaniuk"
+          fetchpriority="high"
+          className="hero-photo"
+        />
       </div>
 
       <div className="hero-right">
         <span className="hero-label">Editorial Wedding Photography</span>
 
         <h1 className="hero-title">
-          Timeless
-          <br />
-          Wedding
-          <br />
-          Stories
+          <span className="hero-title-line">Timeless</span>
+          <span className="hero-title-line">Wedding</span>
+          <span className="hero-title-line">Stories</span>
         </h1>
 
         <div className="hero-divider"></div>
 
         <p className="hero-subtitle">Modern. Emotional. Fashion‑inspired.</p>
-
-        <a href="#gallery" className="btn-ghost hero-button">
-          View Stories
-        </a>
       </div>
     </section>
   );

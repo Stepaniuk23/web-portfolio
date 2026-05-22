@@ -19,6 +19,7 @@
   height: 100%;
   object-fit: cover;
   transform: scale(1.05);
+  will-change: transform, opacity;
   opacity: 0;
   animation: fadeInPhoto 1.4s ease forwards;
 }
@@ -26,7 +27,7 @@
 /* Текст справа */
 .hero-right {
   width: 50%;
-  padding: 140px 80px;
+  padding: var(--space-section) var(--space-hero-inline);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -36,12 +37,14 @@
 .hero-label {
   font-family: var(--font-main);
   font-size: 11px;
+  font-weight: 300;
   letter-spacing: 0.35em;
   text-transform: uppercase;
-  color: var(--color-black-45);
+  color: var(--color-text);
   margin-bottom: 32px;
+  transform: translateY(24px);
   opacity: 0;
-  animation: fadeUp 0.8s ease 0.2s forwards;
+  animation: heroFadeUp 0.8s ease 0.2s forwards;
 }
 
 /* Огромный заголовок */
@@ -51,8 +54,26 @@
   font-size: clamp(72px, 8vw, 140px);
   line-height: 0.9;
   margin: 0 0 40px;
+}
+
+.hero-title-line {
+  display: block;
+  overflow: hidden;
+  transform: translateY(24px);
   opacity: 0;
-  animation: fadeUp 1s ease 0.35s forwards;
+  animation: revealLineUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.hero-title-line:nth-child(1) {
+  animation-delay: 0.32s;
+}
+
+.hero-title-line:nth-child(2) {
+  animation-delay: 0.44s;
+}
+
+.hero-title-line:nth-child(3) {
+  animation-delay: 0.56s;
 }
 
 /* Тонкая Vogue‑линия */
@@ -61,18 +82,19 @@
   height: 1px;
   background: var(--color-black-25);
   margin-bottom: 28px;
+  transform: translateY(24px);
   opacity: 0;
-  animation: fadeUp 1s ease 0.5s forwards;
+  animation: heroFadeUp 1s ease 0.65s forwards;
 }
 
 /* Подзаголовок */
 .hero-subtitle {
   font-family: var(--font-main);
   font-size: 16px;
-  opacity: 0.7;
   margin-bottom: 48px;
+  transform: translateY(24px);
   opacity: 0;
-  animation: fadeUp 1s ease 0.65s forwards;
+  animation: heroFadeUp 1s ease 0.8s forwards;
 }
 
 /* Ghost‑кнопка */
@@ -80,13 +102,14 @@
   padding: 14px 42px;
   font-size: 14px;
   letter-spacing: 0.18em;
-  border-color: var(--color-black-50);
+  border-color: var(--color-black-25);
+  transform: translateY(24px);
   opacity: 0;
-  animation: fadeUp 1s ease 0.8s forwards;
+  animation: heroFadeUp 1s ease 0.8s forwards;
 }
 
 .hero-button:hover {
-  opacity: 0.5;
+  opacity: var(--opacity-hover-soft);
 }
 
 /* Анимации */
@@ -97,7 +120,14 @@
   }
 }
 
-@keyframes fadeUp {
+@keyframes heroFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes revealLineUp {
   to {
     opacity: 1;
     transform: translateY(0);
@@ -120,7 +150,7 @@
   }
 
   .hero-right {
-    padding: 60px 28px;
+    padding: 60px var(--container-padding);
     text-align: center;
     align-items: center;
   }

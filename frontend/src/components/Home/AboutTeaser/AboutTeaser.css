@@ -1,6 +1,6 @@
 .about-teaser {
   width: 100%;
-  margin: 140px 0;
+  margin: var(--space-section) 0;
 }
 
 .about-teaser-inner {
@@ -10,10 +10,11 @@
   gap: 80px;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 var(--container-padding-wide);
 
   opacity: 0;
   transform: translateY(40px);
+  backface-visibility: hidden; /* Убираем микро-дрожание */
   transition:
     opacity 0.9s ease,
     transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
@@ -24,7 +25,6 @@
   transform: translateY(0);
 }
 
-/* Фото */
 .about-teaser-image {
   flex: 0 0 420px;
 }
@@ -37,7 +37,6 @@
   border-radius: 2px;
 }
 
-/* Контент */
 .about-teaser-content {
   max-width: 520px;
 }
@@ -46,10 +45,10 @@
   margin: 0 0 16px;
   font-family: var(--font-main);
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 300;
   letter-spacing: 0.35em;
   text-transform: uppercase;
-  color: var(--color-black-45);
+  color: var(--color-text);
   line-height: 1.5;
 }
 
@@ -75,6 +74,7 @@
   line-height: 1.86;
   margin: 0 0 18px;
   color: var(--color-text);
+  text-wrap: pretty; /* Исключаем висячие слова */
 }
 
 .about-teaser-cta {
@@ -82,12 +82,15 @@
   border-color: var(--color-black-25);
 }
 
-/* Mobile */
 @media (max-width: 900px) {
+  .about-teaser {
+    margin: var(--space-section-mobile) 0;
+  }
+
   .about-teaser-inner {
     flex-direction: column;
     gap: 40px;
-    padding: 0 24px;
+    padding: 0 var(--container-padding);
   }
 
   .about-teaser-image {
@@ -96,27 +99,19 @@
     max-width: 420px;
   }
 
-  .about-teaser-kicker {
-    font-size: 10px;
-    letter-spacing: 0.28em;
-    margin-bottom: 14px;
+  .about-teaser-content {
+    width: 100%;
     text-align: center;
   }
 
-  .about-teaser-title {
-    font-size: 42px;
-    line-height: 1.14;
-    margin-bottom: 24px;
-    text-align: center;
-  }
-
+  .about-teaser-kicker,
+  .about-teaser-title,
   .about-teaser-text {
     text-align: center;
-    font-size: 16px;
   }
 
   .about-teaser-cta {
-    display: table;
-    margin: 0 auto;
+    display: inline-block;
+    margin: 12px 0 0;
   }
 }

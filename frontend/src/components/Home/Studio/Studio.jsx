@@ -7,12 +7,12 @@ import studio2 from "../../../assets/studio/studio2.jpg";
 import studio3 from "../../../assets/studio/studio3.jpg";
 import studio4 from "../../../assets/studio/studio4.jpg";
 
+const STUDIO_IMAGES = [studio1, studio2, studio3, studio4];
+
 function Studio() {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
   const [index, setIndex] = useState(0);
-
-  const images = [studio1, studio2, studio3, studio4];
 
   // Fade-in при появлении блока
   useEffect(() => {
@@ -36,28 +36,28 @@ function Studio() {
   // Автоплей fade-слайдера
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % images.length);
+      setIndex((prev) => (prev + 1) % STUDIO_IMAGES.length);
     }, 5000); // смена каждые 5 секунд
 
     return () => clearInterval(interval);
-  }, [images.length]);
+  }, []);
 
   return (
     <section ref={ref} className={`studio ${visible ? "is-visible" : ""}`}>
       <div className="studio-inner">
-        <h2 className="studio-title">THE STUDIO</h2>
+        <p className="studio-title">THE STUDIO</p>
 
-        <p className="studio-subtitle">
+        <h2 className="studio-subtitle">
           Crafting imagery shaped by light, elegance{" "}
           <span className="studio-subtitle-and">and</span> quiet emotion
-        </p>
+        </h2>
 
         <div className="studio-slider">
-          {images.map((src, i) => (
+          {STUDIO_IMAGES.map((src, i) => (
             <img
               key={i}
               src={src}
-              alt="Studio showcase"
+              alt={`Fine Art wedding photography by Denys Stepaniuk - showcase ${i + 1}`}
               className={`studio-slide ${i === index ? "active" : ""}`}
             />
           ))}
@@ -70,7 +70,7 @@ function Studio() {
         </p>
 
         <a href="#portfolio" className="btn-ghost studio-cta">
-          Browse Portfolio
+          View All Weddings
         </a>
       </div>
     </section>

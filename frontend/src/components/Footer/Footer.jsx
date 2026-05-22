@@ -1,40 +1,69 @@
+import React from "react";
 import "./Footer.css";
-import { SiInstagram, SiFacebook, SiThreads } from "react-icons/si";
+// Импортируем нужные иконки
+import { FaInstagram, FaFacebookF, FaPinterestP } from "react-icons/fa6";
 
 function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="footer">
-      <div className="footer-top">
-        <div className="footer-brand">
-          <span className="footer-brand-name">Denys Stepaniuk</span>
-          <span className="footer-brand-tagline">visual storytelling</span>
-        </div>
+    <footer className="main-footer">
+      <div className="footer-container">
+        <div className="footer-top">
+          {/* Левая часть: Брендинг */}
+          <div className="footer-brand">
+            <span className="footer-logo-name">Denys Stepaniuk</span>
+            <span className="footer-logo-sub">
+              Wedding & Editorial Photographer
+            </span>
+          </div>
 
-        <div className="footer-right">
-          <a className="footer-phone" href="tel:+420721031650">
-            +420721031650
-          </a>
+          {/* Центр: Навигация */}
+          <nav className="footer-nav">
+            <a href="/">Home</a>
+            <a href="/weddings">Weddings</a>
+            <a href="/editorials">Editorials</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+          </nav>
 
-          <div className="footer-socials">
+          {/* Правая часть: Соцсети (Иконки) */}
+          <div className="footer-social">
             <a
-              href="https://www.instagram.com"
+              href="https://instagram.com"
               target="_blank"
               rel="noreferrer"
+              aria-label="Instagram"
             >
-              <SiInstagram className="footer-icon" />
+              <FaInstagram size={18} />
             </a>
-            <a href="https://www.facebook.com" target="_blank" rel="noreferrer">
-              <SiFacebook className="footer-icon" />
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Facebook"
+            >
+              <FaFacebookF size={16} />
             </a>
-            <a href="https://www.threads.net" target="_blank" rel="noreferrer">
-              <SiThreads className="footer-icon" />
+            <a
+              href="https://pinterest.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Pinterest"
+            >
+              <FaPinterestP size={18} />
             </a>
           </div>
         </div>
-      </div>
 
-      <div className="footer-copy">
-        © {new Date().getFullYear()} All rights reserved.
+        <div className="footer-bottom">
+          <div className="footer-legal">
+            <span>© {currentYear} Denys Stepaniuk</span>
+            <span className="footer-separator">|</span>
+            <span>All rights reserved</span>
+          </div>
+          <p className="footer-tagline">Timeless imagery for soulful stories</p>
+        </div>
       </div>
     </footer>
   );

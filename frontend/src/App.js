@@ -1,4 +1,6 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
@@ -14,28 +16,41 @@ import Stories from "./pages/Stories/Stories";
 
 import ClientGallery from "./pages/ClientGallery/ClientGallery";
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [pathname]);
+
+  return null;
+}
+
 function App() {
   return (
-    <BrowserRouter>
-      <Header />
+    <HelmetProvider>
+      <BrowserRouter>
+        <ScrollToTop />
+        <Header />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
+        <Routes>
+          <Route path="/" element={<Home />} />
 
-        <Route path="/about" element={<About />} />
-        <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/portfolio" element={<Portfolio />} />
 
-        <Route path="/weddings" element={<Weddings />} />
-        <Route path="/portraits" element={<Portraits />} />
-        <Route path="/stories" element={<Stories />} />
+          <Route path="/weddings" element={<Weddings />} />
+          <Route path="/portraits" element={<Portraits />} />
+          <Route path="/stories" element={<Stories />} />
 
-        <Route path="/contact" element={<Contact />} />
+          <Route path="/contact" element={<Contact />} />
 
-        <Route path="/gallery/:slug" element={<ClientGallery />} />
-      </Routes>
+          <Route path="/gallery/:slug" element={<ClientGallery />} />
+        </Routes>
 
-      <Footer />
-    </BrowserRouter>
+        <Footer />
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }
 

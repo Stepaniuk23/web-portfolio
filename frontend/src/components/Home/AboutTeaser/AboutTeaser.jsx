@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import "./AboutTeaser.css";
-
-import portrait from "../../../assets/about/portrait.jpg"; // твоё ЧБ фото
+import portrait from "../../../assets/about/portrait.jpg";
 
 function AboutTeaser() {
   const ref = useRef(null);
@@ -32,14 +31,19 @@ function AboutTeaser() {
     >
       <div className="about-teaser-inner">
         <div className="about-teaser-image">
-          <img src={portrait} alt="Denys Stepaniuk portrait" />
+          <img
+            src={portrait}
+            alt="Denys Stepaniuk portrait"
+            decoding="async" /* Ускоряем рендеринг текста */
+          />
         </div>
 
         <div className="about-teaser-content">
           <p className="about-teaser-kicker">ABOUT DENYS</p>
 
           <h2 className="about-teaser-title">
-            calmly observant, quietly elegant, honest, deeply human.
+            calmly observant, quietly elegant, honest,{" "}
+            <span className="about-teaser-title-and">deeply</span> human.
           </h2>
 
           <p className="about-teaser-text">
