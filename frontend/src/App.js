@@ -11,6 +11,7 @@ import Portfolio from "./pages/Portfolio/Portfolio";
 import Contact from "./pages/Contact/Contact";
 
 import Weddings from "./pages/Weddings/Weddings";
+import WeddingDetail from "./pages/Weddings/WeddingDetail";
 import Portraits from "./pages/Portraits/Portraits";
 import Stories from "./pages/Stories/Stories";
 
@@ -46,6 +47,8 @@ function App() {
           <Route path="/contact" element={<Contact />} />
 
           <Route path="/gallery/:slug" element={<ClientGallery />} />
+
+          <Route path="/weddings/:id" element={<WeddingDetail />} />
         </Routes>
 
         <Footer />

@@ -1,6 +1,7 @@
 .about-page {
   background-color: var(--color-bg);
   padding-bottom: var(--space-section);
+  --about-hero-header-offset: clamp(72px, 10vw, 132px);
 }
 
 .about-container {
@@ -19,7 +20,9 @@
 .about-hero-full {
   position: relative;
   width: 100%;
-  height: 55vh;
+  min-height: calc(55vh + var(--about-hero-header-offset));
+  padding-top: var(--about-hero-header-offset);
+  box-sizing: border-box;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -863,13 +866,18 @@
   }
 
   .hero-text-overlay {
-    top: 24px;
+    top: clamp(32px, 8vw, 48px);
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateY(24px);
     width: 86%;
     max-width: 420px;
     padding: 0;
     color: var(--color-dark);
+  }
+
+  .hero-text-overlay.is-visible {
+    transform: translateX(-50%) translateY(0);
+    animation: none;
   }
 
   .hero-intro-text .intro-first-part {

@@ -1,0 +1,181 @@
+.weddings-page {
+  background-color: var(--color-bg);
+  padding-top: clamp(120px, 14vw, 170px);
+  padding-bottom: var(--space-section);
+}
+
+.weddings-container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding-wide);
+}
+
+.weddings-header {
+  text-align: center;
+  margin-bottom: clamp(56px, 8vw, 100px);
+  opacity: 0;
+  transform: translateY(30px);
+  backface-visibility: hidden;
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.weddings-header.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.weddings-header h1 {
+  font-family: var(--font-title);
+  font-size: clamp(40px, 8vw, 100px);
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--color-dark);
+  line-height: 0.96;
+  letter-spacing: 0.02em;
+  margin-bottom: 20px;
+}
+
+.weddings-header .subtitle {
+  font-family: var(--font-main);
+  font-style: italic;
+  color: var(--color-text);
+  opacity: 0.7;
+  font-size: clamp(16px, 1.6vw, 18px);
+  line-height: 1.6;
+}
+
+/* Сетка историй */
+.stories-grid {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(44px, 6vw, 80px) clamp(28px, 3vw, 40px);
+  padding: 0 var(--container-padding-wide);
+}
+
+.story-card {
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--story-delay, 0ms);
+}
+
+.stories-grid.is-visible .story-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.story-card a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.story-card a:focus-visible .story-image-wrap {
+  outline: 2px solid var(--color-accent-deep);
+  outline-offset: 6px;
+}
+
+.story-image-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4; /* Портретная ориентация для эдиториал-стиля */
+  overflow: hidden;
+  background-color: var(--color-light);
+  border: 1px solid var(--color-black-25);
+  margin-bottom: 25px;
+}
+
+.story-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition:
+    transform var(--transition-smooth),
+    opacity var(--transition-smooth);
+}
+
+.story-card:hover img {
+  transform: scale(1.04);
+}
+
+.story-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    180deg,
+    rgba(26, 26, 26, 0.05) 0%,
+    rgba(26, 26, 26, 0.34) 100%
+  );
+  opacity: 0;
+  transition: opacity var(--transition-smooth);
+}
+
+.story-overlay span {
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-bg);
+}
+
+.story-card:hover .story-overlay {
+  opacity: 1;
+}
+
+.story-info {
+  text-align: left;
+}
+
+.story-location {
+  display: block;
+  font-family: var(--font-main);
+  font-size: clamp(10px, 0.7vw, 11px);
+  color: var(--color-text);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 10px;
+  opacity: 0.65;
+}
+
+.story-title {
+  font-family: var(--font-title);
+  font-size: clamp(26px, 2.5vw, 34px);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  color: var(--color-dark);
+  margin: 0;
+}
+
+/* Мобильная версия */
+@media (max-width: 900px) {
+  .weddings-page {
+    padding-top: 120px;
+    padding-bottom: var(--space-section-mobile);
+  }
+
+  .weddings-container {
+    padding: 0 var(--container-padding);
+  }
+
+  .weddings-header {
+    margin-bottom: 56px;
+  }
+
+  .stories-grid {
+    grid-template-columns: 1fr;
+    padding: 0 var(--container-padding);
+    gap: 60px;
+  }
+}

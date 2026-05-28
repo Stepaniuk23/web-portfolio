@@ -1,0 +1,446 @@
+.story-article {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+.about-container-narrow {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 var(--container-padding-wide);
+}
+
+.story-not-found {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-section-mobile) var(--container-padding);
+  font-family: var(--font-main);
+  font-size: var(--font-body-size);
+}
+
+.story-section-reveal {
+  opacity: 0;
+  transform: translateY(34px);
+  backface-visibility: hidden;
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.story-section-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Основной контейнер секции */
+.hero-magazine {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg-paper); /* Легкий "бумажный" оттенок */
+  padding: 0 var(--container-padding-wide);
+  overflow: hidden;
+}
+
+.hero-magazine-container {
+  display: flex;
+  align-items: flex-end; /* Текст "прилипает" к низу фото */
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1400px;
+}
+
+/* Блок с текстом */
+.hero-magazine-text {
+  flex: 1;
+  padding-bottom: 60px; /* Смещение текста вверх от края фото */
+  z-index: 2;
+}
+
+.hero-magazine-label {
+  display: block;
+  font-family: var(--font-main);
+  font-size: clamp(10px, 0.7vw, 11px);
+  font-weight: 300;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  margin-bottom: 32px;
+  transform: translateY(24px);
+  opacity: 0;
+}
+
+.hero-magazine-title {
+  font-family: var(--font-title);
+  font-weight: 300;
+  font-size: clamp(72px, 8vw, 140px);
+  color: var(--color-dark);
+  line-height: 0.9;
+  text-wrap: balance;
+  text-transform: uppercase;
+  margin: 0 0 40px;
+}
+
+.hero-magazine-title-line {
+  display: block;
+  overflow: hidden;
+  transform: translateY(24px);
+  opacity: 0;
+}
+
+.hero-magazine-divider {
+  width: 80px;
+  height: 1px;
+  background: var(--color-black-25);
+  margin-bottom: 28px;
+  transform: translateY(24px);
+  opacity: 0;
+}
+
+.hero-magazine-location {
+  font-family: var(--font-main);
+  font-style: italic;
+  font-size: 16px;
+  letter-spacing: 0.01em;
+  margin: 0;
+  color: var(--color-text);
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+/* Блок с вертикальным фото */
+.hero-magazine-image {
+  flex: 0 0 55%; /* Фото занимает 55% ширины */
+  height: 80vh; /* Высота 80% от экрана */
+  position: relative;
+}
+
+.hero-magazine-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Идеально для вертикального кадра */
+  box-shadow: 30px 30px 80px var(--color-black-25); /* Мягкая тень "листа" */
+  opacity: 0;
+  transform: scale(1.05);
+  will-change: transform, opacity;
+}
+
+.hero-magazine.is-visible .hero-magazine-image img {
+  animation: fadeInPhoto 1.4s ease forwards;
+}
+
+.hero-magazine.is-visible .hero-magazine-label {
+  animation: heroFadeUp 0.8s ease 0.2s forwards;
+}
+
+.hero-magazine.is-visible .hero-magazine-title-line {
+  animation: revealLineUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: var(--line-delay, 0.32s);
+}
+
+.hero-magazine.is-visible .hero-magazine-divider {
+  animation: heroFadeUp 1s ease 0.65s forwards;
+}
+
+.hero-magazine.is-visible .hero-magazine-location {
+  animation: heroFadeUp 1s ease 0.8s forwards;
+}
+
+@keyframes fadeInPhoto {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes heroFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes revealLineUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.story-intro {
+  padding: var(--space-section) 0;
+  background-color: var(--color-bg-paper); /* Сохраняем фон "бумаги" */
+}
+
+.editorial-text p {
+  font-family: var(--font-main);
+  font-size: clamp(
+    18px,
+    2.1vw,
+    22px
+  ); /* Чуть крупнее для журнального эффекта */
+  line-height: 1.72;
+  font-weight: var(--font-body-weight);
+  color: var(--color-text);
+  text-wrap: pretty;
+}
+
+/* Наша фирменная буквица */
+.drop-cap::first-letter {
+  float: left;
+  font-family: var(--font-title);
+  font-size: 5.5rem;
+  line-height: 0.8;
+  padding-right: 15px;
+  text-transform: uppercase;
+  color: var(--color-dark);
+}
+
+.story-grid {
+  padding: var(--space-section) var(--container-padding-wide);
+  background-color: var(--color-bg); /* Переходим к основному светлому фону */
+}
+
+.story-grid-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 40px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* Большой кадр (занимает 8 колонок) */
+.item-wide {
+  grid-column: 1 / 9;
+}
+
+/* Вертикальный кадр (занимает оставшиеся 4 колонки) */
+.item-portrait {
+  grid-column: 9 / 13;
+  padding-top: 60px; /* Смещаем вниз для асимметрии */
+}
+
+/* Акцентный кадр (смещаем в центр) */
+.item-accent {
+  grid-column: 3 / 10;
+  margin-top: 40px;
+}
+
+.grid-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform var(--transition-smooth);
+}
+
+.story-grid .grid-item {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.story-grid.is-visible .item-wide {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.story-grid.is-visible .item-portrait {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.14s;
+}
+
+.story-grid.is-visible .item-accent {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.24s;
+}
+
+.grid-item:hover img {
+  transform: scale(1.015);
+}
+
+.story-moment {
+  padding: var(--space-section) 0;
+  background-color: var(
+    --color-bg-paper
+  ); /* Возвращаемся к бумаге для смыслового акцента */
+}
+
+.moment-image-wrap {
+  width: 100%;
+  max-width: 1200px; /* Оставляем "воздух" по бокам, чтобы кадр выглядел как в раме */
+  margin: 0 auto 80px;
+  padding: 0 40px;
+}
+
+.moment-image-wrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+  box-shadow: 0 24px 50px var(--color-black-25);
+}
+
+.moment-story-box {
+  text-align: center;
+}
+
+.moment-story-box h3 {
+  font-family: var(--font-title);
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 300;
+  text-transform: uppercase;
+  text-wrap: balance;
+  margin-bottom: 30px;
+  letter-spacing: 0.05em;
+  color: var(--color-dark);
+}
+
+.moment-story-box p {
+  font-family: var(--font-main);
+  font-size: var(--font-body-size);
+  line-height: var(--font-body-line-height);
+  font-weight: var(--font-body-weight);
+  max-width: 650px; /* Чуть сузили колонку, чтобы глаз не уставал */
+  margin: 0 auto;
+  letter-spacing: 0.01em;
+  color: var(--color-text);
+  opacity: 0.9; /* Сделали чуть мягче черного */
+  text-wrap: pretty;
+}
+
+.story-finale {
+  width: 100%;
+  height: 90vh; /* Почти весь экран */
+  overflow: hidden;
+  background-color: var(--color-bg);
+}
+
+.finale-image-full {
+  width: 100%;
+  height: 100%;
+}
+
+.finale-image-full img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.story-aftermath {
+  padding: 0 0 var(--space-section) 0; /* Убираем верхний паддинг, так как он есть у блока выше */
+  background-color: var(--color-bg-paper);
+}
+
+.aftermath-text-box p {
+  font-family: var(--font-main);
+  font-size: var(--font-body-size);
+  line-height: var(--font-body-line-height);
+  font-weight: var(--font-body-weight);
+  max-width: 600px; /* Еще уже колонка */
+  margin: 0 auto;
+  text-align: center;
+  opacity: 0.8;
+  letter-spacing: 0.01em;
+  text-wrap: pretty;
+}
+
+/* Маленький декоративный элемент — разделитель */
+.aftermath-text-box::before {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--color-text);
+  margin: 0 auto 50px;
+  opacity: 0.2;
+}
+
+@media (max-width: 900px) {
+  .about-container-narrow {
+    padding: 0 var(--container-padding);
+  }
+
+  .hero-magazine {
+    height: auto;
+    min-height: 100vh;
+    padding: 80px var(--container-padding) 40px;
+  }
+
+  .hero-magazine-container {
+    flex-direction: column-reverse; /* На мобилке фото сверху, текст снизу */
+    align-items: center;
+    gap: 32px;
+  }
+
+  .hero-magazine-image {
+    width: 100%;
+    height: 60vh;
+  }
+
+  .hero-magazine-text {
+    padding: 0;
+    text-align: center;
+  }
+
+  .hero-magazine-title {
+    margin-bottom: 28px;
+    font-size: clamp(48px, 14vw, 82px);
+  }
+
+  .hero-magazine-label,
+  .hero-magazine-location {
+    text-align: center;
+  }
+
+  .hero-magazine-divider {
+    margin: 0 auto 28px;
+  }
+
+  .story-intro {
+    padding: var(--space-section-mobile) 0;
+  }
+
+  .editorial-text p {
+    font-size: 18px;
+    line-height: 1.68;
+  }
+
+  .drop-cap::first-letter {
+    font-size: 4.6rem;
+    padding-right: 12px;
+  }
+
+  .story-grid {
+    padding: var(--space-section-mobile) var(--container-padding);
+  }
+
+  .story-grid-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .item-portrait {
+    padding-top: 0;
+  }
+
+  .story-moment {
+    padding: var(--space-section-mobile) 0;
+  }
+
+  .moment-image-wrap {
+    padding: 0 var(--container-padding);
+    margin-bottom: 40px;
+  }
+
+  .story-aftermath {
+    padding-bottom: var(--space-section-mobile);
+  }
+}

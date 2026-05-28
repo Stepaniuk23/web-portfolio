@@ -20,10 +20,15 @@ function About() {
   const explorationRef = useRef(null);
   const kindWordsRef = useRef(null);
 
+  const [heroVisible, setHeroVisible] = useState(false);
   const [introVisible, setIntroVisible] = useState(false);
   const [statementVisible, setStatementVisible] = useState(false);
   const [explorationVisible, setExplorationVisible] = useState(false);
   const [kindWordsVisible, setKindWordsVisible] = useState(false);
+
+  useEffect(() => {
+    setHeroVisible(true);
+  }, []);
 
   useEffect(() => {
     const targets = [
@@ -65,12 +70,10 @@ function About() {
           <img
             src={hallstattHero}
             alt="Hallstatt"
-            className={`about-hero-photo${introVisible ? " is-visible" : ""}`}
+            className={`about-hero-photo${heroVisible ? " is-visible" : ""}`}
           />
         </div>
-        <div
-          className={`hero-text-overlay${introVisible ? " is-visible" : ""}`}
-        >
+        <div className={`hero-text-overlay${heroVisible ? " is-visible" : ""}`}>
           <div className="hero-intro-text">
             <p>
               <span className="intro-first-part">I'm Denys Stepaniuk,</span>
