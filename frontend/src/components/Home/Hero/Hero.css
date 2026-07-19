@@ -58,7 +58,7 @@
 
 .hero-title-line {
   display: block;
-  overflow: hidden;
+  overflow: visible;
   transform: translateY(24px);
   opacity: 0;
   animation: revealLineUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;

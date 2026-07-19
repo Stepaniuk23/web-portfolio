@@ -139,7 +139,6 @@
   width: auto;
   display: block;
   object-fit: cover;
-  box-shadow: 20px 20px 60px var(--color-black-25);
   transition: transform var(--transition-smooth);
 }
 

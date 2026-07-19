@@ -1,20 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Weddings.css";
-import { odessaWeddingImages } from "../../data/weddingAssets";
-
-// Массив данных твоих историй. Когда появятся новые, просто добавляй объект в этот список.
-const stories = [
-  {
-    id: "viktor-natalia-odessa", // Этот ID будет в URL (например, /weddings/viktor-natalia-odessa)
-    title: "Viktor & Natalia",
-    location: "Odessa, Ukraine",
-    coverImage: odessaWeddingImages.cover,
-    year: "2023",
-  },
-  // Место для остальных 5 свадеб:
-  // { id: "story-2", title: "...", location: "...", coverImage: "..." },
-];
+// 1. ИМПОРТИРУЕМ НАШ ЕДИНЫЙ ИСТОЧНИК ПРАВДЫ:
+import { storiesData } from "../../data/storiesData";
 
 function Weddings() {
   const headerRef = useRef(null);
@@ -64,16 +52,17 @@ function Weddings() {
         ref={gridRef}
         className={`stories-grid ${gridVisible ? "is-visible" : ""}`}
       >
-        {stories.map((story, index) => (
+        {/* 2. ТЕПЕРЬ ОБХОДИМ ЦИКЛОМ storiesData ВМЕСТО СТАРОГО МАССИВА */}
+        {storiesData.map((story, index) => (
           <div
             key={story.id}
             className="story-card"
             style={{ "--story-delay": `${index * 140}ms` }}
           >
-            {/* Ссылка ведет на страницу конкретной истории */}
             <Link to={`/weddings/${story.id}`}>
               <div className="story-image-wrap">
-                <img src={story.coverImage} alt={story.title} />
+                {/* 3. КАРТИНКУ БЕРЕМ ИЗ СВОЙСТВА images.cover */}
+                <img src={story.images.cover} alt={story.title} />
                 <div className="story-overlay">
                   <span>View Story</span>
                 </div>

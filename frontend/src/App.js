@@ -9,6 +9,8 @@ import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
 import Portfolio from "./pages/Portfolio/Portfolio";
 import Contact from "./pages/Contact/Contact";
+import Editorials from "./pages/Editorials/Editorials";
+import EditorialDetail from "./pages/Editorials/EditorialDetail";
 
 import Weddings from "./pages/Weddings/Weddings";
 import WeddingDetail from "./pages/Weddings/WeddingDetail";
@@ -39,8 +41,10 @@ function App() {
 
           <Route path="/about" element={<About />} />
           <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/editorials" element={<Editorials />} />
 
           <Route path="/weddings" element={<Weddings />} />
+          <Route path="/editorials/:id" element={<EditorialDetail />} />
           <Route path="/portraits" element={<Portraits />} />
           <Route path="/stories" element={<Stories />} />
 

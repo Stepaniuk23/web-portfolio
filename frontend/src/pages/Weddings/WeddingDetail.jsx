@@ -10,6 +10,9 @@ function WeddingDetail() {
 
   // 2. Ищем данные именно для этой свадьбы в нашем файле данных
   const story = storiesData.find((item) => item.id === id);
+  const isCinematic = story?.templateType === "cinematic";
+  const isModernMinimal = story?.templateType === "modern-minimal";
+  const introColumns = story?.content?.introColumns ?? [];
 
   // Создаем Ref для галереи
   const fullStoryRef = useRef(null);
@@ -74,34 +77,100 @@ function WeddingDetail() {
   const titleLines = story.title.split(" ").filter(Boolean);
 
   return (
-    <div className="story-article">
+    <div className={`story-article template-${story.templateType}`}>
       {/* --- БЛОК 1: HERO --- */}
-      <section
-        ref={heroRef}
-        className={`hero-magazine ${visibleSections.hero ? "is-visible" : ""}`}
-      >
-        <div className="hero-magazine-container">
-          <div className="hero-magazine-text">
-            <span className="hero-magazine-label">Editorial Wedding Story</span>
-            <h1 className="hero-magazine-title">
+      {isCinematic ? (
+        <section
+          ref={heroRef}
+          className={`hero-cinematic story-section-reveal ${visibleSections.hero ? "is-visible" : ""}`}
+        >
+          <div className="hero-cinematic-media" aria-hidden="true">
+            <img
+              src={story.images.hero}
+              alt={`${story.title} wedding photography in ${story.location}`}
+            />
+          </div>
+          <div className="hero-cinematic-content">
+            <span className="hero-cinematic-label">
+              Cinematic Wedding Story
+            </span>
+            <h1 className="hero-cinematic-title">
               {titleLines.map((line, index) => (
                 <span
                   key={`${line}-${index}`}
-                  className="hero-magazine-title-line"
+                  className="hero-cinematic-title-line"
+                  style={{ "--line-delay": `${0.26 + index * 0.1}s` }}
+                >
+                  {line}
+                </span>
+              ))}
+            </h1>
+            <div className="hero-cinematic-divider" aria-hidden="true" />
+            <p className="hero-cinematic-location">{story.location}</p>
+          </div>
+        </section>
+      ) : isModernMinimal ? (
+        <section
+          ref={heroRef}
+          className={`hero-split story-section-reveal ${visibleSections.hero ? "is-visible" : ""}`}
+        >
+          <div className="hero-split-text">
+            <span className="hero-split-label">Intimate Wedding Story</span>
+            <h1 className="hero-split-title">
+              {titleLines.map((line, index) => (
+                <span
+                  key={`${line}-${index}`}
+                  className="hero-split-title-line"
                   style={{ "--line-delay": `${0.32 + index * 0.12}s` }}
                 >
                   {line}
                 </span>
               ))}
             </h1>
-            <div className="hero-magazine-divider" aria-hidden="true" />
-            <p className="hero-magazine-location">{story.location}</p>
+            <div className="hero-split-divider" aria-hidden="true" />
+            <p className="hero-split-subtitle">{story.location}</p>
           </div>
-          <div className="hero-magazine-image">
-            <img src={story.images.hero} alt={story.title} />
+
+          <div className="hero-split-media" aria-hidden="true">
+            <img
+              src={story.images.hero}
+              alt={`${story.title} wedding photography in ${story.location}`}
+            />
           </div>
-        </div>
-      </section>
+        </section>
+      ) : (
+        <section
+          ref={heroRef}
+          className={`hero-magazine ${visibleSections.hero ? "is-visible" : ""}`}
+        >
+          <div className="hero-magazine-container">
+            <div className="hero-magazine-text">
+              <span className="hero-magazine-label">
+                Editorial Wedding Story
+              </span>
+              <h1 className="hero-magazine-title">
+                {titleLines.map((line, index) => (
+                  <span
+                    key={`${line}-${index}`}
+                    className="hero-magazine-title-line"
+                    style={{ "--line-delay": `${0.32 + index * 0.12}s` }}
+                  >
+                    {line}
+                  </span>
+                ))}
+              </h1>
+              <div className="hero-magazine-divider" aria-hidden="true" />
+              <p className="hero-magazine-location">{story.location}</p>
+            </div>
+            <div className="hero-magazine-image">
+              <img
+                src={story.images.hero}
+                alt={`${story.title} wedding photography in ${story.location}`}
+              />
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* --- БЛОК 2: INTRO --- */}
       <section
@@ -127,6 +196,15 @@ function WeddingDetail() {
           <div className="grid-item item-portrait">
             <img src={story.images.gridPortrait} alt="The Portrait" />
           </div>
+          {introColumns.length ? (
+            <div className="grid-item item-copy" aria-label="Editorial notes">
+              <div className="grid-copy-columns">
+                {introColumns.map((paragraph, index) => (
+                  <p key={`grid-copy-${index}`}>{paragraph}</p>
+                ))}
+              </div>
+            </div>
+          ) : null}
           <div className="grid-item item-accent">
             <img src={story.images.gridSquare} alt="The Detail" />
           </div>
