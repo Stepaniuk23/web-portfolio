@@ -9,7 +9,9 @@ function EditorialDetail() {
 
   const story = editorialsData.find((item) => item.id === id);
   const isCinematic = story?.templateType === "cinematic";
+  const isAtmosphere = story?.templateType === "atmosphere";
   const isModernMinimal = story?.templateType === "modern-minimal";
+  const usesCinematicLayout = isCinematic || isAtmosphere;
   const introColumns = story?.content?.introColumns ?? [];
 
   const fullStoryRef = useRef(null);
@@ -71,10 +73,15 @@ function EditorialDetail() {
   }
 
   const titleLines = story.title.split(" ").filter(Boolean);
+  const cinematicLabel = isAtmosphere
+    ? "Atmosphere Editorial Story"
+    : "Cinematic Editorial Story";
 
   return (
-    <div className={`story-article template-${story.templateType}`}>
-      {isCinematic ? (
+    <div
+      className={`story-article template-${story.templateType}${isAtmosphere ? " template-cinematic" : ""}`}
+    >
+      {usesCinematicLayout ? (
         <section
           ref={heroRef}
           className={`hero-cinematic story-section-reveal ${visibleSections.hero ? "is-visible" : ""}`}
@@ -86,9 +93,7 @@ function EditorialDetail() {
             />
           </div>
           <div className="hero-cinematic-content">
-            <span className="hero-cinematic-label">
-              Cinematic Editorial Story
-            </span>
+            <span className="hero-cinematic-label">{cinematicLabel}</span>
             <h1 className="hero-cinematic-title">
               {titleLines.map((line, index) => (
                 <span
@@ -221,20 +226,49 @@ function EditorialDetail() {
         ref={aftermathRef}
         className={`story-aftermath story-section-reveal ${visibleSections.aftermath ? "is-visible" : ""}`}
       >
-        <div className="about-container-narrow">
-          <div className="aftermath-text-box">
-            <p>{story.content.aftermath}</p>
+        {isAtmosphere ? null : (
+          <div className="about-container-narrow">
+            <div className="aftermath-text-box">
+              <p>{story.content.aftermath}</p>
+            </div>
           </div>
-        </div>
+        )}
       </section>
 
       <section
         ref={finaleRef}
         className={`story-finale story-section-reveal ${visibleSections.finale ? "is-visible" : ""}`}
       >
-        <div className="finale-image-full">
-          <img src={story.images.finale} alt="Editorial finale" />
-        </div>
+        {isAtmosphere ? (
+          <div className="atmosphere-finale-layout">
+            <div className="atmosphere-finale-copy">
+              <div className="aftermath-text-box">
+                <p>{story.content.aftermath}</p>
+              </div>
+            </div>
+            <div className="finale-image-full">
+              <img
+                src={story.images.finale}
+                alt={`${story.title} editorial finale in ${story.location}`}
+                style={{
+                  objectPosition:
+                    story.images.finaleObjectPosition || "center center",
+                }}
+              />
+            </div>
+          </div>
+        ) : (
+          <div className="finale-image-full">
+            <img
+              src={story.images.finale}
+              alt="Editorial finale"
+              style={{
+                objectPosition:
+                  story.images.finaleObjectPosition || "center center",
+              }}
+            />
+          </div>
+        )}
       </section>
 
       <FullStory

@@ -30,7 +30,21 @@ const meiirbekDariaContext = require.context(
   /\.(png|jpe?g|webp|avif)$/i,
 );
 
+const annaVladiContext = require.context(
+  "../assets/editorials/anna-vladi",
+  false,
+  /\.(png|jpe?g|webp|avif)$/i,
+);
+
+const tatianaContext = require.context(
+  "../assets/editorials/tatiana",
+  false,
+  /\.(png|jpe?g|webp|avif)$/i,
+);
+
 const meiirbekDariaGallery = getNumberedGalleryImages(meiirbekDariaContext);
+const annaVladiGallery = getNumberedGalleryImages(annaVladiContext);
+const tatianaGallery = getNumberedGalleryImages(tatianaContext);
 
 export const meiirbekDariaEditorialImages = {
   cover:
@@ -53,6 +67,70 @@ export const meiirbekDariaEditorialImages = {
     loadImageFromContext(meiirbekDariaContext, "finale.jpg") || fallbackFinale,
   fullGallery: meiirbekDariaGallery.length
     ? meiirbekDariaGallery
+    : [
+        fallbackCover,
+        fallbackHero,
+        fallbackWide1,
+        fallbackPortrait,
+        fallbackSquare,
+        fallbackWide2,
+        fallbackFinale,
+      ],
+};
+
+export const annaVladiEditorialImages = {
+  cover: loadImageFromContext(annaVladiContext, "cover.jpg") || fallbackCover,
+  hero: loadImageFromContext(annaVladiContext, "hero.jpg") || fallbackHero,
+  wide1:
+    loadImageFromContext(annaVladiContext, "wide1.jpg") ||
+    loadImageFromContext(annaVladiContext, "wide-1.jpg") ||
+    fallbackWide1,
+  portrait:
+    loadImageFromContext(annaVladiContext, "portrait.jpg") || fallbackPortrait,
+  square:
+    loadImageFromContext(annaVladiContext, "square.jpg") || fallbackSquare,
+  wide2:
+    loadImageFromContext(annaVladiContext, "wide2.jpg") ||
+    loadImageFromContext(annaVladiContext, "wide-2.jpg") ||
+    fallbackWide2,
+  finale:
+    loadImageFromContext(annaVladiContext, "finale.jpg") || fallbackFinale,
+  fullGallery: annaVladiGallery.length
+    ? annaVladiGallery
+    : [
+        fallbackCover,
+        fallbackHero,
+        fallbackWide1,
+        fallbackPortrait,
+        fallbackSquare,
+        fallbackWide2,
+        fallbackFinale,
+      ],
+};
+
+export const tatianaEditorialImages = {
+  cover: loadImageFromContext(tatianaContext, "cover.jpg") || fallbackCover,
+  hero: loadImageFromContext(tatianaContext, "hero.jpg") || fallbackHero,
+  wide1:
+    loadImageFromContext(tatianaContext, "wide1.jpg") ||
+    loadImageFromContext(tatianaContext, "portrait.jpg") ||
+    fallbackWide1,
+  portrait:
+    loadImageFromContext(tatianaContext, "portrait.jpg") || fallbackPortrait,
+  square:
+    loadImageFromContext(tatianaContext, "square.jpg") ||
+    loadImageFromContext(tatianaContext, "cover.jpg") ||
+    fallbackSquare,
+  wide2:
+    loadImageFromContext(tatianaContext, "wide2.jpg") ||
+    loadImageFromContext(tatianaContext, "hero.jpg") ||
+    fallbackWide2,
+  finale:
+    loadImageFromContext(tatianaContext, "finale.jpg") ||
+    loadImageFromContext(tatianaContext, "portrait.jpg") ||
+    fallbackFinale,
+  fullGallery: tatianaGallery.length
+    ? tatianaGallery
     : [
         fallbackCover,
         fallbackHero,
