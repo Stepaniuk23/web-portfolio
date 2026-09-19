@@ -2,6 +2,7 @@ import {
   annaVladiEditorialImages,
   meiirbekDariaEditorialImages,
   tatianaEditorialImages,
+  viktorNataliaEditorialImages,
 } from "./editorialAssets";
 
 export const editorialsData = [
@@ -92,6 +93,35 @@ export const editorialsData = [
       finale: tatianaEditorialImages.finale,
       finaleObjectPosition: "center 65%",
       fullGallery: tatianaEditorialImages.fullGallery,
+    },
+  },
+  {
+    id: "viktor-natalia-odessa-prewedding",
+    templateType: "cinematic",
+    title: "Viktor & Natalia",
+    location: "Odessa, Ukraine",
+    content: {
+      intro:
+        "Before the formal vows and the cliffside ceremony, there was an afternoon on the open coast of Odessa. Viktor and Natalia met the shoreline at full speed, stripping away every expectation of how a couple is supposed to stand in front of a lens.",
+      introColumns: [
+        "Working along the surf leaves no room for stiff posing. The coastal wind whipped through damp linen, kicking up sea spray and scattering any thought of choreography. We moved fast—running down the tide line, turning, and catching unscripted bursts of laughter against the rush of the Black Sea.",
+        "The strongest portraits always happen when the subjects forget the camera exists. There were no pauses for corrections or calculated looks, just two people charging into shallow breaks, letting cold salt water hit their skin while the afternoon sun dropped lower across the horizon.",
+      ],
+      momentTitle: "Saltwater and Full Speed",
+      momentText:
+        "The sharpest frames came out of complete unpredictability: a sudden sprint through the shallows, spray caught mid-air against hard light, and laughter that carried effortlessly over the tide. Nothing was posed; everything was driven by raw momentum.",
+      aftermath:
+        "A prelude to their wedding that felt closer to an untamed afternoon by the water than a scheduled session. Viktor and Natalia left the shoreline with soaked hems, salt in their hair, and an easy, kinetic energy that set the tone for everything that followed.",
+    },
+    images: {
+      cover: viktorNataliaEditorialImages.cover,
+      hero: viktorNataliaEditorialImages.hero,
+      gridWide: viktorNataliaEditorialImages.wide1,
+      gridPortrait: viktorNataliaEditorialImages.portrait,
+      gridSquare: viktorNataliaEditorialImages.square,
+      momentWide: viktorNataliaEditorialImages.wide2,
+      finale: viktorNataliaEditorialImages.finale,
+      fullGallery: viktorNataliaEditorialImages.fullGallery,
     },
   },
 ];

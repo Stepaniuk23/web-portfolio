@@ -1,8 +1,7 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
+import { Helmet } from "react-helmet-async";
 
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
 import ClientGalleryHero from "../../components/ClientGalleryHero";
 
 import "./ClientGallery.css";
@@ -29,14 +28,47 @@ function ClientGallery() {
       });
   }, [slug]);
 
-  if (!gallery) return <div>Loading...</div>;
-
-  const photos = gallery.photos;
+  const photos = gallery?.photos || [];
 
   // Фильтрация
   const filteredPhotos = showOnlyLiked
     ? photos.filter((p) => likedPhotos.includes(p.id))
     : photos;
+
+  const openLightbox = (index) => setLightboxIndex(index);
+  const closeLightbox = () => setLightboxIndex(null);
+
+  const prevPhoto = useCallback(() => {
+    setLightboxIndex(
+      (current) =>
+        (current - 1 + filteredPhotos.length) % filteredPhotos.length,
+    );
+  }, [filteredPhotos.length]);
+
+  const nextPhoto = useCallback(() => {
+    setLightboxIndex((current) => (current + 1) % filteredPhotos.length);
+  }, [filteredPhotos.length]);
+
+  useEffect(() => {
+    if (lightboxIndex === null) return undefined;
+
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") prevPhoto();
+      if (e.key === "ArrowRight") nextPhoto();
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [lightboxIndex, prevPhoto, nextPhoto]);
+
+  if (!gallery) {
+    return (
+      <div className="gallery-loading">
+        <span>Loading</span>
+      </div>
+    );
+  }
 
   // Toggle Like
   async function toggleLike(photoId) {
@@ -54,22 +86,15 @@ function ClientGallery() {
     }
   }
 
-  const openLightbox = (index) => setLightboxIndex(index);
-  const closeLightbox = () => setLightboxIndex(null);
-
-  const prevPhoto = () => {
-    setLightboxIndex(
-      (lightboxIndex - 1 + filteredPhotos.length) % filteredPhotos.length,
-    );
-  };
-
-  const nextPhoto = () => {
-    setLightboxIndex((lightboxIndex + 1) % filteredPhotos.length);
-  };
-
   return (
     <>
-      <Header />
+      <Helmet>
+        <title>{gallery.title} | Denys Stepaniuk</title>
+        <meta
+          name="description"
+          content={`Private client gallery for ${gallery.title}.`}
+        />
+      </Helmet>
 
       <ClientGalleryHero
         title={gallery.title}
@@ -83,6 +108,7 @@ function ClientGallery() {
           className="filter-btn"
           onClick={() => setShowOnlyLiked((prev) => !prev)}
           title={showOnlyLiked ? "Show all photos" : "Show liked photos"}
+          aria-label={showOnlyLiked ? "Show all photos" : "Show liked photos"}
         >
           {showOnlyLiked ? (
             <HeartFilled size={20} />
@@ -99,6 +125,7 @@ function ClientGallery() {
             ))
           }
           title="Download all photos"
+          aria-label="Download all photos"
         >
           <span>All</span>
           <DownloadIcon size={18} />
@@ -112,6 +139,7 @@ function ClientGallery() {
             ))
           }
           title="Download liked photos"
+          aria-label="Download liked photos"
         >
           <HeartFilled size={16} />
           <DownloadIcon size={16} />
@@ -129,16 +157,19 @@ function ClientGallery() {
                   src={uploadUrl(photo.thumbnail_path)}
                   className="gallery-img"
                   onClick={() => openLightbox(index)}
-                  alt=""
+                  alt={`${gallery.title} ${index + 1}`}
+                  loading="lazy"
                 />
 
                 {/* Сердечко */}
                 <button
-                  className="like-btn"
+                  className={`like-btn${isLiked ? " is-liked" : ""}`}
                   onClick={(e) => {
                     e.stopPropagation();
                     toggleLike(photo.id);
                   }}
+                  aria-label={isLiked ? "Unlike photo" : "Like photo"}
+                  title={isLiked ? "Unlike photo" : "Like photo"}
                 >
                   {isLiked ? <HeartFilled /> : <HeartOutline />}
                 </button>
@@ -151,6 +182,8 @@ function ClientGallery() {
                   )}
                   onClick={(e) => e.stopPropagation()}
                   download
+                  aria-label="Download photo"
+                  title="Download photo"
                 >
                   <DownloadIcon />
                 </a>
@@ -162,27 +195,40 @@ function ClientGallery() {
 
       {lightboxIndex !== null && (
         <div className="lightbox active">
-          <button className="lightbox-close" onClick={closeLightbox}>
+          <button
+            className="lightbox-close"
+            onClick={closeLightbox}
+            aria-label="Close"
+            title="Close"
+          >
             &times;
           </button>
 
-          <button className="lightbox-arrow left" onClick={prevPhoto}>
+          <button
+            className="lightbox-arrow left"
+            onClick={prevPhoto}
+            aria-label="Previous photo"
+            title="Previous photo"
+          >
             &#10094;
           </button>
 
           <img
             className="lightbox-img"
             src={uploadUrl(filteredPhotos[lightboxIndex].file_path)}
-            alt=""
+            alt={`${gallery.title} ${lightboxIndex + 1}`}
           />
 
-          <button className="lightbox-arrow right" onClick={nextPhoto}>
+          <button
+            className="lightbox-arrow right"
+            onClick={nextPhoto}
+            aria-label="Next photo"
+            title="Next photo"
+          >
             &#10095;
           </button>
         </div>
       )}
-
-      <Footer />
     </>
   );
 }

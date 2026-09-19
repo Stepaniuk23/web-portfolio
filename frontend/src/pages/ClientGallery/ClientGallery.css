@@ -6,6 +6,24 @@
   padding: 0 20px;
 }
 
+/* Экран загрузки */
+.gallery-loading {
+  width: 100%;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-loading span {
+  font-family: var(--font-title);
+  font-size: 22px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-dark);
+  opacity: 0.7;
+}
+
 /* Masonry */
 .masonry {
   column-count: 3;
@@ -47,11 +65,18 @@
   justify-content: center;
   transition: opacity 0.2s ease;
   color: white;
+  opacity: 0;
+}
+
+.photo-wrapper:hover .like-btn,
+.photo-wrapper:hover .download-photo-btn,
+.like-btn.is-liked {
+  opacity: 1;
 }
 
 .like-btn:hover,
 .download-photo-btn:hover {
-  opacity: 0.7;
+  opacity: var(--opacity-hover-soft);
 }
 
 /* Сердечко — внизу слева */
@@ -85,11 +110,11 @@
   background: none;
   border: none;
   border-radius: 6px;
-  transition: color 0.2s ease;
+  transition: var(--transition-smooth);
 }
 
 .filter-btn:hover {
-  color: var(--color-accent);
+  opacity: var(--opacity-hover-soft);
 }
 
 .download-btn {
@@ -102,11 +127,11 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  transition: color 0.2s ease;
+  transition: var(--transition-smooth);
 }
 
 .download-btn:hover {
-  color: var(--color-accent);
+  opacity: var(--opacity-hover-soft);
 }
 
 /* --- LIGHTBOX --- */

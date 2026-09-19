@@ -1,11 +1,7 @@
 import time
 
-rate_limit_cache = {}
-
 from fastapi import APIRouter, Depends, status, Request, HTTPException
 from sqlalchemy.orm import Session
-from fastapi.responses import HTMLResponse  # ← добавили
-import time
 
 from app.config.database import get_db
 from app.schemas.contact_request import ContactRequestCreate
@@ -17,7 +13,7 @@ router = APIRouter(
     tags=["contact"]
 )
 
-rate_limit_cache = {}  # IP → timestamp
+rate_limit_cache = {}  # IP -> timestamp
 
 
 @router.post("/", status_code=status.HTTP_201_CREATED)
@@ -41,6 +37,10 @@ def submit_contact_form(
     if last_time and (now - last_time) < LIMIT_SECONDS:
         return {"status": "ok"}
 
+    rate_limit_cache.pop(client_ip, None)
+    if len(rate_limit_cache) > 10000:
+        oldest_ip = min(rate_limit_cache, key=rate_limit_cache.get)
+        rate_limit_cache.pop(oldest_ip, None)
     rate_limit_cache[client_ip] = now
 
     # 1. Сохраняем в базу
@@ -57,7 +57,7 @@ def submit_contact_form(
         print(f"❌ Email error: {str(e)}")
         raise HTTPException(
             status_code=status.HTTP_502_BAD_GATEWAY,
-            detail="Message was saved, but email delivery failed. Please check SMTP settings on the server."
+            detail="Your message was saved, but it could not be delivered. Please try again later."
         )
 
     # ⭐ Возвращаем JSON ответ

@@ -42,9 +42,16 @@ const tatianaContext = require.context(
   /\.(png|jpe?g|webp|avif)$/i,
 );
 
+const viktorNataliaContext = require.context(
+  "../assets/editorials/viktor-natalia-odessa",
+  false,
+  /\.(png|jpe?g|webp|avif)$/i,
+);
+
 const meiirbekDariaGallery = getNumberedGalleryImages(meiirbekDariaContext);
 const annaVladiGallery = getNumberedGalleryImages(annaVladiContext);
 const tatianaGallery = getNumberedGalleryImages(tatianaContext);
+const viktorNataliaGallery = getNumberedGalleryImages(viktorNataliaContext);
 
 export const meiirbekDariaEditorialImages = {
   cover:
@@ -131,6 +138,43 @@ export const tatianaEditorialImages = {
     fallbackFinale,
   fullGallery: tatianaGallery.length
     ? tatianaGallery
+    : [
+        fallbackCover,
+        fallbackHero,
+        fallbackWide1,
+        fallbackPortrait,
+        fallbackSquare,
+        fallbackWide2,
+        fallbackFinale,
+      ],
+};
+
+export const viktorNataliaEditorialImages = {
+  cover:
+    loadImageFromContext(viktorNataliaContext, "cover.jpg") || fallbackCover,
+  hero: loadImageFromContext(viktorNataliaContext, "hero.jpg") || fallbackHero,
+  wide1:
+    loadImageFromContext(viktorNataliaContext, "wide1.jpg") ||
+    loadImageFromContext(viktorNataliaContext, "001.jpg") ||
+    fallbackWide1,
+  portrait:
+    loadImageFromContext(viktorNataliaContext, "portrait.jpg") ||
+    loadImageFromContext(viktorNataliaContext, "003.jpg") ||
+    fallbackPortrait,
+  square:
+    loadImageFromContext(viktorNataliaContext, "square.jpg") ||
+    loadImageFromContext(viktorNataliaContext, "005.jpg") ||
+    fallbackSquare,
+  wide2:
+    loadImageFromContext(viktorNataliaContext, "wide2.jpg") ||
+    loadImageFromContext(viktorNataliaContext, "007.jpg") ||
+    fallbackWide2,
+  finale:
+    loadImageFromContext(viktorNataliaContext, "finale.jpg") ||
+    loadImageFromContext(viktorNataliaContext, "029.jpg") ||
+    fallbackFinale,
+  fullGallery: viktorNataliaGallery.length
+    ? viktorNataliaGallery
     : [
         fallbackCover,
         fallbackHero,

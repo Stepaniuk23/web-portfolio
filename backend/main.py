@@ -30,6 +30,14 @@ from app.services.file_storage import create_thumbnail
 app = FastAPI()
 
 FRONTEND_PUBLIC_URL = os.getenv("FRONTEND_PUBLIC_URL", "https://denysstepaniuk.com").rstrip("/")
+cors_origins = [
+    origin.strip().rstrip("/")
+    for origin in os.getenv(
+        "CORS_ORIGINS",
+        f"{FRONTEND_PUBLIC_URL},http://localhost:3000,http://localhost:8000",
+    ).split(",")
+    if origin.strip()
+]
 
 # 👉 Монтируем статические файлы админки с абсолютным путём
 ADMIN_PANEL_DIR = BASE_DIR / "app" / "admin_panel"
@@ -45,8 +53,8 @@ UPLOADS_ROOT.mkdir(parents=True, exist_ok=True)
 # CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
+    allow_origins=cors_origins,
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
