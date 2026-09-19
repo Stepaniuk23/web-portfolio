@@ -34,13 +34,12 @@ function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setShrink(true);
-      } else {
-        setShrink(false);
-      }
+      setShrink((isShrunk) =>
+        isShrunk ? window.scrollY > 4 : window.scrollY > 40,
+      );
     };
 
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
