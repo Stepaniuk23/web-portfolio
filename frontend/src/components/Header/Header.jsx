@@ -35,7 +35,7 @@ function Header() {
   useEffect(() => {
     const handleScroll = () => {
       setShrink((isShrunk) =>
-        isShrunk ? window.scrollY > 0 : window.scrollY > 40,
+        isShrunk ? window.scrollY > 0 : window.scrollY > 120,
       );
     };
 
