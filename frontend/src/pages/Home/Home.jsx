@@ -22,6 +22,30 @@ function Home() {
           content="Professional wedding and editorial photography in Prague and Europe. Fine art style by Denys Stepaniuk."
         />
         <link rel="canonical" href="https://www.denysstepaniuk.com/" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            name: "Denys Stepaniuk Photography",
+            image:
+              "https://www.denysstepaniuk.com/images/weddings/wedding1.jpg",
+            url: "https://www.denysstepaniuk.com/",
+            priceRange: "$$",
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Prague",
+              addressCountry: "CZ",
+            },
+            areaServed: ["Prague", "Czechia", "Europe"],
+            sameAs: [
+              "https://instagram.com/denysstepanyuk",
+              "https://www.facebook.com/share/1DWX2SJA6d/",
+              "https://pin.it/3CWS3OsV1",
+            ],
+            description:
+              "Wedding and editorial photographer based in Prague, Czechia, shooting fine art weddings across Europe.",
+          })}
+        </script>
       </Helmet>
 
       <main>

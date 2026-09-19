@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
+import Lightbox from "../Lightbox/Lightbox";
 import "./FullStory.css";
 
 const FullStory = React.forwardRef(
@@ -13,6 +14,24 @@ const FullStory = React.forwardRef(
     const [canScrollRight, setCanScrollRight] = useState(false);
     const [activeIndex, setActiveIndex] = useState(0);
     const [progress, setProgress] = useState(0);
+    const [lightboxIndex, setLightboxIndex] = useState(null);
+
+    const lightboxImages = validImages.map((img, index) => ({
+      src: img,
+      alt: `Frame ${index + 1}`,
+    }));
+
+    const closeLightbox = () => setLightboxIndex(null);
+
+    const prevLightboxPhoto = useCallback(() => {
+      setLightboxIndex(
+        (current) => (current - 1 + validImages.length) % validImages.length,
+      );
+    }, [validImages.length]);
+
+    const nextLightboxPhoto = useCallback(() => {
+      setLightboxIndex((current) => (current + 1) % validImages.length);
+    }, [validImages.length]);
 
     useEffect(() => {
       itemRefs.current = itemRefs.current.slice(0, validImages.length);
@@ -122,7 +141,13 @@ const FullStory = React.forwardRef(
                   itemRefs.current[index] = element;
                 }}
               >
-                <img src={img} alt={`Frame ${index + 1}`} loading="lazy" />
+                <img
+                  src={img}
+                  alt={`Frame ${index + 1}`}
+                  loading="lazy"
+                  onClick={() => setLightboxIndex(index)}
+                  style={{ cursor: "pointer" }}
+                />
               </div>
             ))}
           </div>
@@ -150,6 +175,16 @@ const FullStory = React.forwardRef(
             </div>
           </div>
         </div>
+
+        {lightboxIndex !== null && (
+          <Lightbox
+            images={lightboxImages}
+            index={lightboxIndex}
+            onClose={closeLightbox}
+            onPrev={prevLightboxPhoto}
+            onNext={nextLightboxPhoto}
+          />
+        )}
       </section>
     );
   },

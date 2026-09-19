@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import "./About.css";
 
 // Фото
@@ -64,6 +65,15 @@ function About() {
 
   return (
     <div className="about-page">
+      <Helmet>
+        <title>About Denys Stepaniuk | Wedding Photographer in Prague</title>
+        <meta
+          name="description"
+          content="Meet Denys Stepaniuk, a wedding and editorial photographer based in Prague who has documented over 248 wedding stories across Europe."
+        />
+        <link rel="canonical" href="https://www.denysstepaniuk.com/about" />
+      </Helmet>
+
       {/* 1. Hero: Атмосфера и спокойствие */}
       <section className="about-hero-full">
         <div className="hero-bg-wrap">
@@ -75,14 +85,14 @@ function About() {
         </div>
         <div className={`hero-text-overlay${heroVisible ? " is-visible" : ""}`}>
           <div className="hero-intro-text">
-            <p>
+            <h1>
               <span className="intro-first-part">I'm Denys Stepaniuk,</span>
               <span className="intro-second-part">
                 and for over 8 years, I've had the honor of documenting more
                 than 248 wedding stories across Europe, framing the quiet,
                 honest moments that define our lives.
               </span>
-            </p>
+            </h1>
           </div>
         </div>
       </section>

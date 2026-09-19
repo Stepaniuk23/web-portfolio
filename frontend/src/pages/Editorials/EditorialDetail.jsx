@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import FullStory from "../../components/FullStory/FullStory";
 import { editorialsData } from "../../data/editorialsData";
 import "../Weddings/WeddingDetail.css";
@@ -69,7 +70,14 @@ function EditorialDetail() {
   }, [id]);
 
   if (!story) {
-    return <div className="story-not-found">Story not found</div>;
+    return (
+      <div className="story-not-found">
+        <Helmet>
+          <meta name="robots" content="noindex, nofollow" />
+        </Helmet>
+        Story not found
+      </div>
+    );
   }
 
   const titleLines = story.title.split(" ").filter(Boolean);
@@ -81,6 +89,17 @@ function EditorialDetail() {
     <div
       className={`story-article template-${story.templateType}${isAtmosphere ? " template-cinematic" : ""}`}
     >
+      <Helmet>
+        <title>{story.title} | Editorial Story | Denys Stepaniuk</title>
+        <meta
+          name="description"
+          content={`${story.title} editorial photography in ${story.location} by Denys Stepaniuk.`}
+        />
+        <link
+          rel="canonical"
+          href={`https://www.denysstepaniuk.com/editorials/${story.id}`}
+        />
+      </Helmet>
       {usesCinematicLayout ? (
         <section
           ref={heroRef}

@@ -3,6 +3,7 @@ import { useEffect, useState, useCallback } from "react";
 import { Helmet } from "react-helmet-async";
 
 import ClientGalleryHero from "../../components/ClientGalleryHero";
+import Lightbox from "../../components/Lightbox/Lightbox";
 
 import "./ClientGallery.css";
 
@@ -49,19 +50,6 @@ function ClientGallery() {
     setLightboxIndex((current) => (current + 1) % filteredPhotos.length);
   }, [filteredPhotos.length]);
 
-  useEffect(() => {
-    if (lightboxIndex === null) return undefined;
-
-    const handleKeyDown = (e) => {
-      if (e.key === "Escape") closeLightbox();
-      if (e.key === "ArrowLeft") prevPhoto();
-      if (e.key === "ArrowRight") nextPhoto();
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [lightboxIndex, prevPhoto, nextPhoto]);
-
   if (!gallery) {
     return (
       <div className="gallery-loading">
@@ -94,6 +82,7 @@ function ClientGallery() {
           name="description"
           content={`Private client gallery for ${gallery.title}.`}
         />
+        <meta name="robots" content="noindex, nofollow" />
       </Helmet>
 
       <ClientGalleryHero
@@ -194,40 +183,16 @@ function ClientGallery() {
       </div>
 
       {lightboxIndex !== null && (
-        <div className="lightbox active">
-          <button
-            className="lightbox-close"
-            onClick={closeLightbox}
-            aria-label="Close"
-            title="Close"
-          >
-            &times;
-          </button>
-
-          <button
-            className="lightbox-arrow left"
-            onClick={prevPhoto}
-            aria-label="Previous photo"
-            title="Previous photo"
-          >
-            &#10094;
-          </button>
-
-          <img
-            className="lightbox-img"
-            src={uploadUrl(filteredPhotos[lightboxIndex].file_path)}
-            alt={`${gallery.title} ${lightboxIndex + 1}`}
-          />
-
-          <button
-            className="lightbox-arrow right"
-            onClick={nextPhoto}
-            aria-label="Next photo"
-            title="Next photo"
-          >
-            &#10095;
-          </button>
-        </div>
+        <Lightbox
+          images={filteredPhotos.map((photo, i) => ({
+            src: uploadUrl(photo.file_path),
+            alt: `${gallery.title} ${i + 1}`,
+          }))}
+          index={lightboxIndex}
+          onClose={closeLightbox}
+          onPrev={prevPhoto}
+          onNext={nextPhoto}
+        />
       )}
     </>
   );

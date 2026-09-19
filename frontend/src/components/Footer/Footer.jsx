@@ -1,6 +1,5 @@
 import React from "react";
 import "./Footer.css";
-// Импортируем нужные иконки
 import { FaInstagram, FaFacebookF, FaPinterestP } from "react-icons/fa6";
 
 function Footer() {
@@ -30,7 +29,7 @@ function Footer() {
           {/* Правая часть: Соцсети (Иконки) */}
           <div className="footer-social">
             <a
-              href="https://instagram.com"
+              href="https://instagram.com/denysstepanyuk"
               target="_blank"
               rel="noreferrer"
               aria-label="Instagram"
@@ -38,7 +37,7 @@ function Footer() {
               <FaInstagram size={18} />
             </a>
             <a
-              href="https://facebook.com"
+              href="https://www.facebook.com/share/1DWX2SJA6d/"
               target="_blank"
               rel="noreferrer"
               aria-label="Facebook"
@@ -46,7 +45,7 @@ function Footer() {
               <FaFacebookF size={16} />
             </a>
             <a
-              href="https://pinterest.com"
+              href="https://pin.it/3CWS3OsV1"
               target="_blank"
               rel="noreferrer"
               aria-label="Pinterest"

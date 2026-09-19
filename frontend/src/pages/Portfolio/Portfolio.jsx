@@ -1,5 +1,6 @@
 import "./Portfolio.css";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 import img1 from "../../assets/gallery/gallery1.jpg";
 import img2 from "../../assets/gallery/gallery2.jpg";
@@ -24,7 +25,7 @@ import img20 from "../../assets/gallery/gallery20.jpg";
 import img21 from "../../assets/gallery/gallery21.jpg";
 import img22 from "../../assets/gallery/gallery22.jpg";
 
-function Gallery() {
+function Gallery({ canonicalPath = "/portfolio" } = {}) {
   const images = [
     img1,
     img2,
@@ -70,14 +71,26 @@ function Gallery() {
 
   return (
     <div className="gallery-container">
-      <h2 className="gallery-title">My Recent Work</h2>
+      <Helmet>
+        <title>Photography Portfolio | Denys Stepaniuk</title>
+        <meta
+          name="description"
+          content="A selection of wedding and portrait photography by Denys Stepaniuk, based in Prague."
+        />
+        <link
+          rel="canonical"
+          href={`https://www.denysstepaniuk.com${canonicalPath}`}
+        />
+      </Helmet>
+
+      <h1 className="gallery-title">My Recent Work</h1>
 
       <div className="masonry">
         {images.map((src, index) => (
           <img
             key={index}
             src={src}
-            alt=""
+            alt={`Denys Stepaniuk photography portfolio ${index + 1}`}
             onClick={() => openLightbox(index)}
             className="gallery-img"
           />

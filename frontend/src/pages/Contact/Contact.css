@@ -37,8 +37,25 @@
   font-weight: 400;
   line-height: 1;
   letter-spacing: 0.8px;
-  margin-bottom: 24px;
+  margin-bottom: 12px;
   text-wrap: balance;
+}
+
+.contact-phone {
+  display: inline-block;
+  font-family: var(--font-main);
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: var(--color-dark);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-black-25);
+  margin-bottom: 24px;
+  transition: var(--transition-smooth);
+}
+
+.contact-phone:hover {
+  opacity: var(--opacity-hover-soft);
 }
 
 .contact-subtitle {
@@ -125,6 +142,12 @@
 
   .contact-photo {
     max-height: 560px;
+    width: fit-content;
+    margin: 0 auto;
+  }
+
+  .contact-title {
+    text-align: center;
   }
 
   .contact-container {

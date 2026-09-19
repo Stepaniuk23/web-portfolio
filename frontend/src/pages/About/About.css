@@ -94,7 +94,8 @@
   }
 }
 
-.hero-intro-text p {
+.hero-intro-text p,
+.hero-intro-text h1 {
   font-family: var(--font-main);
   font-size: 18px;
   line-height: 1.8;

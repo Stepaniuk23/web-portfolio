@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import "../Weddings/Weddings.css";
 import { editorialsData } from "../../data/editorialsData";
 
@@ -37,6 +38,17 @@ function Editorials() {
 
   return (
     <div className="weddings-page">
+      <Helmet>
+        <title>Editorial Stories | Denys Stepaniuk Photography</title>
+        <meta
+          name="description"
+          content="Selected editorial and portrait stories across Prague, Ukraine and Europe by Denys Stepaniuk."
+        />
+        <link
+          rel="canonical"
+          href="https://www.denysstepaniuk.com/editorials"
+        />
+      </Helmet>
       <header
         ref={headerRef}
         className={`weddings-header ${headerVisible ? "is-visible" : ""}`}

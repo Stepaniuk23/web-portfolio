@@ -1,6 +1,7 @@
 import "./Contact.css";
 import contactPhoto from "../../assets/contact.jpg";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { apiUrl } from "../../config";
 
 function Contact() {
@@ -43,6 +44,15 @@ function Contact() {
 
   return (
     <main className="contact-page">
+      <Helmet>
+        <title>Contact | Denys Stepaniuk Photography</title>
+        <meta
+          name="description"
+          content="Get in touch with Denys Stepaniuk to book wedding or editorial photography in Prague and across Europe."
+        />
+        <link rel="canonical" href="https://www.denysstepaniuk.com/contact" />
+      </Helmet>
+
       <div className="contact-wrapper">
         <figure className="contact-photo">
           <img src={contactPhoto} alt="A quiet portrait from the studio" />
@@ -52,6 +62,9 @@ function Contact() {
           <h1 id="contact-title" className="contact-title">
             Contact Me
           </h1>
+          <a href="tel:+420721031650" className="contact-phone">
+            +420 721 031 650
+          </a>
           <p className="contact-subtitle">
             I would love to hear from you. Feel free to reach out for bookings
             or any questions.

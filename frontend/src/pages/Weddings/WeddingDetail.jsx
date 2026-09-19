@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom"; // Позволяет брать id из адресной строки
+import { Helmet } from "react-helmet-async";
 import { storiesData } from "../../data/storiesData";
 import FullStory from "../../components/FullStory/FullStory"; // Наш "Мозг"
 import "./WeddingDetail.css";
@@ -71,13 +72,31 @@ function WeddingDetail() {
 
   // 3. Если вдруг такой свадьбы нет (ошибка в ссылке), показываем заглушку
   if (!story) {
-    return <div className="story-not-found">Story not found</div>;
+    return (
+      <div className="story-not-found">
+        <Helmet>
+          <meta name="robots" content="noindex, nofollow" />
+        </Helmet>
+        Story not found
+      </div>
+    );
   }
 
   const titleLines = story.title.split(" ").filter(Boolean);
 
   return (
     <div className={`story-article template-${story.templateType}`}>
+      <Helmet>
+        <title>{story.title} | Wedding Story | Denys Stepaniuk</title>
+        <meta
+          name="description"
+          content={`${story.title} wedding photography in ${story.location} by Denys Stepaniuk.`}
+        />
+        <link
+          rel="canonical"
+          href={`https://www.denysstepaniuk.com/weddings/${story.id}`}
+        />
+      </Helmet>
       {/* --- БЛОК 1: HERO --- */}
       {isCinematic ? (
         <section

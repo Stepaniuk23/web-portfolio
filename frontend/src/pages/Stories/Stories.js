@@ -1,7 +1,7 @@
 import Portfolio from "../Portfolio/Portfolio";
 
 function Stories() {
-  return <Portfolio />;
+  return <Portfolio canonicalPath="/portfolio" />;
 }
 
 export default Stories;

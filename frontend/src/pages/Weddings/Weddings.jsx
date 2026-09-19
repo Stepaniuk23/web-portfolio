@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import "./Weddings.css";
 // 1. ИМПОРТИРУЕМ НАШ ЕДИНЫЙ ИСТОЧНИК ПРАВДЫ:
 import { storiesData } from "../../data/storiesData";
@@ -38,6 +39,14 @@ function Weddings() {
 
   return (
     <div className="weddings-page">
+      <Helmet>
+        <title>Wedding Stories | Denys Stepaniuk Photography</title>
+        <meta
+          name="description"
+          content="Selected wedding stories documenting real couples in Prague, Ukraine and across Europe by Denys Stepaniuk."
+        />
+        <link rel="canonical" href="https://www.denysstepaniuk.com/weddings" />
+      </Helmet>
       <header
         ref={headerRef}
         className={`weddings-header ${headerVisible ? "is-visible" : ""}`}
