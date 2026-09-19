@@ -231,4 +231,23 @@
   .burger {
     display: flex;
   }
+
+  .header-container {
+    padding: 12px 0;
+  }
+
+  .header-container .logo-name-block {
+    margin-bottom: 0;
+  }
+
+  .header-container .logo-name-main {
+    font-size: 20px;
+    letter-spacing: 0.08em;
+  }
+
+  .header-container .logo-name-tagline {
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    margin-top: 3px;
+  }
 }
