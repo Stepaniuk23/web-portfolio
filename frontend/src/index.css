@@ -4,6 +4,7 @@
 /* Плавная прокрутка */
 html {
   scroll-behavior: smooth;
+  scrollbar-gutter: stable;
 }
 
 /* Глобальные стили страницы */

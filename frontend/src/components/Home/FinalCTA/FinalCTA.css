@@ -1,10 +1,6 @@
 .final-cta {
   position: relative;
-  width: 100vw;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  width: 100%;
   overflow: hidden; /* Критично для параллакса */
   background-color: var(--color-bg); /* Твой светлый фон */
   padding: clamp(120px, 15vw, 180px) 0;
@@ -30,8 +26,8 @@
 
 .cta-parallax-img {
   display: block;
-  width: 100vw;
-  min-width: 100vw;
+  width: 100%;
+  min-width: 100%;
   max-width: none;
   min-height: calc(100% + 560px);
   height: auto;

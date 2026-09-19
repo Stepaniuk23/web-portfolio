@@ -1,11 +1,7 @@
 .philosophy {
   position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  width: 100vw;
-  max-width: 100vw;
+  width: 100%;
+  max-width: 100%;
   margin-top: var(--space-section);
   margin-bottom: var(--space-section);
   min-height: clamp(560px, 68vh, 840px);
@@ -32,8 +28,8 @@
 
 .philosophy-parallax-img {
   display: block;
-  width: 100vw;
-  min-width: 100vw;
+  width: 100%;
+  min-width: 100%;
   max-width: none;
   min-height: calc(100% + 560px);
   height: auto;
