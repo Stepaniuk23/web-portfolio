@@ -12,7 +12,7 @@ const STORIES = [
     category: "Weddings", // Оставляем
     title: "Modern Seoul Spirits in the Heart of the City",
     location: "Kyiv, Ukraine", // Сократили до классического "Czechia"
-    slug: "weddings/Modern-Seoul-Spirits",
+    slug: "weddings/maksim-simona-kyiv",
   },
   {
     id: 2,
@@ -20,7 +20,7 @@ const STORIES = [
     category: "Editorials", // Переименовали
     title: "A Prague Interlude: The Art of Presence",
     location: "Prague, Czechia", // Твой статус Destination фотографа
-    slug: "editorials/A-Prague-Interlude",
+    slug: "editorials/meiirbek-nariman-daria-prague",
   },
   {
     id: 3,
@@ -28,7 +28,7 @@ const STORIES = [
     category: "Editorials", // Переименовали (для Love Story или Портрета)
     title: "The Unveiled Persona: Fluidity & Fire",
     location: "Ukraine",
-    slug: "editorials/The-Unveiled-Persona",
+    slug: "editorials/anna-vladi-dnipro-sunset",
   },
 ];
 
@@ -86,7 +86,7 @@ function JournalTeaser() {
         </div>
 
         <div className="journal-footer">
-          <a href="/Stories" className="btn-ghost">
+          <a href="/editorials" className="btn-ghost">
             View All Stories
           </a>
         </div>

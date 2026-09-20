@@ -99,24 +99,24 @@ function Gallery({ canonicalPath = "/portfolio" } = {}) {
 
       {/* Лайтбокс */}
       <div
-        className={`lightbox${selectedIndex !== null ? " active" : ""}`}
+        className={`portfolio-lightbox${selectedIndex !== null ? " active" : ""}`}
         onClick={closeLightbox}
       >
         <img
           src={images[selectedIndex]}
           alt=""
-          className="lightbox-img"
+          className="portfolio-lightbox-img"
           onClick={(e) => e.stopPropagation()}
         />
 
         {/* Кнопка закрытия */}
-        <button className="lightbox-close" onClick={closeLightbox}>
+        <button className="portfolio-lightbox-close" onClick={closeLightbox}>
           ✕
         </button>
 
         {/* Стрелка влево */}
         <button
-          className="lightbox-arrow left"
+          className="portfolio-lightbox-arrow left"
           onClick={(e) => {
             e.stopPropagation();
             prevPhoto();
@@ -127,7 +127,7 @@ function Gallery({ canonicalPath = "/portfolio" } = {}) {
 
         {/* Стрелка вправо */}
         <button
-          className="lightbox-arrow right"
+          className="portfolio-lightbox-arrow right"
           onClick={(e) => {
             e.stopPropagation();
             nextPhoto();
