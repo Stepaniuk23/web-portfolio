@@ -169,12 +169,14 @@
   font-size: 20px;
 }
 
-.socials svg {
-  cursor: pointer;
+.socials a {
+  display: flex;
+  align-items: center;
+  color: inherit;
   transition: opacity var(--transition-smooth);
 }
 
-.socials svg:hover {
+.socials a:hover {
   opacity: 0.55;
 }
 

@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { FaInstagram, FaFacebookF } from "react-icons/fa";
-import { SiThreads } from "react-icons/si";
+import { FaInstagram, FaFacebookF, FaPinterestP } from "react-icons/fa6";
 import "./Header.css";
 
 function Header() {
@@ -132,9 +131,30 @@ function Header() {
           </Link>
 
           <div className="socials">
-            <FaInstagram aria-label="Instagram" />
-            <FaFacebookF aria-label="Facebook" />
-            <SiThreads aria-label="Threads" />
+            <a
+              href="https://instagram.com/denysstepanyuk"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+            >
+              <FaInstagram />
+            </a>
+            <a
+              href="https://www.facebook.com/share/1DWX2SJA6d/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Facebook"
+            >
+              <FaFacebookF />
+            </a>
+            <a
+              href="https://pin.it/3CWS3OsV1"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Pinterest"
+            >
+              <FaPinterestP />
+            </a>
           </div>
         </aside>
       </div>
