@@ -29,8 +29,15 @@
   --container-width: 1280px;
   --container-padding: 24px;
   --container-padding-wide: 40px;
-  --space-section: 140px;
-  --space-section-mobile: 100px;
+  --header-height: 88px;
+  --header-height-mobile: 72px;
+  --space-section: 100px;
+  --space-section-mobile: 60px;
+  --space-section-compact: 60px;
+  --space-section-compact-mobile: 40px;
+  --space-hero-studio: 32px;
+  --space-hero-studio-mobile: 20px;
+  --space-hero-bottom-mobile: 24px;
   --space-hero-inline: 80px;
   --space-xl: 96px; /* Большой отступ между секциями */
   --opacity-hover-soft: 0.82;

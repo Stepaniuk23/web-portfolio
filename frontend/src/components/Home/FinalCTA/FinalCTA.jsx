@@ -19,7 +19,7 @@ function FinalCTA() {
           setVisible(true);
         }
       },
-      { threshold: 0.2 },
+      { threshold: 0.05 },
     );
 
     // 2. Логика параллакса

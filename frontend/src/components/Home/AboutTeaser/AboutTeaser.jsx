@@ -17,7 +17,7 @@ function AboutTeaser() {
           observer.disconnect();
         }
       },
-      { threshold: 0.2 },
+      { threshold: 0.05 },
     );
 
     observer.observe(el);

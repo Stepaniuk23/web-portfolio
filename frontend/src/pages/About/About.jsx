@@ -55,7 +55,7 @@ function About() {
           observer.unobserve(entry.target);
         });
       },
-      { threshold: 0.2 },
+      { threshold: 0.05 },
     );
 
     targets.forEach((target) => observer.observe(target));

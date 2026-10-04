@@ -1,8 +1,16 @@
 .studio {
   width: 100%;
   max-width: var(--container-width);
-  margin: var(--space-section) auto;
+  margin: var(--space-section-compact) auto;
   padding: 0 var(--container-padding);
+}
+
+.hero + .studio {
+  margin-top: var(--space-section);
+}
+
+.studio + .philosophy {
+  margin-top: var(--space-section-compact);
 }
 
 .studio-inner {
@@ -110,7 +118,15 @@
 /* Mobile */
 @media (max-width: 900px) {
   .studio {
-    margin: var(--space-section-mobile) auto;
+    margin: var(--space-section-compact-mobile) auto;
+  }
+
+  .hero + .studio {
+    margin-top: var(--space-hero-studio-mobile);
+  }
+
+  .studio + .philosophy {
+    margin-top: var(--space-section-compact-mobile);
   }
 
   .studio-title {

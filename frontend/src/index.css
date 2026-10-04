@@ -30,7 +30,13 @@ small {
 
 /* Чтобы секции не прятались под фиксированным Header */
 section {
-  scroll-margin-top: 80px; /* высота Header */
+  scroll-margin-top: var(--header-height);
+}
+
+@media (max-width: 900px) {
+  section {
+    scroll-margin-top: var(--header-height-mobile);
+  }
 }
 
 h2 {

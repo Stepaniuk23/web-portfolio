@@ -60,7 +60,7 @@ function WeddingDetail() {
           observer.unobserve(entry.target);
         });
       },
-      { threshold: 0.15 },
+      { threshold: 0.05 },
     );
 
     targets.forEach(({ ref }) => {

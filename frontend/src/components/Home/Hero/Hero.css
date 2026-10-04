@@ -150,7 +150,7 @@
   }
 
   .hero-right {
-    padding: 60px var(--container-padding);
+    padding: 60px var(--container-padding) var(--space-hero-bottom-mobile);
     text-align: center;
     align-items: center;
   }

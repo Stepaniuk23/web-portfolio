@@ -6,7 +6,7 @@ import "./Header.css";
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [shrink, setShrink] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -33,16 +33,38 @@ function Header() {
   );
 
   useEffect(() => {
+    let previousScrollY = window.scrollY;
+    let animationFrameId = null;
+
     const handleScroll = () => {
-      setShrink((isShrunk) =>
-        isShrunk ? window.scrollY > 0 : window.scrollY > 120,
-      );
+      if (animationFrameId !== null) return;
+
+      animationFrameId = window.requestAnimationFrame(() => {
+        const currentScrollY = window.scrollY;
+
+        if (currentScrollY <= 0) {
+          setHidden(false);
+        } else if (!menuOpen && currentScrollY !== previousScrollY) {
+          setHidden(currentScrollY > previousScrollY);
+        }
+
+        previousScrollY = currentScrollY;
+        animationFrameId = null;
+      });
     };
 
-    handleScroll();
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (animationFrameId !== null) {
+        window.cancelAnimationFrame(animationFrameId);
+      }
+    };
+  }, [menuOpen]);
+
+  useEffect(() => {
+    if (menuOpen) setHidden(false);
+  }, [menuOpen]);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "unset";
@@ -53,7 +75,7 @@ function Header() {
   }, [menuOpen]);
 
   return (
-    <header className={`header ${shrink ? "shrink" : ""}`}>
+    <header className={`header ${hidden && !menuOpen ? "is-hidden" : ""}`}>
       {/* DESKTOP HEADER — VOGUE STYLE */}
       <div className="desktop-header">
         <div className="desktop-logo-block">
@@ -61,9 +83,6 @@ function Header() {
             {renderLogoNameBlock()}
           </Link>
         </div>
-
-        <div className="desktop-separator"></div>
-
         <nav className="nav-desktop">
           <Link to="/" onClick={handleHomeNavigation}>
             HOME
@@ -81,25 +100,21 @@ function Header() {
           {renderLogoNameBlock()}
         </Link>
 
-        <div
-          className={`burger ${menuOpen ? "active" : ""}`}
+        <button
+          type="button"
+          className="menu-toggle"
           onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle navigation menu"
+          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-navigation"
         >
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+          {menuOpen ? "Close" : "Menu"}
+        </button>
 
-        <aside className={`mobile-menu ${menuOpen ? "open" : ""}`}>
-          <button
-            className="close-btn"
-            onClick={() => setMenuOpen(false)}
-            aria-label="Close menu"
-          >
-            ×
-          </button>
-
+        <aside
+          id="mobile-navigation"
+          className={`mobile-menu ${menuOpen ? "open" : ""}`}
+        >
           <Link to="/" onClick={handleHomeNavigation}>
             HOME
           </Link>
