@@ -1,0 +1,305 @@
+cd D:\IT_Step\web-portfolio
+
+WEB PORTFOLIO — EXTENDED COMMAND CHEAT SHEET
+=================================================
+
+BRANCHES
+--------
+dev  - development and testing
+main - production (every push to main is deployed)
+
+Golden rule:
+- Work only in dev.
+- Merge into main only after testing.
+- Before major changes create a backup commit.
+
+=================================================
+1. RUN THE PROJECT LOCALLY
+=================================================
+
+POSTGRESQL (Terminal 0)
+-----------------------
+Start PostgreSQL BEFORE the backend:
+
+& "C:\Program Files\PostgreSQL\18\bin\pg_ctl.exe" start -D "C:\Program Files\PostgreSQL\18\data" -l "$env:TEMP\postgres.log"
+
+Check status:
+
+& "C:\Program Files\PostgreSQL\18\bin\pg_ctl.exe" status -D "C:\Program Files\PostgreSQL\18\data"
+
+Stop PostgreSQL:
+
+& "C:\Program Files\PostgreSQL\18\bin\pg_ctl.exe" stop -D "C:\Program Files\PostgreSQL\18\data"
+
+BACKEND (Terminal 1)
+--------------------
+cd backend
+.venv\Scripts\activate
+pip install -r requirements.txt
+copy .env.example .env
+uvicorn main:app --reload
+
+Open:
+http://localhost:8000
+
+FRONTEND (Terminal 2)
+---------------------
+cd frontend
+npm install
+npm start
+
+Open:
+http://localhost:3000
+
+Production build test:
+
+cd frontend
+npm run build
+
+=================================================
+2. DAILY WORK (DEV BRANCH)
+=================================================
+
+Switch to dev and update:
+
+git checkout dev
+git pull
+
+Check current branch:
+
+git branch
+
+=================================================
+3. CHECK CHANGES
+=================================================
+
+See changed files:
+
+git status
+
+Look at code differences:
+
+git diff
+
+Meaning:
+- Lines starting with '-' were removed.
+- Lines starting with '+' were added.
+
+After git diff:
+
+Option A - Changes are correct:
+
+git add .
+git commit -m "Update header"
+
+Option B - Restore one file:
+
+git restore path/to/file
+
+Example:
+
+git restore frontend/src/components/Header.jsx
+
+Option C - Restore all uncommitted changes:
+
+git restore .
+
+WARNING:
+This removes all changes after the last commit.
+
+=================================================
+4. SAVE WORK TO GITHUB
+=================================================
+
+Check files:
+
+git status
+
+Add changes:
+
+git add .
+
+Create commit:
+
+git commit -m "Short description"
+
+Examples:
+
+git commit -m "Update header layout"
+git commit -m "Add favicon"
+git commit -m "Fix gallery spacing"
+
+Push to GitHub:
+
+git push origin dev
+
+=================================================
+5. BACKUP BEFORE EXPERIMENTS
+=================================================
+
+Before using Copilot Agent for major changes:
+
+git add .
+git commit -m "Backup before redesign"
+git push origin dev
+
+This creates a safe restore point.
+
+=================================================
+6. DEPLOY DEV -> MAIN
+=================================================
+
+Before deploy:
+
+1. Site works locally.
+2. npm run build finishes without errors.
+3. All changes are committed.
+4. Changes are pushed to dev.
+
+Deploy:
+
+git checkout dev
+git pull
+
+git checkout main
+git pull
+
+git merge dev
+git push origin main
+
+git checkout dev
+
+After push to main:
+
+Vercel deploys automatically.
+
+IMPORTANT:
+Do not deploy every small change.
+
+Recommended:
+- make many local changes
+- test locally
+- deploy once
+
+=================================================
+7. VIEW COMMIT HISTORY
+=================================================
+
+Last commits:
+
+git --no-pager log --oneline -10
+
+Example:
+
+3a0c666 Add favicon
+cf8b9da Fix spacing
+827c9ff Mobile layout
+
+=================================================
+8. RESTORE PREVIOUS VERSION
+=================================================
+
+View old commit:
+
+git checkout COMMIT_ID
+
+Example:
+
+git checkout cf8b9da
+
+Return to dev:
+
+git checkout dev
+
+=================================================
+9. BRING MAIN CHANGES INTO DEV
+=================================================
+
+If main contains a hotfix:
+
+git checkout dev
+git merge main
+
+=================================================
+10. STASH (TEMPORARY SAVE)
+=================================================
+
+Save unfinished work:
+
+git stash
+
+Show stash list:
+
+git stash list
+
+Restore stash:
+
+git stash pop
+
+=================================================
+11. FIX FRONTEND ISSUES
+=================================================
+
+Delete node_modules:
+
+cd frontend
+rmdir /s /q node_modules
+
+Install again:
+
+npm install
+
+Start:
+
+npm start
+
+=================================================
+12. USEFUL COMMANDS
+=================================================
+
+Current branch:
+
+git branch
+
+All branches:
+
+git branch -a
+
+Last 10 commits:
+
+git --no-pager log --oneline -10
+
+Show remotes:
+
+git remote -v
+
+Show Git username:
+
+git config user.name
+
+Show Git email:
+
+git config user.email
+
+=================================================
+13. DEPLOYMENT RULES
+=================================================
+
+GOOD:
+
+10 changes
+-> local testing
+-> one deploy
+
+BAD:
+
+Change spacing
+-> deploy
+
+Change color
+-> deploy
+
+Change logo
+-> deploy
+
+Too many deployments can quickly fill Vercel Deployment Storage.

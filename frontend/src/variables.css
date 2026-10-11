@@ -11,6 +11,8 @@
   --color-light: #f7f7f7;
   --color-black-25: rgba(26, 26, 26, 0.25);
   --color-hover-soft-dark: rgba(26, 26, 26, 0.08);
+  --color-border-light: rgba(247, 247, 247, 0.7);
+  --color-hover-soft-light: rgba(247, 247, 247, 0.12);
   --color-studio-slider-bg-start: #f4eee8;
   --color-studio-slider-bg-end: #e7ddd1;
 

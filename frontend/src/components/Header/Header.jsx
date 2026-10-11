@@ -39,6 +39,11 @@ function Header() {
       if (animationFrameId !== null) return;
 
       animationFrameId = window.requestAnimationFrame(() => {
+        animationFrameId = null;
+
+        // Lightbox scroll lock resets scrollY to 0; ignore it so the header state is preserved.
+        if (document.body.style.position === "fixed") return;
+
         const currentScrollY = window.scrollY;
 
         if (currentScrollY <= 0) {
@@ -48,7 +53,6 @@ function Header() {
         }
 
         previousScrollY = currentScrollY;
-        animationFrameId = null;
       });
     };
 

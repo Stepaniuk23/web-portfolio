@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import Lightbox from "../Lightbox/Lightbox";
+import NavigationArrow from "../NavigationArrow/NavigationArrow";
 import "./FullStory.css";
 
 const FullStory = React.forwardRef(
@@ -122,15 +123,13 @@ const FullStory = React.forwardRef(
         </div>
 
         <div className="full-story-gallery-shell">
-          <button
-            type="button"
+          <NavigationArrow
+            direction="left"
             className="full-story-arrow full-story-arrow-left"
             onClick={() => handleArrowClick(-1)}
             disabled={!canScrollLeft}
             aria-label="Show previous photos"
-          >
-            <span aria-hidden="true">&#8592;</span>
-          </button>
+          />
 
           <div ref={scrollRef} className="full-story-scroll">
             {validImages.map((img, index) => (
@@ -152,15 +151,13 @@ const FullStory = React.forwardRef(
             ))}
           </div>
 
-          <button
-            type="button"
+          <NavigationArrow
+            direction="right"
             className="full-story-arrow full-story-arrow-right"
             onClick={() => handleArrowClick(1)}
             disabled={!canScrollRight}
             aria-label="Show next photos"
-          >
-            <span aria-hidden="true">&#8594;</span>
-          </button>
+          />
 
           <div className="full-story-meta" aria-hidden="true">
             <span className="full-story-counter">

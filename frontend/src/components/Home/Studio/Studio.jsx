@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import "./Studio.css";
 
 // Импортируй свои вертикальные фото
@@ -69,9 +70,9 @@ function Studio() {
           moments.
         </p>
 
-        <a href="#portfolio" className="btn-ghost studio-cta">
+        <Link to="/weddings" className="btn-ghost studio-cta">
           View All Weddings
-        </a>
+        </Link>
       </div>
     </section>
   );

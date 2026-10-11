@@ -1,0 +1,59 @@
+.btn-ghost.navigation-arrow {
+  appearance: none;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  display: inline-flex;
+  flex: 0 0 48px;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
+  padding: 0;
+  line-height: 1;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.navigation-arrow svg {
+  display: block;
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.navigation-arrow:not(.navigation-arrow--dark) {
+  background: var(--color-bg);
+}
+
+.navigation-arrow:not(.navigation-arrow--dark):hover:not(:disabled) {
+  background: var(--color-bg);
+  box-shadow: inset 0 0 0 48px var(--color-hover-soft-dark);
+}
+
+.navigation-arrow--dark {
+  color: var(--color-light);
+  border-color: var(--color-border-light);
+}
+
+.navigation-arrow--dark:hover:not(:disabled) {
+  color: var(--color-light);
+  background: var(--color-hover-soft-light);
+  border-color: var(--color-light);
+}
+
+.navigation-arrow:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.navigation-arrow:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 4px;
+}

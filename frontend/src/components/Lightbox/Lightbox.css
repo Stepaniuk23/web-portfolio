@@ -1,48 +1,101 @@
 .lightbox {
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.9);
+  height: 100dvh;
+  padding: 24px;
+  box-sizing: border-box;
+  background: rgba(26, 26, 26, 0.96);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
+  overscroll-behavior: none;
+  touch-action: pan-y;
+  z-index: 11000;
+}
+
+.lightbox-image-stage {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  touch-action: pan-y;
 }
 
 .lightbox-img {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 6px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(86vw, 1600px);
+  max-height: 88vh;
+  max-height: 88dvh;
+  object-fit: contain;
+  user-select: none;
 }
 
 .lightbox-close {
   position: absolute;
-  top: 30px;
-  right: 40px;
-  font-size: 40px;
-  color: white;
+  z-index: 2;
+  top: clamp(16px, 3vh, 28px);
+  right: clamp(16px, 3vw, 40px);
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  color: var(--color-light);
   background: none;
   border: none;
   cursor: pointer;
+  font-family: var(--font-main);
+  font-size: 32px;
+  font-weight: 200;
+  line-height: 1;
+  transition: opacity var(--transition-smooth);
+}
+
+.lightbox-close:hover {
+  opacity: var(--opacity-hover-soft);
+}
+
+.lightbox-close:focus-visible,
+.lightbox-arrow:focus-visible {
+  outline: 1px solid var(--color-light);
+  outline-offset: 4px;
 }
 
 .lightbox-arrow {
   position: absolute;
+  z-index: 2;
   top: 50%;
-  font-size: 50px;
-  color: white;
-  background: none;
-  border: none;
-  cursor: pointer;
   transform: translateY(-50%);
 }
 
 .lightbox-arrow.left {
-  left: 40px;
+  left: clamp(18px, 4vw, 64px);
 }
 
 .lightbox-arrow.right {
-  right: 40px;
+  right: clamp(18px, 4vw, 64px);
+}
+
+@media (max-width: 900px) {
+  .lightbox .lightbox-arrow {
+    display: none;
+  }
+
+  .lightbox-img {
+    max-width: calc(100vw - 32px);
+    max-height: 82vh;
+    max-height: 82dvh;
+  }
+}
+
+@media (max-width: 600px) {
+  .lightbox {
+    padding: 16px;
+  }
 }

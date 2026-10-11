@@ -56,34 +56,6 @@
   position: absolute;
   top: 42%;
   z-index: 2;
-  width: 56px;
-  height: 56px;
-  border: 1px solid var(--color-black-25);
-  border-radius: 50%;
-  background: rgba(252, 251, 248, 0.82);
-  color: var(--color-dark);
-  box-shadow: 0 12px 36px var(--color-black-25);
-  backdrop-filter: blur(6px);
-  cursor: pointer;
-  transition:
-    transform var(--transition-smooth),
-    opacity var(--transition-smooth),
-    background var(--transition-smooth);
-}
-
-.full-story-arrow span {
-  font-size: 24px;
-  line-height: 1;
-}
-
-.full-story-arrow:hover:not(:disabled) {
-  transform: translateY(-2px);
-  background: rgba(252, 251, 248, 0.95);
-}
-
-.full-story-arrow:disabled {
-  opacity: 0.35;
-  cursor: default;
 }
 
 .full-story-arrow-left {
@@ -161,12 +133,8 @@
     scroll-snap-align: center; /* На мобилках лучше центрировать фото */
   }
 
-  .full-story-arrow {
+  .full-story .full-story-arrow {
     display: none;
-  }
-
-  .full-story-arrow span {
-    font-size: 18px;
   }
 
   .full-story-arrow-left {

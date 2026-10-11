@@ -1,6 +1,7 @@
 import "./Portfolio.css";
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
+import Lightbox from "../../components/Lightbox/Lightbox";
 
 import img1 from "../../assets/gallery/gallery1.jpg";
 import img2 from "../../assets/gallery/gallery2.jpg";
@@ -97,45 +98,18 @@ function Gallery({ canonicalPath = "/portfolio" } = {}) {
         ))}
       </div>
 
-      {/* Лайтбокс */}
-      <div
-        className={`portfolio-lightbox${selectedIndex !== null ? " active" : ""}`}
-        onClick={closeLightbox}
-      >
-        <img
-          src={images[selectedIndex]}
-          alt=""
-          className="portfolio-lightbox-img"
-          onClick={(e) => e.stopPropagation()}
+      {selectedIndex !== null && (
+        <Lightbox
+          images={images.map((src, index) => ({
+            src,
+            alt: `Denys Stepaniuk photography portfolio ${index + 1}`,
+          }))}
+          index={selectedIndex}
+          onClose={closeLightbox}
+          onPrev={prevPhoto}
+          onNext={nextPhoto}
         />
-
-        {/* Кнопка закрытия */}
-        <button className="portfolio-lightbox-close" onClick={closeLightbox}>
-          ✕
-        </button>
-
-        {/* Стрелка влево */}
-        <button
-          className="portfolio-lightbox-arrow left"
-          onClick={(e) => {
-            e.stopPropagation();
-            prevPhoto();
-          }}
-        >
-          ‹
-        </button>
-
-        {/* Стрелка вправо */}
-        <button
-          className="portfolio-lightbox-arrow right"
-          onClick={(e) => {
-            e.stopPropagation();
-            nextPhoto();
-          }}
-        >
-          ›
-        </button>
-      </div>
+      )}
     </div>
   );
 }
