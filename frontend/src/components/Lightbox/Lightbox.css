@@ -67,11 +67,13 @@
   outline-offset: 4px;
 }
 
-.lightbox-arrow {
+.lightbox .lightbox-arrow.navigation-arrow--dark {
   position: absolute;
   z-index: 2;
   top: 50%;
   transform: translateY(-50%);
+  color: var(--color-light);
+  border-color: var(--color-border-light);
 }
 
 .lightbox-arrow.left {
