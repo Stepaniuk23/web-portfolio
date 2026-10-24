@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 
+import { initAnalytics, trackPageView } from "./analytics";
+
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 
@@ -29,11 +31,26 @@ function ScrollToTop() {
   return null;
 }
 
+function Analytics() {
+  const { pathname, search } = useLocation();
+
+  useEffect(() => {
+    initAnalytics();
+  }, []);
+
+  useEffect(() => {
+    trackPageView(pathname + search);
+  }, [pathname, search]);
+
+  return null;
+}
+
 function App() {
   return (
     <HelmetProvider>
       <BrowserRouter>
         <ScrollToTop />
+        <Analytics />
         <Header />
 
         <Routes>
