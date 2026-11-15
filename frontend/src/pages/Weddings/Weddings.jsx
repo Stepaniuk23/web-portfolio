@@ -71,7 +71,11 @@ function Weddings() {
             <Link to={`/weddings/${story.id}`}>
               <div className="story-image-wrap">
                 {/* 3. КАРТИНКУ БЕРЕМ ИЗ СВОЙСТВА images.cover */}
-                <img src={story.images.cover} alt={story.title} />
+                <img
+                  src={story.images.cover}
+                  alt={`${story.title} wedding photography in ${story.location}`}
+                  loading="lazy"
+                />
                 <div className="story-overlay">
                   <span>View Story</span>
                 </div>

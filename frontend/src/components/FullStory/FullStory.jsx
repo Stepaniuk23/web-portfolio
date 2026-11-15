@@ -142,7 +142,7 @@ const FullStory = React.forwardRef(
               >
                 <img
                   src={img}
-                  alt={`Frame ${index + 1}`}
+                  alt={`${title} — frame ${index + 1}`}
                   loading="lazy"
                   onClick={() => setLightboxIndex(index)}
                   style={{ cursor: "pointer" }}

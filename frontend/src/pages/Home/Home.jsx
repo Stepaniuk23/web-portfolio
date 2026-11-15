@@ -26,7 +26,15 @@ function Home() {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "ProfessionalService",
+            "@id": "https://www.denysstepaniuk.com/#business",
             name: "Denys Stepaniuk Photography",
+            logo: "https://www.denysstepaniuk.com/icon-512.png",
+            telephone: "+420721031650",
+            founder: {
+              "@type": "Person",
+              name: "Denys Stepaniuk",
+              jobTitle: "Wedding & Editorial Photographer",
+            },
             image:
               "https://www.denysstepaniuk.com/images/weddings/wedding1.jpg",
             url: "https://www.denysstepaniuk.com/",
@@ -38,9 +46,9 @@ function Home() {
             },
             areaServed: ["Prague", "Czechia", "Europe"],
             sameAs: [
-              "https://instagram.com/denysstepanyuk",
-              "https://www.facebook.com/share/1DWX2SJA6d/",
-              "https://pin.it/3CWS3OsV1",
+              "https://www.instagram.com/denysstepanyuk/",
+              "https://www.facebook.com/Stepanyuk.Denys",
+              "https://www.pinterest.com/denysstepanyuk/",
             ],
             description:
               "Wedding and editorial photographer based in Prague, Czechia, shooting fine art weddings across Europe.",

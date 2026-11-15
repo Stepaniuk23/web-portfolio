@@ -210,10 +210,10 @@ function WeddingDetail() {
       >
         <div className="story-grid-container">
           <div className="grid-item item-wide">
-            <img src={story.images.gridWide} alt="The Scene" />
+            <img src={story.images.gridWide} alt={`${story.title} wedding in ${story.location} — the scene`} loading="lazy" />
           </div>
           <div className="grid-item item-portrait">
-            <img src={story.images.gridPortrait} alt="The Portrait" />
+            <img src={story.images.gridPortrait} alt={`${story.title} wedding in ${story.location} — couple portrait`} loading="lazy" />
           </div>
           {introColumns.length ? (
             <div className="grid-item item-copy" aria-label="Editorial notes">
@@ -225,7 +225,7 @@ function WeddingDetail() {
             </div>
           ) : null}
           <div className="grid-item item-accent">
-            <img src={story.images.gridSquare} alt="The Detail" />
+            <img src={story.images.gridSquare} alt={`${story.title} wedding in ${story.location} — wedding details`} loading="lazy" />
           </div>
         </div>
       </section>
@@ -236,7 +236,7 @@ function WeddingDetail() {
         className={`story-moment story-section-reveal ${visibleSections.moment ? "is-visible" : ""}`}
       >
         <div className="moment-image-wrap">
-          <img src={story.images.momentWide} alt={story.content.momentTitle} />
+          <img src={story.images.momentWide} alt={story.content.momentTitle} loading="lazy" />
         </div>
         <div className="about-container-narrow">
           <div className="moment-story-box">
@@ -264,7 +264,7 @@ function WeddingDetail() {
         className={`story-finale story-section-reveal ${visibleSections.finale ? "is-visible" : ""}`}
       >
         <div className="finale-image-full">
-          <img src={story.images.finale} alt="Wedding Finale" />
+          <img src={story.images.finale} alt={`${story.title} wedding in ${story.location} — wedding finale`} loading="lazy" />
         </div>
       </section>
 

@@ -91,7 +91,8 @@ function Gallery({ canonicalPath = "/portfolio" } = {}) {
           <img
             key={index}
             src={src}
-            alt={`Denys Stepaniuk photography portfolio ${index + 1}`}
+            alt={`Wedding and portrait photography by Denys Stepaniuk, Prague — ${index + 1}`}
+            loading={index < 6 ? "eager" : "lazy"}
             onClick={() => openLightbox(index)}
             className="gallery-img"
           />

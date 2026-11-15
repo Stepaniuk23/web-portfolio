@@ -20,6 +20,7 @@ import Portraits from "./pages/Portraits/Portraits";
 import Stories from "./pages/Stories/Stories";
 
 import ClientGallery from "./pages/ClientGallery/ClientGallery";
+import NotFound from "./pages/NotFound/NotFound";
 import Legal from "./pages/Legal/Legal";
 import CookieBanner from "./components/CookieBanner/CookieBanner";
 import { onConsentChange } from "./consent";
@@ -79,6 +80,9 @@ function App() {
           <Route path="/weddings/:id" element={<WeddingDetail />} />
           <Route path="/privacy-policy" element={<Legal type="privacy" />} />
           <Route path="/cookie-policy" element={<Legal type="cookies" />} />
+
+          {/* Все остальные адреса — страница 404 */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
 
         <Footer />

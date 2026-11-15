@@ -1,0 +1,39 @@
+/* Стили страницы 404 — по образцу Legal.css, только токены из variables.css */
+.not-found-page {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: var(--color-bg);
+  padding: calc(var(--header-height) + var(--space-section-compact))
+    var(--container-padding-wide) var(--space-section);
+}
+
+.not-found-title {
+  font-family: var(--font-title);
+  font-weight: 400;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.1;
+  margin: 0 0 24px;
+  text-wrap: balance;
+}
+
+.not-found-text {
+  max-width: 520px;
+  margin: 0 0 40px;
+  text-wrap: pretty;
+}
+
+.not-found-btn:focus-visible {
+  outline: 2px solid var(--color-accent-deep);
+  outline-offset: 3px;
+}
+
+@media (max-width: 720px) {
+  .not-found-page {
+    padding: calc(var(--header-height-mobile) + var(--space-section-compact-mobile))
+      var(--container-padding) var(--space-section-mobile);
+  }
+}

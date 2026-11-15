@@ -9,11 +9,11 @@
     <link rel="alternate icon" type="image/x-icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#fbfaf8" />
-    <meta
-      name="description"
-      content="Denys Stepaniuk is a wedding and editorial photographer based in Prague, Czechia, shooting fine art weddings across Europe."
-    />
-    <link rel="canonical" href="https://www.denysstepaniuk.com/" />
+    <!--
+      SEO: description и canonical здесь НЕ указываем —
+      каждая страница задаёт свои через <Helmet>. Если оставить их тут,
+      на каждой странице было бы два canonical (один на главную), и Google мог бы их проигнорировать.
+    -->
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Denys Stepaniuk Photography" />
@@ -25,7 +25,6 @@
       property="og:description"
       content="Fine art wedding and editorial photography in Prague and across Europe."
     />
-    <meta property="og:url" content="https://www.denysstepaniuk.com/" />
     <meta
       property="og:image"
       content="https://www.denysstepaniuk.com/images/weddings/wedding1.jpg"
@@ -45,6 +44,8 @@
       name="twitter:image"
       content="https://www.denysstepaniuk.com/images/weddings/wedding1.jpg"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"

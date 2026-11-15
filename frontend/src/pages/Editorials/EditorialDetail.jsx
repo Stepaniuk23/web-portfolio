@@ -206,10 +206,10 @@ function EditorialDetail() {
       >
         <div className="story-grid-container">
           <div className="grid-item item-wide">
-            <img src={story.images.gridWide} alt="The scene" />
+            <img src={story.images.gridWide} alt={`${story.title} editorial in ${story.location} — the scene`} loading="lazy" />
           </div>
           <div className="grid-item item-portrait">
-            <img src={story.images.gridPortrait} alt="Portrait moment" />
+            <img src={story.images.gridPortrait} alt={`${story.title} editorial in ${story.location} — portrait`} loading="lazy" />
           </div>
           {introColumns.length ? (
             <div className="grid-item item-copy" aria-label="Editorial notes">
@@ -221,7 +221,7 @@ function EditorialDetail() {
             </div>
           ) : null}
           <div className="grid-item item-accent">
-            <img src={story.images.gridSquare} alt="Detail frame" />
+            <img src={story.images.gridSquare} alt={`${story.title} editorial in ${story.location} — detail`} loading="lazy" />
           </div>
         </div>
       </section>
@@ -231,7 +231,7 @@ function EditorialDetail() {
         className={`story-moment story-section-reveal ${visibleSections.moment ? "is-visible" : ""}`}
       >
         <div className="moment-image-wrap">
-          <img src={story.images.momentWide} alt={story.content.momentTitle} />
+          <img src={story.images.momentWide} alt={story.content.momentTitle} loading="lazy" />
         </div>
         <div className="about-container-narrow">
           <div className="moment-story-box">
@@ -280,7 +280,8 @@ function EditorialDetail() {
           <div className="finale-image-full">
             <img
               src={story.images.finale}
-              alt="Editorial finale"
+              alt={`${story.title} editorial in ${story.location} — finale`}
+              loading="lazy"
               style={{
                 objectPosition:
                   story.images.finaleObjectPosition || "center center",
