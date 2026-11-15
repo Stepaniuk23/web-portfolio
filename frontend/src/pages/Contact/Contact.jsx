@@ -2,7 +2,7 @@ import "./Contact.css";
 import contactPhoto from "../../assets/contact.jpg";
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { apiUrl } from "../../config";
+import { sendContactForm } from "../../services/contactForm";
 
 function Contact() {
   const [status, setStatus] = useState("");
@@ -13,33 +13,20 @@ function Contact() {
     if (isSubmitting) return;
 
     const form = e.currentTarget;
-    const formData = new FormData(form);
     setIsSubmitting(true);
     setStatus("");
 
-    try {
-      const response = await fetch(apiUrl("/api/contact/"), {
-        method: "POST",
-        body: formData,
-      });
+    const result = await sendContactForm(form);
 
-      const result = await response.json().catch(() => null);
-
-      if (response.ok) {
-        setStatus(
-          "Thank you for your message. I will get back to you shortly.",
-        );
-        form.reset();
-      } else {
-        setStatus(
-          result?.detail || "Something went wrong. Please try again later.",
-        );
-      }
-    } catch {
+    if (result.ok) {
+      setStatus("Thank you for your message. I will get back to you shortly.");
+      form.reset();
+    } else if (result.network) {
       setStatus("Network error. Please check your connection and try again.");
-    } finally {
-      setIsSubmitting(false);
+    } else {
+      setStatus("Something went wrong. Please try again later.");
     }
+    setIsSubmitting(false);
   };
 
   return (
