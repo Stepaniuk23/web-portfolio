@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 
-import { initAnalytics, trackPageView } from "./analytics";
+import { initAnalytics, revokeAnalytics, trackPageView } from "./analytics";
 
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
@@ -20,6 +20,9 @@ import Portraits from "./pages/Portraits/Portraits";
 import Stories from "./pages/Stories/Stories";
 
 import ClientGallery from "./pages/ClientGallery/ClientGallery";
+import Legal from "./pages/Legal/Legal";
+import CookieBanner from "./components/CookieBanner/CookieBanner";
+import { onConsentChange } from "./consent";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -36,6 +39,10 @@ function Analytics() {
 
   useEffect(() => {
     initAnalytics();
+    return onConsentChange((value) => {
+      if (value === "granted") initAnalytics();
+      else revokeAnalytics();
+    });
   }, []);
 
   useEffect(() => {
@@ -70,9 +77,12 @@ function App() {
           <Route path="/gallery/:slug" element={<ClientGallery />} />
 
           <Route path="/weddings/:id" element={<WeddingDetail />} />
+          <Route path="/privacy-policy" element={<Legal type="privacy" />} />
+          <Route path="/cookie-policy" element={<Legal type="cookies" />} />
         </Routes>
 
         <Footer />
+        <CookieBanner />
       </BrowserRouter>
     </HelmetProvider>
   );

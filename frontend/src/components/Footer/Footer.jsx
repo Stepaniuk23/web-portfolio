@@ -62,6 +62,10 @@ function Footer() {
             <span>All rights reserved</span>
           </div>
           <p className="footer-tagline">Timeless imagery for soulful stories</p>
+          <nav className="footer-legal-links" aria-label="Legal">
+            <a href="/privacy-policy">Privacy Policy</a>
+            <a href="/cookie-policy">Cookie Policy</a>
+          </nav>
         </div>
       </div>
     </footer>
