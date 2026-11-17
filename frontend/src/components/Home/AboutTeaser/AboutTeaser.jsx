@@ -3,12 +3,15 @@ import "./AboutTeaser.css";
 import portrait from "../../../assets/about/portrait.jpg";
 import LangLink from "../../../i18n/LangLink";
 import { useT } from "../../../i18n/LanguageContext";
+import { useFitTitle } from "../../../hooks/useFitTitle";
 
 function AboutTeaser() {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
   const t = useT();
   const [titleStart, titleAccent, titleEnd] = t("home.aboutTeaser.title");
+  // Длинные слова («наблюдательный») не должны вылезать за край
+  const titleRef = useFitTitle(`${titleStart} ${titleAccent} ${titleEnd}`);
 
   useEffect(() => {
     const el = ref.current;
@@ -45,7 +48,7 @@ function AboutTeaser() {
         <div className="about-teaser-content">
           <p className="about-teaser-kicker">{t("home.aboutTeaser.kicker")}</p>
 
-          <h2 className="about-teaser-title">
+          <h2 ref={titleRef} className="about-teaser-title">
             {titleStart}{" "}
             <span className="about-teaser-title-and">{titleAccent}</span>{" "}
             {titleEnd}

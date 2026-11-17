@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Seo from "../../i18n/Seo";
 import { useT } from "../../i18n/LanguageContext";
+import { useFitTitle } from "../../hooks/useFitTitle";
 import "./About.css";
 
 // Фото
@@ -22,6 +23,10 @@ function About() {
   const explorationRef = useRef(null);
   const kindWordsRef = useRef(null);
   const t = useT();
+  // «Storyteller» на узком телефоне не должен вылезать за край блока
+  const introTitleRef = useFitTitle(t("about.introTitle"));
+  // «За пределами свадебной фотографии»: длинные слова не должны вылезать за колонку
+  const beyondTitleRef = useFitTitle(t("about.beyondTitle"));
   const reviews = t("about.reviews");
 
   const [heroVisible, setHeroVisible] = useState(false);
@@ -103,7 +108,7 @@ function About() {
               <img src={portraitMain} alt={t("about.portraitAlt")} />
             </div>
             <div className="split-content">
-              <h2>{t("about.introTitle")}</h2>
+              <h2 ref={introTitleRef}>{t("about.introTitle")}</h2>
               {t("about.intro").map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
@@ -128,7 +133,7 @@ function About() {
         <div className="about-container">
           <div className="exploration-layout">
             <div className="exploration-text">
-              <h3>{t("about.beyondTitle")}</h3>
+              <h3 ref={beyondTitleRef}>{t("about.beyondTitle")}</h3>
               {t("about.beyond").map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}

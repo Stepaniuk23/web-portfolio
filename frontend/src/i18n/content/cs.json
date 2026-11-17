@@ -71,6 +71,7 @@
   },
   "editorials": {
     "meiirbek-nariman-daria-prague": {
+      "title": "Meiirbek Nariman & Darija",
       "location": "Praha, Česko",
       "content": {
         "intro": "Jsou příběhy, které si nelze představit bez určitého města. Přesně takový je příběh Meiirbeka Narimana a Dariji. On přijel z Kazachstánu, ona z Ukrajiny, a poznali se v Praze. V jejich vztahu je něco, co připomíná samotnou Prahu: lehkost, blízkost a zvláštní atmosféra, kterou nelze vytvořit na povel.",
@@ -78,48 +79,49 @@
           "Naši procházku jsme začali u Národního divadla a pomalu se vydali centrem Prahy. Po celou dobu byl s nimi jejich pes, který se rychle stal součástí tohoto příběhu. Spousta smíchu, obyčejných rozhovorů a okamžiků, které se nedají naplánovat.",
           "Později jsme zahnuli do klidných dvorků, daleko od turistů a ruchu města. Jejich pes se neustále objevoval na fotografiích a dodával celému focení ještě více života. Právě díky němu vznikla řada snímků, které působí tak přirozeně."
         ],
-        "momentTitle": "Praha mezi velkolepými ulicemi a tichými dvorky",
-        "momentText": "Jeden okamžik mi utkvěl v paměti: kolemjdoucí se zastavovali a fotili si nás, jako bychom byli součástí samotného města. Bylo to nečekané, hravé a nešlo se tomu neusmát.",
-        "aftermath": "Po našem společném čase pokračovali v oslavě s hosty, zatímco tato kapitola zůstala jen jejich. Galerie uchovává tu soukromou část dne: dva zamilované lidi, město plné historie a rytmus, který byl úplně jejich vlastní."
+        "momentTitle": "Praha mezi širokými ulicemi a tichými dvorky",
+        "momentText": "Nejvíc mi utkvěl v paměti jeden okamžik: kolemjdoucí se zastavovali a fotografovali nás, jako bychom byli součástí života města. Bylo to nečekané, zábavné a pokaždé vykouzlilo úsměv.",
+        "aftermath": "Po naší procházce pokračovali Meiirbek a Darija v oslavě se svými přáteli a blízkými. Tento příběh však zůstal jen jim dvěma. Uchoval chvíle, kdy tu byli jen oni, Praha a den plný jednoduchých šťastných okamžiků."
       }
     },
     "anna-vladi-dnipro-sunset": {
       "location": "řeka Dněpr, Ukrajina",
       "content": {
-        "intro": "Některá portrétní focení se stanou něčím víc než jen focením. S Annou Vladi, svatební moderátorkou zvyklou poutat pozornost, se večer na Dněpru proměnil v tiché odhalení – o jemnosti, síle a ženskosti, která se nemusí ptát na svolení.",
+        "intro": "Některá portrétní focení odhalí člověka z nečekané stránky. Anna Vladi, svatební moderátorka, kterou většina lidí zná jako klidnou a vyrovnanou osobnost, během tohoto večera ukázala úplně jinou energii — odvážnou, sexy a svobodnou.",
         "introColumns": [
-          "Fotili jsme ji na břehu řeky při západu slunce a nechali poslední teplé světlo tvarovat každý pohyb. Atmosféra byla beztížná a intimní a každý záběr odhaloval Annu zároveň elegantní, smyslnou a naprosto upřímnou.",
-          "Pro ni se tato série stala opravdovým objevem. Uviděla se z jiné stránky: ženštější, vášnivější, otevřenější. Když se snímky objevily online, její Instagram se téměř okamžitě zaplnil zprávami plnými obdivu a překvapení."
+          "Na břehu Dněpru jsme fotografovali v posledních minutách zapadajícího slunce a nechali přírodu, aby sama udávala náladu celého focení. Všechno probíhalo lehce a bez spěchu. S každou fotografií se odhalovala další stránka Anny — odvážná, přitažlivá a zároveň naprosto přirozená.",
+          "Pro samotnou Annu byla tato série malým objevem. Uviděla sama sebe jinak, než jak se vídá každý den. Když se fotografie objevily na Instagramu, zprávy a komentáře na sebe nenechaly dlouho čekat. Mnozí přiznávali, že ji poznali z úplně nové stránky."
         ],
-        "momentTitle": "Západ slunce, voda a jiný odraz",
-        "momentText": "Nejvíc mi utkvělo, jak rychle se sebeuvědomění proměnilo v sebevědomí. Čím blíž byl západ slunce, tím přirozeněji působila, až portréty vůbec nepůsobily naaranžovaně – jen naplno prožitě.",
-        "aftermath": "Na samém konci focení jsem se rozhodl přidat kapku dramatu. Závěrečný portrét – detail Anny s mokrými vlasy – nese jinou energii: hlubší, odvážnější a téměř filmovou. Příběh tak dostal přesně tu intenzitu, ke které celý večer tiše směřoval."
+        "momentTitle": "Západ slunce, voda a jiná Anna",
+        "momentText": "Nejvíce mi utkvělo v paměti, jak se postupně měnil její vztah k fotoaparátu. Čím více se blížil západ slunce, tím svobodněji a sebejistěji působila před objektivem. V jednu chvíli fotografie přestaly působit aranžovaně a staly se přirozeným pokračováním celého večera.",
+        "aftermath": "Na samém konci focení jsem chtěl přidat trochu charakteru a nálady. Závěrečný portrét s mokrými vlasy působil úplně jinak — odvážněji, výrazněji a překvapivě. Právě tento snímek uzavřel příběh, který během celého večera postupně odhaloval další stránku Anny."
       }
     },
     "tatiana-prague-old-town": {
+      "title": "Taťána",
       "location": "Staré Město, Praha",
       "content": {
-        "intro": "Odpoledne strávené procházkou historickým centrem Prahy, kde rozhovor znamenal stejně jako fotografie. Tatiana má ten druh pevné, klidné přítomnosti, která sama určuje tempo. Jako zakladatelka centra pro děti s autismem potřebuje v každodenním životě obrovskou emoční kapacitu. A přesto se tu, mezi staletými dlažebními kostkami, nesla s nápadnou, nenucenou lehkostí.",
+        "intro": "Procházka historickým centrem Prahy, kde byly rozhovory stejně důležité jako fotografie. Taťána má schopnost udávat vlastní rytmus každému dni a toto focení nebylo výjimkou. Založila centrum pro děti s autismem a její práce vyžaduje obrovskou trpělivost, pozornost a vnitřní sílu. Přesto v ní bylo během tohoto večera mezi starými pražskými ulicemi cítit především lehkost, klid a schopnost užívat si přítomný okamžik.",
         "introColumns": [
-          "Praha je město těžké architektury, vrstvené kamenem, hlubokými stíny a historií. Na tak monumentálním pozadí se člověk snadno ztratí. My jsme se ale nesnažili město překřičet. Nechali jsme okolí jednoduché a hledali čistou geometrii a tichá zákoutí, kde mohly portréty dýchat.",
-          "Nebylo třeba ji vést. Každé gesto vycházelo z naprosté soběstačnosti. Pro někoho, kdo zasvětil život péči o druhé, byla tato procházka vzácnou, zaslouženou pauzou – chvílí, kdy mohla prostě být, ukotvená a klidná, uprostřed pulzujícího města."
+          "Praha na sebe snadno strhne pozornost. Historické budovy, úzké uličky a staletá historie vytvářejí silné kulisy pro každé focení. Tentokrát jsme však nechtěli soutěžit s městem. Hledali jsme klidná místa, jednoduché linie a zákoutí, kde hlavní roli hraje člověk.",
+          "Taťánu nebylo téměř potřeba vést. Všechno přicházelo přirozeně: gesta, pohledy i pohyb. Pro člověka, který každý den věnuje svůj čas péči o druhé, byla tato procházka vzácnou příležitostí zastavit se, vydechnout a chvíli být jen sám sebou."
         ],
-        "momentTitle": "Půvab a kámen",
-        "momentText": "Po setkání s Tatianou ve vás zůstane její vyrovnanost. K tomu, aby ovládla záběr, nepotřebuje hlasité sebevědomí. Soustředili jsme se jen na tuto vnitřní stabilitu – přirozené světlo starých ulic a ženu, která je zcela smířená sama se sebou.",
-        "aftermath": "Tyto fotografie nejsou o výkonu ani o stylingu jako z magazínu. Jsou vizuálním záznamem opravdového dialogu. Portrét ženy formované zodpovědností a hlubokou empatií na pomalé procházce nadčasovým městem."
+        "momentTitle": "Několik hodin jen pro sebe",
+        "momentText": "Po setkání s Taťánou si člověk nejvíce zapamatuje její klid. Nesnaží se na sebe poutat pozornost a nemá potřebu komukoli něco dokazovat. Právě na tomto pocitu bylo postavené celé focení: přirozené světlo starých pražských ulic a člověk, kterému je dobře sám se sebou.",
+        "aftermath": "Pro mě tato série není jen o fotografiích, ale především o setkání a rozhovoru. O člověku, který každý den pomáhá druhým a jen zřídka si najde čas zastavit se. Možná právě proto působí tato procházka Prahou tak klidně a opravdově."
       }
     },
     "viktor-natalia-odessa-prewedding": {
       "location": "Oděsa, Ukrajina",
       "content": {
-        "intro": "Ještě před slavnostním slibem a obřadem na útesu přišlo odpoledne na otevřeném pobřeží Oděsy. Viktor a Natalia vběhli k moři naplno a odhodili všechna očekávání o tom, jak má pár stát před objektivem.",
+        "intro": "Ještě před obřadem na útesu a svatebními sliby přišel jeden větrný den na pobřeží Oděsy. Viktor a Natalia se rozběhli k moři, jako by na fotoaparát zapomněli už od prvních minut focení. Ten den nebyly žádné správné pózy ani snaha vypadat dokonale. Jen moře, vítr, smích a dva lidé, kterým bylo dobře vedle sebe.",
         "introColumns": [
-          "Focení v příboji nenechává prostor pro strnulé pózy. Pobřežní vítr cuchal vlhké lněné oblečení, zvedal mořskou tříšť a rozfoukal jakoukoli myšlenku na choreografii. Pohybovali jsme se rychle – běželi podél čáry přílivu, otáčeli se a chytali nenaplánované výbuchy smíchu proti hukotu Černého moře.",
-          "Nejsilnější portréty vznikají vždy ve chvíli, kdy fotografovaní zapomenou, že fotoaparát existuje. Žádné pauzy na opravy ani vypočítané pohledy – jen dva lidé, kteří se vrhají do mělkých vln a nechávají studenou slanou vodu dopadat na kůži, zatímco odpolední slunce klesá níž nad obzorem."
+          "Voda a vítr nás velmi rychle zbavily všech myšlenek na pózování. Běhali jsme podél pobřeží, chytali kapky mořské vody a smáli se tak často, že focení začalo připomínat obyčejnou procházku u moře.",
+          "Ty nejsilnější fotografie vznikají ve chvíli, kdy lidé zapomenou na fotoaparát. Přesně takový byl i tento večer. Viktor a Natalia chodili do vody, bláznili spolu, povídali si a jednoduše si užívali společný čas, zatímco slunce pomalu klesalo k obzoru."
         ],
-        "momentTitle": "Slaná voda a plná rychlost",
-        "momentText": "Nejostřejší záběry vzešly z naprosté nepředvídatelnosti: náhlý sprint mělčinou, tříšť zachycená ve vzduchu proti ostrému světlu a smích, který se lehce nesl přes příliv. Nic nebylo naaranžované; všechno hnala syrová energie okamžiku.",
-        "aftermath": "Předehra k jejich svatbě, která působila spíš jako divoké odpoledne u vody než jako naplánované focení. Viktor a Natalia odcházeli z pobřeží s promočenými lemy, solí ve vlasech a lehkou, živou energií, která udala tón všemu, co následovalo."
+        "momentTitle": "Smích, moře a svoboda",
+        "momentText": "Nejvíce utkvěly v paměti okamžiky, které nešlo předvídat. Náhlý běh vodou, kapky moře ve vzduchu, smích a fotografie vznikající za pochodu. Nikdo se nesnažil mít všechno pod kontrolou, a právě proto působilo celé focení tak přirozeně.",
+        "aftermath": "Toto focení se stalo jakýmsi začátkem jejich svatebního příběhu. Viktor a Natalia odcházeli s mokrým oblečením, vlasy slanými od moře a náladou, která je provázela až do jejich svatebního dne."
       }
     }
   }
