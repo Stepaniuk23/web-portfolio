@@ -1,10 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import "./AboutTeaser.css";
 import portrait from "../../../assets/about/portrait.jpg";
+import LangLink from "../../../i18n/LangLink";
+import { useT } from "../../../i18n/LanguageContext";
+import { useFitTitle } from "../../../hooks/useFitTitle";
 
 function AboutTeaser() {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
+  const t = useT();
+  const [titleStart, titleAccent, titleEnd] = t("home.aboutTeaser.title");
+  // Длинные слова («наблюдательный») не должны вылезать за край
+  const titleRef = useFitTitle(`${titleStart} ${titleAccent} ${titleEnd}`);
 
   useEffect(() => {
     const el = ref.current;
@@ -33,32 +40,27 @@ function AboutTeaser() {
         <div className="about-teaser-image">
           <img
             src={portrait}
-            alt="Denys Stepaniuk portrait"
+            alt={t("home.aboutTeaser.alt")}
             decoding="async" /* Ускоряем рендеринг текста */
           />
         </div>
 
         <div className="about-teaser-content">
-          <p className="about-teaser-kicker">ABOUT DENYS</p>
+          <p className="about-teaser-kicker">{t("home.aboutTeaser.kicker")}</p>
 
-          <h2 className="about-teaser-title">
-            calmly observant, quietly elegant, honest,{" "}
-            <span className="about-teaser-title-and">deeply</span> human.
+          <h2 ref={titleRef} className="about-teaser-title">
+            {titleStart}{" "}
+            <span className="about-teaser-title-and">{titleAccent}</span>{" "}
+            {titleEnd}
           </h2>
 
-          <p className="about-teaser-text">
-            A wedding photographer based in Prague, crafting honest and timeless
-            imagery shaped by light, emotion, and the beauty of real moments.
-          </p>
+          <p className="about-teaser-text">{t("home.aboutTeaser.text1")}</p>
 
-          <p className="about-teaser-text">
-            My work is calm, observant, and intentional — focused on capturing
-            the quiet authenticity within every celebration.
-          </p>
+          <p className="about-teaser-text">{t("home.aboutTeaser.text2")}</p>
 
-          <a href="/about" className="btn-ghost about-teaser-cta">
-            Read More
-          </a>
+          <LangLink to="/about" className="btn-ghost about-teaser-cta">
+            {t("home.aboutTeaser.cta")}
+          </LangLink>
         </div>
       </div>
     </section>

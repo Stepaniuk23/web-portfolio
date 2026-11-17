@@ -1,5 +1,6 @@
 import React from "react";
-import { Helmet } from "react-helmet-async";
+import Seo from "../../i18n/Seo";
+import { useT } from "../../i18n/LanguageContext";
 
 import Hero from "../../components/Home/Hero/Hero";
 import Studio from "../../components/Home/Studio/Studio";
@@ -11,22 +12,28 @@ import AboutTeaser from "../../components/Home/AboutTeaser/AboutTeaser";
 import FinalCTA from "../../components/Home/FinalCTA/FinalCTA";
 
 function Home() {
+  const t = useT();
+
   return (
     <>
-      <Helmet>
-        <title>
-          Denys Stepaniuk | Wedding & Editorial Photographer in Prague
-        </title>
-        <meta
-          name="description"
-          content="Professional wedding and editorial photography in Prague and Europe. Fine art style by Denys Stepaniuk."
-        />
-        <link rel="canonical" href="https://www.denysstepaniuk.com/" />
+      <Seo
+        title={t("seo.home.title")}
+        description={t("seo.home.description")}
+        path="/"
+      >
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "ProfessionalService",
+            "@id": "https://www.denysstepaniuk.com/#business",
             name: "Denys Stepaniuk Photography",
+            logo: "https://www.denysstepaniuk.com/icon-512.png",
+            telephone: "+420721031650",
+            founder: {
+              "@type": "Person",
+              name: "Denys Stepaniuk",
+              jobTitle: "Wedding & Editorial Photographer",
+            },
             image:
               "https://www.denysstepaniuk.com/images/weddings/wedding1.jpg",
             url: "https://www.denysstepaniuk.com/",
@@ -38,15 +45,14 @@ function Home() {
             },
             areaServed: ["Prague", "Czechia", "Europe"],
             sameAs: [
-              "https://instagram.com/denysstepanyuk",
-              "https://www.facebook.com/share/1DWX2SJA6d/",
-              "https://pin.it/3CWS3OsV1",
+              "https://www.instagram.com/denysstepanyuk/",
+              "https://www.facebook.com/Stepanyuk.Denys",
+              "https://www.pinterest.com/denysstepanyuk/",
             ],
-            description:
-              "Wedding and editorial photographer based in Prague, Czechia, shooting fine art weddings across Europe.",
+            description: t("seo.home.schemaDescription"),
           })}
         </script>
-      </Helmet>
+      </Seo>
 
       <main>
         <Hero />

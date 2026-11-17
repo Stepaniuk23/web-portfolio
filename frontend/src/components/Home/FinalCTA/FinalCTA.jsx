@@ -2,11 +2,15 @@ import React, { useEffect, useRef, useState } from "react";
 import "./FinalCTA.css";
 // Импортируй твое качественное фото (например, ту же девушку в ванной, но статику)
 import ctaBg from "../../../assets/cta/cta-bg.jpg";
+import LangLink from "../../../i18n/LangLink";
+import { useT } from "../../../i18n/LanguageContext";
 
 function FinalCTA() {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
   const [offset, setOffset] = useState(0);
+  const t = useT();
+  const [titleStart, titleAccent, titleEnd] = t("home.finalCta.title");
 
   useEffect(() => {
     const el = ref.current;
@@ -51,7 +55,7 @@ function FinalCTA() {
         <img
           src={ctaBg}
           className="cta-parallax-img"
-          alt="Contact Denys Stepaniuk fine art photographer"
+          alt={t("home.finalCta.alt")}
           style={{
             transform: `translateY(calc(${offset}px * var(--cta-parallax-speed, 1))) scale(var(--cta-parallax-scale, 1))`,
           }}
@@ -62,16 +66,16 @@ function FinalCTA() {
       <div className="cta-overlay" />
 
       <div className="final-cta-container">
-        <span className="cta-kicker">Are you planning a wedding?</span>
+        <span className="cta-kicker">{t("home.finalCta.kicker")}</span>
         <h2 className="cta-title">
-          Let’s create <span className="italic-word">something</span> timeless
-          together
+          {titleStart} <span className="italic-word">{titleAccent}</span>{" "}
+          {titleEnd}
         </h2>
 
         {/* Стандартная кнопка (Editorial Button) */}
-        <a href="/contact" className="btn-ghost btn-standard">
-          Inquire for availability
-        </a>
+        <LangLink to="/contact" className="btn-ghost btn-standard">
+          {t("home.finalCta.cta")}
+        </LangLink>
       </div>
     </section>
   );

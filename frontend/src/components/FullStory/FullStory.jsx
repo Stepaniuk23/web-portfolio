@@ -2,12 +2,15 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import Lightbox from "../Lightbox/Lightbox";
 import NavigationArrow from "../NavigationArrow/NavigationArrow";
 import "./FullStory.css";
+import { useT } from "../../i18n/LanguageContext";
+import { fill } from "../../i18n/languages";
 
 const FullStory = React.forwardRef(
   (
     { images, title = "The Full Story", label = "Atmosphere", isVisible },
     ref,
   ) => {
+    const t = useT();
     const validImages = (images || []).filter(Boolean);
     const scrollRef = useRef(null);
     const itemRefs = useRef([]);
@@ -128,7 +131,7 @@ const FullStory = React.forwardRef(
             className="full-story-arrow full-story-arrow-left"
             onClick={() => handleArrowClick(-1)}
             disabled={!canScrollLeft}
-            aria-label="Show previous photos"
+            aria-label={t("story.showPrevious")}
           />
 
           <div ref={scrollRef} className="full-story-scroll">
@@ -142,7 +145,7 @@ const FullStory = React.forwardRef(
               >
                 <img
                   src={img}
-                  alt={`Frame ${index + 1}`}
+                  alt={fill(t("story.frameAlt"), { title, n: index + 1 })}
                   loading="lazy"
                   onClick={() => setLightboxIndex(index)}
                   style={{ cursor: "pointer" }}
@@ -156,7 +159,7 @@ const FullStory = React.forwardRef(
             className="full-story-arrow full-story-arrow-right"
             onClick={() => handleArrowClick(1)}
             disabled={!canScrollRight}
-            aria-label="Show next photos"
+            aria-label={t("story.showNext")}
           />
 
           <div className="full-story-meta" aria-hidden="true">

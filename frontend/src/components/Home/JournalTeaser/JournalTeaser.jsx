@@ -4,6 +4,8 @@ import "./JournalTeaser.css";
 import story1 from "../../../assets/journal/story1.jpg";
 import story2 from "../../../assets/journal/story2.jpg";
 import story3 from "../../../assets/journal/story3.jpg";
+import LangLink from "../../../i18n/LangLink";
+import { useT } from "../../../i18n/LanguageContext";
 
 const STORIES = [
   {
@@ -27,7 +29,7 @@ const STORIES = [
     image: story3,
     category: "Editorials", // Переименовали (для Love Story или Портрета)
     title: "The Unveiled Persona: Fluidity & Fire",
-    location: "Ukraine",
+    location: "Dnipro, Ukraine",
     slug: "editorials/anna-vladi-dnipro-sunset",
   },
 ];
@@ -35,6 +37,9 @@ const STORIES = [
 function JournalTeaser() {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
+  const t = useT();
+  // Тексты карточек берутся из словаря по порядку (картинки и ссылки — из STORIES)
+  const items = t("home.journal.items");
 
   useEffect(() => {
     const el = ref.current;
@@ -62,14 +67,16 @@ function JournalTeaser() {
       <div className="journal-container">
         <header className="journal-header">
           {/* Уходим от слова Journal, если страницы не будет */}
-          <p className="journal-kicker">Featured Work</p>
-          <h2 className="journal-main-title">Latest Stories</h2>
+          <p className="journal-kicker">{t("home.journal.kicker")}</p>
+          <h2 className="journal-main-title">{t("home.journal.title")}</h2>
         </header>
 
         <div className="journal-grid">
-          {STORIES.map((story) => (
-            <a
-              href={`/${story.slug}`} // Теперь ссылка ведет сразу в нужный раздел
+          {STORIES.map((baseStory, index) => {
+            const story = { ...baseStory, ...items[index] };
+            return (
+            <LangLink
+              to={`/${story.slug}`} // Ссылка ведет сразу в нужный раздел на текущем языке
               key={story.id}
               className="journal-card"
             >
@@ -81,14 +88,15 @@ function JournalTeaser() {
                 <h3 className="journal-card-title">{story.title}</h3>
                 <p className="journal-card-location">{story.location}</p>
               </div>
-            </a>
-          ))}
+            </LangLink>
+            );
+          })}
         </div>
 
         <div className="journal-footer">
-          <a href="/editorials" className="btn-ghost">
-            View All Stories
-          </a>
+          <LangLink to="/editorials" className="btn-ghost">
+            {t("home.journal.cta")}
+          </LangLink>
         </div>
       </div>
     </section>

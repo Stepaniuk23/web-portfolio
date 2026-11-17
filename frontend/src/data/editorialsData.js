@@ -15,8 +15,8 @@ export const editorialsData = [
       intro:
         "Some stories feel meant for a city. Meiirbek Nariman from Kazakhstan and Daria from Ukraine met in Prague, and their connection carries the same beauty as the streets around them: graceful, warm, and quietly cinematic.",
       introColumns: [
-        "We started near the National Theatre, moving through the historic center while the city shifted from grand architecture to intimate details. Their energy was romantic but easy, with the kind of laughter that turns every frame into a real memory.",
-        "Later we slipped into hidden courtyards, away from the crowds and noise. Their funny dog joined us and kept stealing scenes in the best way, adding spontaneity to every sequence and making the whole session feel even more alive.",
+        "We started near the National Theatre and slowly made our way through the heart of Prague. Their dog was with us the entire time and quickly became part of the story. There was plenty of laughter, easy conversation, and the kind of moments you can never plan in advance.",
+        "Later we wandered into quiet courtyards away from the tourists and the noise. Their dog kept finding its way into the photographs, adding even more life to the session. Looking back, many of our favourite images happened thanks to that little bit of unpredictability.",
       ],
       momentTitle: "Prague Between Grand Streets and Quiet Courtyards",
       momentText:

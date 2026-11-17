@@ -1,6 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import Seo from "../../i18n/Seo";
+import LangLink from "../../i18n/LangLink";
+import { useLanguage, useT } from "../../i18n/LanguageContext";
+import { fill } from "../../i18n/languages";
+import { localizeStory } from "../../i18n/localizeStory";
 import "../Weddings/Weddings.css";
 import { editorialsData } from "../../data/editorialsData";
 
@@ -9,6 +12,8 @@ function Editorials() {
   const gridRef = useRef(null);
   const [headerVisible, setHeaderVisible] = useState(false);
   const [gridVisible, setGridVisible] = useState(false);
+  const { lang } = useLanguage();
+  const t = useT();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -38,24 +43,18 @@ function Editorials() {
 
   return (
     <div className="weddings-page">
-      <Helmet>
-        <title>Editorial Stories | Denys Stepaniuk Photography</title>
-        <meta
-          name="description"
-          content="Selected editorial and portrait stories across Prague, Ukraine and Europe by Denys Stepaniuk."
-        />
-        <link
-          rel="canonical"
-          href="https://www.denysstepaniuk.com/editorials"
-        />
-      </Helmet>
+      <Seo
+        title={t("seo.editorials.title")}
+        description={t("seo.editorials.description")}
+        path="/editorials"
+      />
       <header
         ref={headerRef}
         className={`weddings-header ${headerVisible ? "is-visible" : ""}`}
       >
         <div className="weddings-container">
-          <h1>Selected Editorials</h1>
-          <p className="subtitle">Portrait stories across Europe and beyond</p>
+          <h1>{t("editorials.title")}</h1>
+          <p className="subtitle">{t("editorials.subtitle")}</p>
         </div>
       </header>
 
@@ -63,29 +62,32 @@ function Editorials() {
         ref={gridRef}
         className={`stories-grid ${gridVisible ? "is-visible" : ""}`}
       >
-        {editorialsData.map((story, index) => (
+        {editorialsData.map((baseStory, index) => {
+          const story = localizeStory(baseStory, lang, "editorials");
+          return (
           <div
             key={story.id}
             className="story-card"
             style={{ "--story-delay": `${index * 140}ms` }}
           >
-            <Link to={`/editorials/${story.id}`}>
+            <LangLink to={`/editorials/${story.id}`}>
               <div className="story-image-wrap">
                 <img
                   src={story.images.cover}
-                  alt={`${story.title} editorial photography in ${story.location}`}
+                  alt={fill(t("editorials.coverAlt"), story)}
                 />
                 <div className="story-overlay">
-                  <span>View Story</span>
+                  <span>{t("editorials.viewStory")}</span>
                 </div>
               </div>
               <div className="story-info">
                 <span className="story-location">{story.location}</span>
                 <h3 className="story-title">{story.title}</h3>
               </div>
-            </Link>
+            </LangLink>
           </div>
-        ))}
+          );
+        })}
       </section>
     </div>
   );

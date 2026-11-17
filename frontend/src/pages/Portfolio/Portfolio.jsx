@@ -1,6 +1,8 @@
 import "./Portfolio.css";
 import { useState } from "react";
-import { Helmet } from "react-helmet-async";
+import Seo from "../../i18n/Seo";
+import { useT } from "../../i18n/LanguageContext";
+import { fill } from "../../i18n/languages";
 import Lightbox from "../../components/Lightbox/Lightbox";
 
 import img1 from "../../assets/gallery/gallery1.jpg";
@@ -27,6 +29,7 @@ import img21 from "../../assets/gallery/gallery21.jpg";
 import img22 from "../../assets/gallery/gallery22.jpg";
 
 function Gallery({ canonicalPath = "/portfolio" } = {}) {
+  const t = useT();
   const images = [
     img1,
     img2,
@@ -72,26 +75,21 @@ function Gallery({ canonicalPath = "/portfolio" } = {}) {
 
   return (
     <div className="gallery-container">
-      <Helmet>
-        <title>Photography Portfolio | Denys Stepaniuk</title>
-        <meta
-          name="description"
-          content="A selection of wedding and portrait photography by Denys Stepaniuk, based in Prague."
-        />
-        <link
-          rel="canonical"
-          href={`https://www.denysstepaniuk.com${canonicalPath}`}
-        />
-      </Helmet>
+      <Seo
+        title={t("seo.portfolio.title")}
+        description={t("seo.portfolio.description")}
+        path={canonicalPath}
+      />
 
-      <h1 className="gallery-title">My Recent Work</h1>
+      <h1 className="gallery-title">{t("portfolio.title")}</h1>
 
       <div className="masonry">
         {images.map((src, index) => (
           <img
             key={index}
             src={src}
-            alt={`Denys Stepaniuk photography portfolio ${index + 1}`}
+            alt={fill(t("portfolio.imageAlt"), { n: index + 1 })}
+            loading={index < 6 ? "eager" : "lazy"}
             onClick={() => openLightbox(index)}
             className="gallery-img"
           />
@@ -102,7 +100,7 @@ function Gallery({ canonicalPath = "/portfolio" } = {}) {
         <Lightbox
           images={images.map((src, index) => ({
             src,
-            alt: `Denys Stepaniuk photography portfolio ${index + 1}`,
+            alt: fill(t("portfolio.lightboxAlt"), { n: index + 1 }),
           }))}
           index={selectedIndex}
           onClose={closeLightbox}

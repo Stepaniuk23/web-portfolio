@@ -1,30 +1,35 @@
 import "./Hero.css";
 import heroImage from "../../../assets/hero.jpg";
+import { useT } from "../../../i18n/LanguageContext";
 
 function Hero() {
+  const t = useT();
+
   return (
     <section className="hero">
       <div className="hero-left">
         <img
           src={heroImage}
-          alt="Editorial wedding photography by Denys Stepaniuk"
+          alt={t("home.hero.alt")}
           fetchpriority="high"
           className="hero-photo"
         />
       </div>
 
       <div className="hero-right">
-        <span className="hero-label">Editorial Wedding Photography</span>
+        <span className="hero-label">{t("home.hero.label")}</span>
 
         <h1 className="hero-title">
-          <span className="hero-title-line">Timeless</span>
-          <span className="hero-title-line">Wedding</span>
-          <span className="hero-title-line">Stories</span>
+          {t("home.hero.titleLines").map((line) => (
+            <span key={line} className="hero-title-line">
+              {line}
+            </span>
+          ))}
         </h1>
 
         <div className="hero-divider"></div>
 
-        <p className="hero-subtitle">Modern. Emotional. Fashion‑inspired.</p>
+        <p className="hero-subtitle">{t("home.hero.subtitle")}</p>
       </div>
     </section>
   );

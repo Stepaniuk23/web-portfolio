@@ -1,0 +1,313 @@
+{
+  "header": {
+    "menu": "Menu",
+    "close": "Zavřít",
+    "menuOpenAria": "Otevřít navigační menu",
+    "menuCloseAria": "Zavřít navigační menu",
+    "languageAria": "Vyberte jazyk"
+  },
+  "nav": {
+    "home": "Úvod",
+    "weddings": "Svatby",
+    "editorials": "Příběhy",
+    "about": "O mně",
+    "contact": "Kontakt"
+  },
+  "footer": {
+    "rights": "Všechna práva vyhrazena",
+    "motto": "Snímky pro příběhy s duší",
+    "privacy": "Zásady ochrany osobních údajů",
+    "cookies": "Zásady používání cookies",
+    "legalAria": "Právní informace"
+  },
+  "seo": {
+    "home": {
+      "title": "Svatební fotograf Praha | Denys Stepaniuk",
+      "description": "Svatební fotograf v Praze. Elegantní, přirozené a nadčasové svatební fotografie ve stylu fine art – Denys Stepaniuk fotí svatby v Praze, po celém Česku i v Evropě.",
+      "schemaDescription": "Svatební a portrétní fotograf z Prahy, který fotí svatby ve stylu fine art po celé Evropě."
+    },
+    "about": {
+      "title": "O mně – Denys Stepaniuk | Svatební fotograf v Praze",
+      "description": "Seznamte se s Denysem Stepaniukem – svatebním a portrétním fotografem z Prahy, který zachytil už více než 248 svatebních příběhů po celé Evropě."
+    },
+    "portfolio": {
+      "title": "Portfolio fotografií | Denys Stepaniuk",
+      "description": "Výběr svatebních a portrétních fotografií Denyse Stepaniuka, fotografa z Prahy."
+    },
+    "contact": {
+      "title": "Kontakt | Denys Stepaniuk – svatební fotograf Praha",
+      "description": "Kontaktujte Denyse Stepaniuka a rezervujte si svatební nebo portrétní focení v Praze i kdekoli v Evropě."
+    },
+    "weddings": {
+      "title": "Svatební příběhy | Denys Stepaniuk – svatební fotograf Praha",
+      "description": "Vybrané svatební příběhy skutečných párů z Prahy, Ukrajiny a celé Evropy objektivem Denyse Stepaniuka."
+    },
+    "editorials": {
+      "title": "Příběhy | Denys Stepaniuk",
+      "description": "Portrétní příběhy a focení párů v Praze, na Ukrajině i po celé Evropě objektivem Denyse Stepaniuka."
+    },
+    "weddingStory": {
+      "title": "{title} | Svatební příběh | Denys Stepaniuk",
+      "description": "{title} – svatební fotografie, {location}. Fotograf Denys Stepaniuk."
+    },
+    "editorialStory": {
+      "title": "{title} | Příběh | Denys Stepaniuk",
+      "description": "{title} – focení, {location}. Fotograf Denys Stepaniuk."
+    },
+    "notFound": {
+      "title": "Stránka nenalezena | Denys Stepaniuk"
+    }
+  },
+  "home": {
+    "hero": {
+      "alt": "Svatební fotografie – Denys Stepaniuk",
+      "label": "Emoce, které zůstanou navždy",
+      "titleLines": [
+        "Svatební",
+        "příběhy",
+        "mimo čas"
+      ],
+      "subtitle": "Moderně. Emotivně. S citem pro módu."
+    },
+    "studio": {
+      "kicker": "MŮJ PŘÍSTUP",
+      "subtitle": [
+        "Fotografie plné světla, elegance",
+        "a",
+        "upřímných emocí"
+      ],
+      "slideAlt": "Svatební fotografie ve stylu fine art – Denys Stepaniuk, ukázka {n}",
+      "text": "Od komorních oslav v Praze po elegantní svatby po celé Evropě – v mé práci mě vede světlo, emoce a upřímnost každého okamžiku.",
+      "cta": "Všechny svatby"
+    },
+    "philosophy": {
+      "alt": "Pozadí sekce Filozofie",
+      "kicker": "Můj vizuální jazyk stojí na",
+      "title": [
+        "CITU",
+        "a",
+        "SVĚTLE"
+      ],
+      "text1": "Věřím v upřímné a elegantní snímky – fotografie, které působí lehce, poeticky a hluboce osobně.",
+      "text2": "Každá svatba je příběhem o blízkosti. Pracuji klidně a nenápadně a nechávám prostor gestům a pohledům, které nelze předem naaranžovat."
+    },
+    "aboutTeaser": {
+      "alt": "Portrét Denyse Stepaniuka",
+      "kicker": "O AUTOROVI",
+      "title": [
+        "Klidný, všímavý,",
+        "pozorný",
+        "k lidem i detailům."
+      ],
+      "text1": "Jmenuji se Denys Stepaniuk a jsem svatební fotograf z Prahy.",
+      "text2": "Nezáleží mi jen na tom, jak fotografie vypadají, ale také na tom, co dokážou uchovat. Proto pracuji klidně a nenápadně a pozorně sleduji, jak se odvíjí váš svatební den.",
+      "cta": "Více o mně"
+    },
+    "journal": {
+      "kicker": "Vybraná práce",
+      "title": "Nejnovější příběhy",
+      "cta": "Všechny příběhy",
+      "items": [
+        {
+          "category": "Svatby",
+          "title": "Estetika Soulu v srdci Kyjeva",
+          "location": "Kyjev, Ukrajina"
+        },
+        {
+          "category": "Příběhy",
+          "title": "Místo setkání — Praha",
+          "location": "Praha, Česko"
+        },
+        {
+          "category": "Příběhy",
+          "title": "Být sám sebou",
+          "location": "Dnipro, Ukrajina"
+        }
+      ]
+    },
+    "finalCta": {
+      "alt": "Kontakt – Denys Stepaniuk, fine art fotograf",
+      "kicker": "Plánujete svatbu?",
+      "title": [
+        "Vytvořme spolu",
+        "něco",
+        "výjimečného"
+      ],
+      "cta": "Zeptat se na volný termín"
+    }
+  },
+  "about": {
+    "heroAlt": "Hallstatt",
+    "h1First": "Jsem Denys Stepaniuk",
+    "h1Second": "a už více než 8 let mám tu čest zachycovat svatební příběhy po celé Evropě – je jich přes 248. Rámuji tiché, upřímné okamžiky, které utvářejí naše životy.",
+    "portraitAlt": "Portrét Denyse",
+    "introTitle": "Fotograf z Prahy",
+    "intro": [
+      "Když zrovna nefotím svatby, nejčastěji mě najdete v horách. Právě tam odpočívám, zpomaluji a hledám inspiraci. Proto na tomto webu nenajdete jen fotografie lidí, ale i krajiny. Hory mi připomínají, jak důležité je všímat si jednoduchých věcí a nikam nespěchat.",
+      "Na fotografii mám nejraději její přirozenost. Nemám rád nekonečné pózování ani neustálé pokyny před objektivem. Ty nejcennější fotografie vznikají ve chvíli, kdy se lidé cítí uvolněně a zůstávají sami sebou.",
+      "Žiji v Praze a fotografuji svatby po celé Evropě. Každý příběh je jiný, ale můj úkol zůstává stále stejný — pozorně sledovat a zachytit to, na čem skutečně záleží.",
+      "Pro mě není dobrá svatební fotografie jen o krásných snímcích. Jsou to fotografie, které vám i po mnoha letech připomenou nejen události onoho dne, ale také vaše pocity, rozhovory, úsměvy a lidi, kteří byli po vašem boku."
+    ],
+    "quote": "„Jsou mi blízké okamžiky, které nelze zopakovat.“",
+    "beyondTitle": "Mimo svatební fotografii",
+    "beyond": [
+      "Kdykoli mám příležitost, vyrážím do hor. Do Alp, Dolomit nebo na jiná místa, kde si mohu na chvíli odpočinout od každodenního shonu. Hory mi pomáhají načerpat novou energii a připomínají mi, že to nejzajímavější často vyžaduje čas a trpělivost.",
+      "Možná právě proto rád pracuji klidně a soustředěně. Ať už v horách nebo na svatbě, mnoho záleží na trpělivosti: někdy stačí chvíli počkat na lepší světlo, správný okamžik nebo jednoduše nechat věci plynout přirozeně.",
+      "Vždy mě přitahovala nová místa, lidé a příběhy. Ať už jsem na horské stezce nebo procházím historickými ulicemi evropského města, moje zvědavost zůstává stejná. Právě ona mě vede k tomu dívat se pozorněji a všímat si detailů, které ostatním snadno uniknou.",
+      "Možná právě díky tomu mě každé focení stále baví. A kamkoli vás váš příběh zavede, rád se na tu cestu vydám s vámi."
+    ],
+    "travelNote": "Fotím po celém světě",
+    "mountainAlt": "Putování po horách",
+    "kindWordsTitle": "Milá slova",
+    "kindWordsSubtitle": "Skutečné okamžiky, skutečné emoce.",
+    "reviewAlt": "Recenze",
+    "reviews": [
+      "„Překonat očekávání – to je vždycky cíl. Krásný vzkaz od Jekatěriny o tom, jak jsme vystihli tu správnou chvíli, a o duši v každém snímku. Jsem vděčný za takové páry“",
+      "„Když se rodinný příběh stane návykovým. Ruslana a její rodina si ho pustili několikrát dokola, ještě než vůbec klikli na stažení. Ta slova mě opravdu dojala“",
+      "„Okamžik proměny pro Ruslanu. ‚Ani se nepoznávám‘ – to je pro boudoir příběh ten největší kompliment. Opravdu elegantní a upřímná série“",
+      "„Opravdové kouzlo s Viktorií. Její reakce – ‚Takhle mě ještě nikdy nikdo neviděl‘ – je přesně to, oč usilujeme, když spolu tvoříme příběh ve stylu luxusního magazínu“",
+      "„Všechno je o ‚oku pro záběr‘. Fotit svatbu Anny byla radost a je mi ctí, že v těchto snímcích cítila duši svého důležitého dne. Těším se na naše další kapitoly“",
+      "„Slzy štěstí od Margarity. Jde o to zachytit jediný prchavý okamžik – jako ty růže, o kterých psala. Když vidím její reakci, vím, že každá vteřina ‚lovu‘ na dokonalý záběr stála za to“",
+      "„Největší kompliment je klient, který se vrací. Po svatbě se Margarita vrátila na portrétní focení. Její reakce – ‚Nemám slov‘ – říká všechno. Je radost znovu vidět její energii“"
+    ]
+  },
+  "contact": {
+    "photoAlt": "Tichý portrét z ateliéru",
+    "title": "Kontaktujte mě",
+    "subtitle": "Budu rád, když se mi ozvete. Napište mi kvůli rezervaci termínu nebo s jakýmkoli dotazem.",
+    "name": "Jméno",
+    "namePlaceholder": "Vaše jméno",
+    "email": "E-mail",
+    "emailPlaceholder": "vy@priklad.cz",
+    "message": "Zpráva",
+    "messagePlaceholder": "Napište mi pár slov o svých plánech",
+    "send": "Odeslat zprávu",
+    "sending": "Odesílám...",
+    "success": "Děkuji za zprávu. Brzy se vám ozvu.",
+    "error": "Něco se pokazilo. Zkuste to prosím později.",
+    "network": "Chyba připojení. Zkontrolujte prosím internet a zkuste to znovu."
+  },
+  "weddings": {
+    "title": "Vybrané příběhy",
+    "subtitle": "Zachycuji lásku po celé Evropě i za jejími hranicemi",
+    "viewStory": "Zobrazit příběh",
+    "coverAlt": "{title} – svatební fotografie, {location}"
+  },
+  "editorials": {
+    "title": "Lidé a jejich příběhy",
+    "subtitle": "Portrétní a párové focení z různých měst a zemí.",
+    "viewStory": "Zobrazit příběh",
+    "coverAlt": "{title} – focení, {location}"
+  },
+  "story": {
+    "notFound": "Příběh nenalezen",
+    "editorialNotes": "Poznámky k příběhu",
+    "fullStoryLabel": "Atmosféra",
+    "fullStoryTitle": "Celý příběh",
+    "frameAlt": "{title} – snímek {n}",
+    "showPrevious": "Zobrazit předchozí fotografie",
+    "showNext": "Zobrazit další fotografie",
+    "wedding": {
+      "labelClassic": "Svatební příběh",
+      "labelCinematic": "Filmový svatební příběh",
+      "labelMinimal": "Komorní svatební příběh",
+      "heroAlt": "{title} – svatební fotografie, {location}",
+      "sceneAlt": "{title} – svatba, {location}: atmosféra místa",
+      "portraitAlt": "{title} – svatba, {location}: portrét páru",
+      "detailAlt": "{title} – svatba, {location}: svatební detaily",
+      "finaleAlt": "{title} – svatba, {location}: závěr dne"
+    },
+    "editorial": {
+      "labelClassic": "Příběh lásky",
+      "labelCinematic": "Filmový příběh",
+      "labelAtmosphere": "Atmosférický příběh",
+      "labelMinimal": "Komorní příběh",
+      "heroAlt": "{title} – focení, {location}",
+      "sceneAlt": "{title} – focení, {location}: atmosféra místa",
+      "portraitAlt": "{title} – focení, {location}: portrét",
+      "detailAlt": "{title} – focení, {location}: detail",
+      "finaleAlt": "{title} – focení, {location}: závěr",
+      "finaleAltCinematic": "{title} – závěr focení, {location}"
+    }
+  },
+  "portfolio": {
+    "title": "Moje nejnovější práce",
+    "imageAlt": "Svatební a portrétní fotografie – Denys Stepaniuk, Praha – {n}",
+    "lightboxAlt": "Portfolio Denyse Stepaniuka – {n}"
+  },
+  "lightbox": {
+    "close": "Zavřít",
+    "previous": "Předchozí fotografie",
+    "next": "Další fotografie"
+  },
+  "cookie": {
+    "title": "Vaše soukromí",
+    "text": "Používáme analytické nástroje, abychom pochopili, jak je web používán, a mohli ho zlepšovat. Analytické cookies můžete kdykoli přijmout nebo odmítnout. Přečtěte si naše",
+    "and": "a",
+    "decline": "Odmítnout",
+    "accept": "Přijmout"
+  },
+  "legal": {
+    "settingsButton": "Nastavení cookies",
+    "metaBefore": "S dotazy a žádostmi týkajícími se ochrany osobních údajů se na mě prosím obraťte prostřednictvím kontaktního formuláře na stránce",
+    "metaLink": "Kontakt",
+    "privacy": {
+      "title": "Zásady ochrany osobních údajů",
+      "description": "Jak Denys Stepaniuk Photography nakládá s vašimi osobními údaji.",
+      "sections": [
+        {
+          "heading": "Kdo jsme",
+          "body": "Tento web je portfoliem Denyse Stepaniuka, svatebního a portrétního fotografa, který je správcem zde popsaných osobních údajů."
+        },
+        {
+          "heading": "Údaje, které mi poskytujete",
+          "body": "Když mi napíšete prostřednictvím kontaktního formuláře, obdržím vaše jméno, e-mailovou adresu a zprávu. Používám je pouze k odpovědi na váš dotaz a k domluvě ohledně focení. Nikdy je neprodávám ani nesdílím pro marketingové účely."
+        },
+        {
+          "heading": "Analytika",
+          "body": "Pouze s vaším souhlasem se prostřednictvím služeb Google Analytics a Microsoft Clarity shromažďují anonymní údaje o používání webu: zobrazené stránky, typ zařízení a prohlížeče, přibližná poloha a způsob procházení webu. Pomáhá mi to pochopit, jak je web používán, a zlepšovat váš zážitek. Pokud souhlas nedáte, žádná z těchto služeb se nenačte."
+        },
+        {
+          "heading": "Právní základ",
+          "body": "Odpovědi na dotazy vycházejí z vaší žádosti a z oprávněného zájmu. Analytika je založena na vašem souhlasu (čl. 6 odst. 1 písm. a) GDPR), který můžete kdykoli odvolat, aniž by tím byla dotčena zákonnost předchozího zpracování."
+        },
+        {
+          "heading": "Třetí strany a předávání údajů",
+          "body": "Zprávy z kontaktního formuláře mi do e-mailu doručuje služba Web3Forms. Google a Microsoft vystupují jako poskytovatelé analytických služeb. Údaje mohou být zpracovávány mimo Evropský hospodářský prostor v rámci záruk, které tito poskytovatelé uplatňují, například standardních smluvních doložek."
+        },
+        {
+          "heading": "Doba uchování",
+          "body": "Dotazy uchovávám po dobu nezbytnou k odpovědi a k vyřízení případné rezervace, poté je mažu. Analytické údaje se uchovávají podle nastavení jednotlivých poskytovatelů."
+        },
+        {
+          "heading": "Vaše práva",
+          "body": "Máte právo požadovat přístup ke svým údajům, jejich opravu, výmaz, omezení zpracování nebo přenositelnost a vznést námitku proti jejich zpracování. Můžete také podat stížnost u příslušného dozorového úřadu pro ochranu osobních údajů. K uplatnění kteréhokoli práva prosím použijte kontaktní formulář na stránce Kontakt."
+        }
+      ]
+    },
+    "cookies": {
+      "title": "Zásady používání cookies",
+      "description": "Jaké cookies tento web používá a jak je můžete spravovat.",
+      "sections": [
+        {
+          "heading": "Nezbytné úložiště",
+          "body": "Vaše volba se ukládá do místního úložiště prohlížeče pod klíčem „cookie-consent“. Je nezbytně nutná k zapamatování vašeho rozhodnutí a neobsahuje žádné osobní údaje."
+        },
+        {
+          "heading": "Analytické cookies",
+          "body": "Google Analytics a Microsoft Clarity používají cookies k měření návštěvnosti a k pochopení toho, jak se návštěvníci po webu pohybují. Načtou se až poté, co kliknete na „Přijmout“. Pokud je odmítnete, nenačtou se vůbec a žádné analytické cookies se neuloží."
+        },
+        {
+          "heading": "Změna rozhodnutí",
+          "body": "Analytické cookies můžete kdykoli přijmout nebo odmítnout pomocí tlačítka níže. Pokud souhlas po přijetí odvoláte, další shromažďování údajů se zastaví; stávající cookies můžete také smazat v nastavení prohlížeče.",
+          "action": true
+        }
+      ]
+    }
+  },
+  "notFound": {
+    "title": "Stránka nenalezena",
+    "text": "Stránka, kterou hledáte, neexistuje nebo byla přesunuta.",
+    "back": "Zpět na úvod"
+  }
+}

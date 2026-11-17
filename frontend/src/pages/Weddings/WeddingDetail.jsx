@@ -1,7 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom"; // Позволяет брать id из адресной строки
-import { Helmet } from "react-helmet-async";
+import Seo from "../../i18n/Seo";
+import { useLanguage, useT } from "../../i18n/LanguageContext";
+import { fill } from "../../i18n/languages";
+import { localizeStory } from "../../i18n/localizeStory";
 import { storiesData } from "../../data/storiesData";
+import { useFitTitle } from "../../hooks/useFitTitle";
 import FullStory from "../../components/FullStory/FullStory"; // Наш "Мозг"
 import "./WeddingDetail.css";
 
@@ -10,7 +14,13 @@ function WeddingDetail() {
   const { id } = useParams();
 
   // 2. Ищем данные именно для этой свадьбы в нашем файле данных
-  const story = storiesData.find((item) => item.id === id);
+  const { lang } = useLanguage();
+  const t = useT();
+  const story = localizeStory(
+    storiesData.find((item) => item.id === id),
+    lang,
+    "stories",
+  );
   const isCinematic = story?.templateType === "cinematic";
   const isModernMinimal = story?.templateType === "modern-minimal";
   const introColumns = story?.content?.introColumns ?? [];
@@ -19,6 +29,8 @@ function WeddingDetail() {
   const fullStoryRef = useRef(null);
 
   const heroRef = useRef(null);
+  // Подгоняет размер имён в HERO, чтобы длинные имена не обрезались
+  const titleRef = useFitTitle(story?.title);
   const introRef = useRef(null);
   const gridRef = useRef(null);
   const momentRef = useRef(null);
@@ -74,10 +86,8 @@ function WeddingDetail() {
   if (!story) {
     return (
       <div className="story-not-found">
-        <Helmet>
-          <meta name="robots" content="noindex, nofollow" />
-        </Helmet>
-        Story not found
+        <Seo title={t("story.notFound")} noindex />
+        {t("story.notFound")}
       </div>
     );
   }
@@ -86,17 +96,11 @@ function WeddingDetail() {
 
   return (
     <div className={`story-article template-${story.templateType}`}>
-      <Helmet>
-        <title>{story.title} | Wedding Story | Denys Stepaniuk</title>
-        <meta
-          name="description"
-          content={`${story.title} wedding photography in ${story.location} by Denys Stepaniuk.`}
-        />
-        <link
-          rel="canonical"
-          href={`https://www.denysstepaniuk.com/weddings/${story.id}`}
-        />
-      </Helmet>
+      <Seo
+        title={fill(t("seo.weddingStory.title"), story)}
+        description={fill(t("seo.weddingStory.description"), story)}
+        path={`/weddings/${story.id}`}
+      />
       {/* --- БЛОК 1: HERO --- */}
       {isCinematic ? (
         <section
@@ -106,14 +110,14 @@ function WeddingDetail() {
           <div className="hero-cinematic-media" aria-hidden="true">
             <img
               src={story.images.hero}
-              alt={`${story.title} wedding photography in ${story.location}`}
+              alt={fill(t("story.wedding.heroAlt"), story)}
             />
           </div>
           <div className="hero-cinematic-content">
             <span className="hero-cinematic-label">
-              Cinematic Wedding Story
+              {t("story.wedding.labelCinematic")}
             </span>
-            <h1 className="hero-cinematic-title">
+            <h1 ref={titleRef} className="hero-cinematic-title">
               {titleLines.map((line, index) => (
                 <span
                   key={`${line}-${index}`}
@@ -134,8 +138,10 @@ function WeddingDetail() {
           className={`hero-split story-section-reveal ${visibleSections.hero ? "is-visible" : ""}`}
         >
           <div className="hero-split-text">
-            <span className="hero-split-label">Intimate Wedding Story</span>
-            <h1 className="hero-split-title">
+            <span className="hero-split-label">
+              {t("story.wedding.labelMinimal")}
+            </span>
+            <h1 ref={titleRef} className="hero-split-title">
               {titleLines.map((line, index) => (
                 <span
                   key={`${line}-${index}`}
@@ -153,7 +159,7 @@ function WeddingDetail() {
           <div className="hero-split-media" aria-hidden="true">
             <img
               src={story.images.hero}
-              alt={`${story.title} wedding photography in ${story.location}`}
+              alt={fill(t("story.wedding.heroAlt"), story)}
             />
           </div>
         </section>
@@ -165,9 +171,9 @@ function WeddingDetail() {
           <div className="hero-magazine-container">
             <div className="hero-magazine-text">
               <span className="hero-magazine-label">
-                Editorial Wedding Story
+                {t("story.wedding.labelClassic")}
               </span>
-              <h1 className="hero-magazine-title">
+              <h1 ref={titleRef} className="hero-magazine-title">
                 {titleLines.map((line, index) => (
                   <span
                     key={`${line}-${index}`}
@@ -184,7 +190,7 @@ function WeddingDetail() {
             <div className="hero-magazine-image">
               <img
                 src={story.images.hero}
-                alt={`${story.title} wedding photography in ${story.location}`}
+                alt={fill(t("story.wedding.heroAlt"), story)}
               />
             </div>
           </div>
@@ -210,13 +216,13 @@ function WeddingDetail() {
       >
         <div className="story-grid-container">
           <div className="grid-item item-wide">
-            <img src={story.images.gridWide} alt="The Scene" />
+            <img src={story.images.gridWide} alt={fill(t("story.wedding.sceneAlt"), story)} loading="lazy" />
           </div>
           <div className="grid-item item-portrait">
-            <img src={story.images.gridPortrait} alt="The Portrait" />
+            <img src={story.images.gridPortrait} alt={fill(t("story.wedding.portraitAlt"), story)} loading="lazy" />
           </div>
           {introColumns.length ? (
-            <div className="grid-item item-copy" aria-label="Editorial notes">
+            <div className="grid-item item-copy" aria-label={t("story.editorialNotes")}>
               <div className="grid-copy-columns">
                 {introColumns.map((paragraph, index) => (
                   <p key={`grid-copy-${index}`}>{paragraph}</p>
@@ -225,7 +231,7 @@ function WeddingDetail() {
             </div>
           ) : null}
           <div className="grid-item item-accent">
-            <img src={story.images.gridSquare} alt="The Detail" />
+            <img src={story.images.gridSquare} alt={fill(t("story.wedding.detailAlt"), story)} loading="lazy" />
           </div>
         </div>
       </section>
@@ -236,7 +242,7 @@ function WeddingDetail() {
         className={`story-moment story-section-reveal ${visibleSections.moment ? "is-visible" : ""}`}
       >
         <div className="moment-image-wrap">
-          <img src={story.images.momentWide} alt={story.content.momentTitle} />
+          <img src={story.images.momentWide} alt={story.content.momentTitle} loading="lazy" />
         </div>
         <div className="about-container-narrow">
           <div className="moment-story-box">
@@ -264,7 +270,7 @@ function WeddingDetail() {
         className={`story-finale story-section-reveal ${visibleSections.finale ? "is-visible" : ""}`}
       >
         <div className="finale-image-full">
-          <img src={story.images.finale} alt="Wedding Finale" />
+          <img src={story.images.finale} alt={fill(t("story.wedding.finaleAlt"), story)} loading="lazy" />
         </div>
       </section>
 
@@ -273,8 +279,8 @@ function WeddingDetail() {
         ref={fullStoryRef}
         images={story.images.fullGallery}
         isVisible={visibleSections.fullStory}
-        label="Atmosphere"
-        title="The Full Story"
+        label={t("story.fullStoryLabel")}
+        title={t("story.fullStoryTitle")}
       />
     </div>
   );

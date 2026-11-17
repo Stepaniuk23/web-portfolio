@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Helmet } from "react-helmet-async";
+import Seo from "../../i18n/Seo";
+import { useT } from "../../i18n/LanguageContext";
+import { useFitTitle } from "../../hooks/useFitTitle";
 import "./About.css";
 
 // Фото
@@ -20,6 +22,12 @@ function About() {
   const statementRef = useRef(null);
   const explorationRef = useRef(null);
   const kindWordsRef = useRef(null);
+  const t = useT();
+  // «Storyteller» на узком телефоне не должен вылезать за край блока
+  const introTitleRef = useFitTitle(t("about.introTitle"));
+  // «За пределами свадебной фотографии»: длинные слова не должны вылезать за колонку
+  const beyondTitleRef = useFitTitle(t("about.beyondTitle"));
+  const reviews = t("about.reviews");
 
   const [heroVisible, setHeroVisible] = useState(false);
   const [introVisible, setIntroVisible] = useState(false);
@@ -65,33 +73,26 @@ function About() {
 
   return (
     <div className="about-page">
-      <Helmet>
-        <title>About Denys Stepaniuk | Wedding Photographer in Prague</title>
-        <meta
-          name="description"
-          content="Meet Denys Stepaniuk, a wedding and editorial photographer based in Prague who has documented over 248 wedding stories across Europe."
-        />
-        <link rel="canonical" href="https://www.denysstepaniuk.com/about" />
-      </Helmet>
+      <Seo
+        title={t("seo.about.title")}
+        description={t("seo.about.description")}
+        path="/about"
+      />
 
       {/* 1. Hero: Атмосфера и спокойствие */}
       <section className="about-hero-full">
         <div className="hero-bg-wrap">
           <img
             src={hallstattHero}
-            alt="Hallstatt"
+            alt={t("about.heroAlt")}
             className={`about-hero-photo${heroVisible ? " is-visible" : ""}`}
           />
         </div>
         <div className={`hero-text-overlay${heroVisible ? " is-visible" : ""}`}>
           <div className="hero-intro-text">
             <h1>
-              <span className="intro-first-part">I'm Denys Stepaniuk,</span>
-              <span className="intro-second-part">
-                and for over 8 years, I've had the honor of documenting more
-                than 248 wedding stories across Europe, framing the quiet,
-                honest moments that define our lives.
-              </span>
+              <span className="intro-first-part">{t("about.h1First")}</span>
+              <span className="intro-second-part">{t("about.h1Second")}</span>
             </h1>
           </div>
         </div>
@@ -104,35 +105,13 @@ function About() {
         <div className="about-container">
           <div className="split-grid">
             <div className="split-image">
-              <img src={portraitMain} alt="Portrait of Denys" />
+              <img src={portraitMain} alt={t("about.portraitAlt")} />
             </div>
             <div className="split-content">
-              <h2>A Storyteller based in Prague</h2>
-              <p>
-                When I’m not documenting weddings, you’ll most likely find me in
-                the mountains. This love for wild, quiet places is where my
-                search for honest light begins. It is why you see peaks and
-                clouds on these pages—they are my greatest teachers of patience
-                and perspective.
-              </p>
-              <p>
-                My work is a search for honesty. I believe that the most
-                powerful imagery comes from a place of quiet observation rather
-                than forced poses. Based in Prague, I travel across Europe to
-                document stories that are as raw as they are refined.
-              </p>
-              <p>
-                Whether it's the grandeur of a historic museum or a quiet
-                morning in the mountains, I am constantly looking for the light
-                that reveals the soul of the moment.
-              </p>
-              <p>
-                At the end of the day, my goal is simple: to create images that
-                don’t just show what your wedding looked like, but remind you
-                how it felt. I avoid passing trends to focus on what’s real. I
-                want you to look at your photos twenty years from now and see
-                your true selves, captured in the most beautiful light possible.
-              </p>
+              <h2 ref={introTitleRef}>{t("about.introTitle")}</h2>
+              {t("about.intro").map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
             </div>
           </div>
         </div>
@@ -143,9 +122,7 @@ function About() {
         className={`about-statement ${statementVisible ? "is-visible" : ""}`}
       >
         <div className="about-container-narrow">
-          <blockquote>
-            "I find the beauty in the unseen, the quiet, and the timeless."
-          </blockquote>
+          <blockquote>{t("about.quote")}</blockquote>
         </div>
       </section>
       {/* 4. Journey: Горы и страсть */}
@@ -156,37 +133,14 @@ function About() {
         <div className="about-container">
           <div className="exploration-layout">
             <div className="exploration-text">
-              <h3>Beyond the Camera</h3>
-              <p>
-                Exploring the wild landscapes of the Alps or the Dolomites is
-                where I truly recharge. It's the same patience required for a
-                long hike that I bring to my photography—waiting for the perfect
-                light, respecting the environment, and staying present in every
-                second.
-              </p>
-              <p>
-                For me, the mountains are the ultimate teachers. They show you
-                that you cannot rush greatness and that the most beautiful
-                moments often require the most effort to reach. This discipline
-                allows me to remain calm and focused amidst the beautiful chaos
-                of a wedding day.
-              </p>
-              <p>
-                Whether I’m navigating a rocky ridge or the historic streets of
-                a European city, my curiosity remains the same. I am constantly
-                seeking new perspectives and untold stories. It’s not just about
-                the destination; it’s about the soul of the journey.
-              </p>
-              <p>
-                Ultimately, this passion for discovery is what keeps my work
-                fresh and honest. I am always ready to pack my bags and travel
-                wherever your story takes us, bringing a piece of that mountain
-                stillness with me.
-              </p>
-              <span className="travel-note">Available Worldwide</span>
+              <h3 ref={beyondTitleRef}>{t("about.beyondTitle")}</h3>
+              {t("about.beyond").map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+              <span className="travel-note">{t("about.travelNote")}</span>
             </div>
             <div className="exploration-image">
-              <img src={mountainSmall} alt="Mountain exploration" />
+              <img src={mountainSmall} alt={t("about.mountainAlt")} />
             </div>
           </div>
         </div>
@@ -197,13 +151,13 @@ function About() {
         className={`kind-words-scrapbook ${kindWordsVisible ? "is-visible" : ""}`}
       >
         <div className="scrapbook-container">
-          <h2 className="scrapbook-title">Kind Words</h2>
-          <p className="scrapbook-subtitle">Real moments, real emotions.</p>
+          <h2 className="scrapbook-title">{t("about.kindWordsTitle")}</h2>
+          <p className="scrapbook-subtitle">{t("about.kindWordsSubtitle")}</p>
 
           <div className="scrapbook-canvas">
             {/* Item 1 */}
             <div className="scrapbook-item item-1">
-              <img src={review1} alt="Review" />
+              <img src={review1} alt={t("about.reviewAlt")} />
               <div className="note-wrap note-item-1">
                 <svg className="arrow-hand arrow-item-1" viewBox="0 0 50 50">
                   <path
@@ -214,17 +168,13 @@ function About() {
                     strokeLinecap="round"
                   />
                 </svg>
-                <span className="handwritten">
-                  "Exceeding expectations is always the goal. A beautiful note
-                  from Ekaterina about our timing and the soul behind every
-                  shot. So grateful for couples like this"
-                </span>
+                <span className="handwritten">{reviews[0]}</span>
               </div>
             </div>
 
             {/* Item 2 */}
             <div className="scrapbook-item item-2">
-              <img src={review2} alt="Review" />
+              <img src={review2} alt={t("about.reviewAlt")} />
               <div className="note-wrap note-item-2">
                 <svg className="arrow-hand arrow-item-2" viewBox="0 0 50 50">
                   <path
@@ -235,17 +185,13 @@ function About() {
                     strokeLinecap="round"
                   />
                 </svg>
-                <span className="handwritten">
-                  "When a family story becomes addictive. Ruslana and her family
-                  watched it on loop several times before even hitting the
-                  download button. Truly touched by these words"
-                </span>
+                <span className="handwritten">{reviews[1]}</span>
               </div>
             </div>
 
             {/* Item 3 */}
             <div className="scrapbook-item item-3">
-              <img src={review3} alt="Review" />
+              <img src={review3} alt={t("about.reviewAlt")} />
               <div className="note-wrap note-item-3">
                 <svg className="arrow-hand arrow-item-3" viewBox="0 0 50 50">
                   <path
@@ -256,17 +202,13 @@ function About() {
                     strokeLinecap="round"
                   />
                 </svg>
-                <span className="handwritten">
-                  "A moment of transformation for Ruslana. 'I don't even
-                  recognize myself' is the ultimate compliment for a boudoir
-                  story. Truly a chic and honest set"
-                </span>
+                <span className="handwritten">{reviews[2]}</span>
               </div>
             </div>
 
             {/* Item 4 */}
             <div className="scrapbook-item item-4">
-              <img src={review4} alt="Review" />
+              <img src={review4} alt={t("about.reviewAlt")} />
               <div className="note-wrap note-item-4">
                 <svg className="arrow-hand arrow-item-4" viewBox="0 0 50 50">
                   <path
@@ -277,17 +219,13 @@ function About() {
                     strokeLinecap="round"
                   />
                 </svg>
-                <span className="handwritten">
-                  "Editorial magic with Victoria. Her reaction — 'No one has
-                  ever seen me like this before' — is the ultimate goal when we
-                  create a high-end, magazine-style story together"
-                </span>
+                <span className="handwritten">{reviews[3]}</span>
               </div>
             </div>
 
             {/* Item 5 */}
             <div className="scrapbook-item item-5">
-              <img src={review5} alt="Review" />
+              <img src={review5} alt={t("about.reviewAlt")} />
               <div className="note-wrap note-item-5">
                 <svg className="arrow-hand arrow-item-5" viewBox="0 0 50 50">
                   <path
@@ -298,18 +236,13 @@ function About() {
                     strokeLinecap="round"
                   />
                 </svg>
-                <span className="handwritten">
-                  "It's all about the 'eye for the frame'. Anna’s wedding was a
-                  joy to document, and I’m honored she felt the soul of her
-                  important day reflected in these shots. Looking forward to our
-                  next chapters together"
-                </span>
+                <span className="handwritten">{reviews[4]}</span>
               </div>
             </div>
 
             {/* Item 6 */}
             <div className="scrapbook-item item-6">
-              <img src={review6} alt="Review" />
+              <img src={review6} alt={t("about.reviewAlt")} />
               <div className="note-wrap note-item-6">
                 <svg className="arrow-hand arrow-item-6" viewBox="0 0 50 50">
                   <path
@@ -321,18 +254,13 @@ function About() {
                     strokeLinejoin="round"
                   />
                 </svg>
-                <span className="handwritten">
-                  "Happy tears from Margarita. It’s all about catching that one
-                  fleeting moment — like the roses she mentioned. Seeing her
-                  reaction makes every second of the 'hunt' for the perfect shot
-                  worth it"
-                </span>
+                <span className="handwritten">{reviews[5]}</span>
               </div>
             </div>
 
             {/* Item 7 */}
             <div className="scrapbook-item item-7">
-              <img src={review7} alt="Review" />
+              <img src={review7} alt={t("about.reviewAlt")} />
               <div className="note-wrap note-item-7">
                 <svg className="arrow-hand arrow-item-7" viewBox="0 0 50 50">
                   <path
@@ -343,12 +271,7 @@ function About() {
                     strokeLinecap="round"
                   />
                 </svg>
-                <span className="handwritten">
-                  "The ultimate compliment is a returning client. After her
-                  wedding, Margarita came back for an editorial session. Her
-                  reaction — 'I have no words' — says it all. It’s a joy to see
-                  her energy again"
-                </span>
+                <span className="handwritten">{reviews[6]}</span>
               </div>
             </div>
           </div>

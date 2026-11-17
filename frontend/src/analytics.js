@@ -1,3 +1,5 @@
+import { analyticsAllowed } from "./consent";
+
 const GA_ID = process.env.REACT_APP_GA_MEASUREMENT_ID;
 const CLARITY_ID = process.env.REACT_APP_CLARITY_PROJECT_ID;
 
@@ -35,11 +37,15 @@ function initClarity() {
 
 // Defer loading until the browser is idle so it doesn't affect performance
 export function initAnalytics() {
+  if (!analyticsAllowed()) return;
+  if (GA_ID) window[`ga-disable-${GA_ID}`] = false;
+  if (typeof window.clarity === "function") window.clarity("consent");
   if (!isEnabled || initialized) return;
   initialized = true;
   const start = () => {
     initGA();
     initClarity();
+    trackPageView(window.location.pathname + window.location.search);
   };
   if ("requestIdleCallback" in window) {
     window.requestIdleCallback(start, { timeout: 4000 });
@@ -48,8 +54,14 @@ export function initAnalytics() {
   }
 }
 
+export function revokeAnalytics() {
+  if (GA_ID) window[`ga-disable-${GA_ID}`] = true;
+  if (typeof window.clarity === "function") window.clarity("consent", false);
+}
+
 export function trackPageView(path) {
   if (!isEnabled || !GA_ID || typeof window.gtag !== "function") return;
+  if (window[`ga-disable-${GA_ID}`]) return;
   window.gtag("event", "page_view", {
     page_path: path,
     page_location: window.location.href,
