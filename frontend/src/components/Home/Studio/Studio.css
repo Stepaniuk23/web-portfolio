@@ -154,3 +154,13 @@
     margin-bottom: 18px;
   }
 }
+
+/* Чешский, украинский и русский: длинные слова («НАПОЛНЕННЫЕ») на телефоне
+   не должны выходить за край экрана — размер подстраивается под ширину */
+@media (max-width: 900px) {
+  :lang(cs) .studio-subtitle,
+  :lang(uk) .studio-subtitle,
+  :lang(ru) .studio-subtitle {
+    font-size: clamp(30px, 9.5vw, 42px);
+  }
+}

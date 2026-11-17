@@ -1,104 +1,89 @@
 import "./Contact.css";
 import contactPhoto from "../../assets/contact.jpg";
 import { useState } from "react";
-import { Helmet } from "react-helmet-async";
-import { apiUrl } from "../../config";
+import Seo from "../../i18n/Seo";
+import { useLanguage, useT } from "../../i18n/LanguageContext";
+import { sendContactForm } from "../../services/contactForm";
 
 function Contact() {
   const [status, setStatus] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const t = useT();
+  const { lang } = useLanguage();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (isSubmitting) return;
 
     const form = e.currentTarget;
-    const formData = new FormData(form);
     setIsSubmitting(true);
     setStatus("");
 
-    try {
-      const response = await fetch(apiUrl("/api/contact/"), {
-        method: "POST",
-        body: formData,
-      });
+    // Язык страницы попадает в письмо — сразу видно, на каком языке отвечать клиенту
+    const result = await sendContactForm(form, {
+      language: lang.toUpperCase(),
+    });
 
-      const result = await response.json().catch(() => null);
-
-      if (response.ok) {
-        setStatus(
-          "Thank you for your message. I will get back to you shortly.",
-        );
-        form.reset();
-      } else {
-        setStatus(
-          result?.detail || "Something went wrong. Please try again later.",
-        );
-      }
-    } catch {
-      setStatus("Network error. Please check your connection and try again.");
-    } finally {
-      setIsSubmitting(false);
+    if (result.ok) {
+      setStatus(t("contact.success"));
+      form.reset();
+    } else {
+      setStatus(result.network ? t("contact.network") : t("contact.error"));
     }
+    setIsSubmitting(false);
   };
 
   return (
     <main className="contact-page">
-      <Helmet>
-        <title>Contact | Denys Stepaniuk Photography</title>
-        <meta
-          name="description"
-          content="Get in touch with Denys Stepaniuk to book wedding or editorial photography in Prague and across Europe."
-        />
-        <link rel="canonical" href="https://www.denysstepaniuk.com/contact" />
-      </Helmet>
+      <Seo
+        title={t("seo.contact.title")}
+        description={t("seo.contact.description")}
+        path="/contact"
+      />
 
       <div className="contact-wrapper">
         <figure className="contact-photo">
-          <img src={contactPhoto} alt="A quiet portrait from the studio" />
+          <img src={contactPhoto} alt={t("contact.photoAlt")} />
         </figure>
 
         <section className="contact-container" aria-labelledby="contact-title">
           <h1 id="contact-title" className="contact-title">
-            Contact Me
+            {t("contact.title")}
           </h1>
           <a href="tel:+420721031650" className="contact-phone">
             +420 721 031 650
           </a>
-          <p className="contact-subtitle">
-            I would love to hear from you. Feel free to reach out for bookings
-            or any questions.
-          </p>
+          <p className="contact-subtitle">{t("contact.subtitle")}</p>
 
           <form className="contact-form" onSubmit={handleSubmit}>
-            <label htmlFor="contact-name">Name</label>
+            <label htmlFor="contact-name">{t("contact.name")}</label>
             <input
               id="contact-name"
               type="text"
               name="name"
-              placeholder="Your name"
+              placeholder={t("contact.namePlaceholder")}
               autoComplete="name"
               minLength="2"
               maxLength="120"
               required
             />
 
-            <label htmlFor="contact-email">Email</label>
+            <label htmlFor="contact-email">{t("contact.email")}</label>
             <input
               id="contact-email"
               type="email"
               name="email"
-              placeholder="you@example.com"
+              placeholder={t("contact.emailPlaceholder")}
               autoComplete="email"
               maxLength="254"
               required
             />
 
-            <label htmlFor="contact-message">Message</label>
+            <label htmlFor="contact-message">{t("contact.message")}</label>
             <textarea
               id="contact-message"
               name="message"
-              placeholder="Tell me a little about your plans"
+              placeholder={t("contact.messagePlaceholder")}
               minLength="5"
               maxLength="5000"
               required
@@ -118,7 +103,7 @@ function Contact() {
               className="btn-ghost contact-submit"
               disabled={isSubmitting}
             >
-              {isSubmitting ? "Sending..." : "Send Message"}
+              {isSubmitting ? t("contact.sending") : t("contact.send")}
             </button>
 
             {status && (

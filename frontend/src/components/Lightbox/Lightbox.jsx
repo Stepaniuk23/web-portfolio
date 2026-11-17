@@ -2,8 +2,10 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react
 import { createPortal } from "react-dom";
 import NavigationArrow from "../NavigationArrow/NavigationArrow";
 import "./Lightbox.css";
+import { useT } from "../../i18n/LanguageContext";
 
 function Lightbox({ images, index, onClose, onPrev, onNext }) {
+  const t = useT();
   const [swipeOffset, setSwipeOffset] = useState(0);
   const [swipeTransition, setSwipeTransition] = useState(false);
   const [swipeDirection, setSwipeDirection] = useState(-1);
@@ -164,8 +166,8 @@ function Lightbox({ images, index, onClose, onPrev, onNext }) {
         type="button"
         className="lightbox-close"
         onClick={onClose}
-        aria-label="Close"
-        title="Close"
+        aria-label={t("lightbox.close")}
+        title={t("lightbox.close")}
       >
         &times;
       </button>
@@ -178,8 +180,8 @@ function Lightbox({ images, index, onClose, onPrev, onNext }) {
           e.stopPropagation();
           onPrev();
         }}
-        aria-label="Previous photo"
-        title="Previous photo"
+        aria-label={t("lightbox.previous")}
+        title={t("lightbox.previous")}
       />
 
       <div
@@ -224,8 +226,8 @@ function Lightbox({ images, index, onClose, onPrev, onNext }) {
           e.stopPropagation();
           onNext();
         }}
-        aria-label="Next photo"
-        title="Next photo"
+        aria-label={t("lightbox.next")}
+        title={t("lightbox.next")}
       />
     </div>,
     document.body,

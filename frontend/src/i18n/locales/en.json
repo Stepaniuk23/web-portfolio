@@ -1,0 +1,313 @@
+{
+  "header": {
+    "menu": "Menu",
+    "close": "Close",
+    "menuOpenAria": "Open navigation menu",
+    "menuCloseAria": "Close navigation menu",
+    "languageAria": "Choose language"
+  },
+  "nav": {
+    "home": "Home",
+    "weddings": "Weddings",
+    "editorials": "Editorials",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "footer": {
+    "rights": "All rights reserved",
+    "motto": "Timeless imagery for soulful stories",
+    "privacy": "Privacy Policy",
+    "cookies": "Cookie Policy",
+    "legalAria": "Legal"
+  },
+  "seo": {
+    "home": {
+      "title": "Denys Stepaniuk | Wedding & Editorial Photographer in Prague",
+      "description": "Professional wedding and editorial photography in Prague and Europe. Fine art style by Denys Stepaniuk.",
+      "schemaDescription": "Wedding and editorial photographer based in Prague, Czechia, shooting fine art weddings across Europe."
+    },
+    "about": {
+      "title": "About Denys Stepaniuk | Wedding Photographer in Prague",
+      "description": "Meet Denys Stepaniuk, a wedding and editorial photographer based in Prague who has documented over 248 wedding stories across Europe."
+    },
+    "portfolio": {
+      "title": "Photography Portfolio | Denys Stepaniuk",
+      "description": "A selection of wedding and portrait photography by Denys Stepaniuk, based in Prague."
+    },
+    "contact": {
+      "title": "Contact | Denys Stepaniuk Photography",
+      "description": "Get in touch with Denys Stepaniuk to book wedding or editorial photography in Prague and across Europe."
+    },
+    "weddings": {
+      "title": "Wedding Stories | Denys Stepaniuk Photography",
+      "description": "Selected wedding stories documenting real couples in Prague, Ukraine and across Europe by Denys Stepaniuk."
+    },
+    "editorials": {
+      "title": "Editorial Stories | Denys Stepaniuk Photography",
+      "description": "Selected editorial and portrait stories across Prague, Ukraine and Europe by Denys Stepaniuk."
+    },
+    "weddingStory": {
+      "title": "{title} | Wedding Story | Denys Stepaniuk",
+      "description": "{title} wedding photography in {location} by Denys Stepaniuk."
+    },
+    "editorialStory": {
+      "title": "{title} | Editorial Story | Denys Stepaniuk",
+      "description": "{title} editorial photography in {location} by Denys Stepaniuk."
+    },
+    "notFound": {
+      "title": "Page not found | Denys Stepaniuk"
+    }
+  },
+  "home": {
+    "hero": {
+      "alt": "Editorial wedding photography by Denys Stepaniuk",
+      "label": "Editorial Wedding Photography",
+      "titleLines": [
+        "Timeless",
+        "Wedding",
+        "Stories"
+      ],
+      "subtitle": "Modern. Emotional. Fashion‑inspired."
+    },
+    "studio": {
+      "kicker": "THE STUDIO",
+      "subtitle": [
+        "Crafting imagery shaped by light, elegance",
+        "and",
+        "quiet emotion"
+      ],
+      "slideAlt": "Fine Art wedding photography by Denys Stepaniuk - showcase {n}",
+      "text": "From intimate celebrations in Prague to timeless weddings across Europe, my work is guided by light, emotion and the beauty of real moments.",
+      "cta": "View All Weddings"
+    },
+    "philosophy": {
+      "alt": "Philosophy Background",
+      "kicker": "Known for a visual language built on",
+      "title": [
+        "HONEST",
+        "and",
+        "TIMELESS"
+      ],
+      "text1": "I believe in capturing honest, elegant, and timeless imagery — photographs that feel effortless, poetic, and deeply personal.",
+      "text2": "Every wedding is a story of connection. My approach is calm, observant, and intentional, allowing real moments to unfold naturally."
+    },
+    "aboutTeaser": {
+      "alt": "Denys Stepaniuk portrait",
+      "kicker": "ABOUT DENYS",
+      "title": [
+        "calmly observant, quietly elegant, honest,",
+        "deeply",
+        "human."
+      ],
+      "text1": "A wedding photographer based in Prague, crafting honest and timeless imagery shaped by light, emotion, and the beauty of real moments.",
+      "text2": "My work is calm, observant, and intentional — focused on capturing the quiet authenticity within every celebration.",
+      "cta": "Read More"
+    },
+    "journal": {
+      "kicker": "Featured Work",
+      "title": "Latest Stories",
+      "cta": "View All Stories",
+      "items": [
+        {
+          "category": "Weddings",
+          "title": "Modern Seoul Spirits in the Heart of the City",
+          "location": "Kyiv, Ukraine"
+        },
+        {
+          "category": "Editorials",
+          "title": "A Prague Interlude: The Art of Presence",
+          "location": "Prague, Czechia"
+        },
+        {
+          "category": "Editorials",
+          "title": "The Unveiled Persona: Fluidity & Fire",
+          "location": "Dnipro, Ukraine"
+        }
+      ]
+    },
+    "finalCta": {
+      "alt": "Contact Denys Stepaniuk fine art photographer",
+      "kicker": "Are you planning a wedding?",
+      "title": [
+        "Let’s create",
+        "something",
+        "timeless together"
+      ],
+      "cta": "Inquire for availability"
+    }
+  },
+  "about": {
+    "heroAlt": "Hallstatt",
+    "h1First": "I'm Denys Stepaniuk,",
+    "h1Second": "and for over 8 years, I've had the honor of documenting more than 248 wedding stories across Europe, framing the quiet, honest moments that define our lives.",
+    "portraitAlt": "Portrait of Denys",
+    "introTitle": "A Storyteller based in Prague",
+    "intro": [
+      "When I’m not documenting weddings, you’ll most likely find me in the mountains. This love for wild, quiet places is where my search for honest light begins. It is why you see peaks and clouds on these pages—they are my greatest teachers of patience and perspective.",
+      "My work is a search for honesty. I believe that the most powerful imagery comes from a place of quiet observation rather than forced poses. Based in Prague, I travel across Europe to document stories that are as raw as they are refined.",
+      "Whether it's the grandeur of a historic museum or a quiet morning in the mountains, I am constantly looking for the light that reveals the soul of the moment.",
+      "At the end of the day, my goal is simple: to create images that don’t just show what your wedding looked like, but remind you how it felt. I avoid passing trends to focus on what’s real. I want you to look at your photos twenty years from now and see your true selves, captured in the most beautiful light possible."
+    ],
+    "quote": "\"I find the beauty in the unseen, the quiet, and the timeless.\"",
+    "beyondTitle": "Beyond the Camera",
+    "beyond": [
+      "Exploring the wild landscapes of the Alps or the Dolomites is where I truly recharge. It's the same patience required for a long hike that I bring to my photography—waiting for the perfect light, respecting the environment, and staying present in every second.",
+      "For me, the mountains are the ultimate teachers. They show you that you cannot rush greatness and that the most beautiful moments often require the most effort to reach. This discipline allows me to remain calm and focused amidst the beautiful chaos of a wedding day.",
+      "Whether I’m navigating a rocky ridge or the historic streets of a European city, my curiosity remains the same. I am constantly seeking new perspectives and untold stories. It’s not just about the destination; it’s about the soul of the journey.",
+      "Ultimately, this passion for discovery is what keeps my work fresh and honest. I am always ready to pack my bags and travel wherever your story takes us, bringing a piece of that mountain stillness with me."
+    ],
+    "travelNote": "Available Worldwide",
+    "mountainAlt": "Mountain exploration",
+    "kindWordsTitle": "Kind Words",
+    "kindWordsSubtitle": "Real moments, real emotions.",
+    "reviewAlt": "Review",
+    "reviews": [
+      "\"Exceeding expectations is always the goal. A beautiful note from Ekaterina about our timing and the soul behind every shot. So grateful for couples like this\"",
+      "\"When a family story becomes addictive. Ruslana and her family watched it on loop several times before even hitting the download button. Truly touched by these words\"",
+      "\"A moment of transformation for Ruslana. 'I don't even recognize myself' is the ultimate compliment for a boudoir story. Truly a chic and honest set\"",
+      "\"Editorial magic with Victoria. Her reaction — 'No one has ever seen me like this before' — is the ultimate goal when we create a high-end, magazine-style story together\"",
+      "\"It's all about the 'eye for the frame'. Anna’s wedding was a joy to document, and I’m honored she felt the soul of her important day reflected in these shots. Looking forward to our next chapters together\"",
+      "\"Happy tears from Margarita. It’s all about catching that one fleeting moment — like the roses she mentioned. Seeing her reaction makes every second of the 'hunt' for the perfect shot worth it\"",
+      "\"The ultimate compliment is a returning client. After her wedding, Margarita came back for an editorial session. Her reaction — 'I have no words' — says it all. It’s a joy to see her energy again\""
+    ]
+  },
+  "contact": {
+    "photoAlt": "A quiet portrait from the studio",
+    "title": "Contact Me",
+    "subtitle": "I would love to hear from you. Feel free to reach out for bookings or any questions.",
+    "name": "Name",
+    "namePlaceholder": "Your name",
+    "email": "Email",
+    "emailPlaceholder": "you@example.com",
+    "message": "Message",
+    "messagePlaceholder": "Tell me a little about your plans",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "success": "Thank you for your message. I will get back to you shortly.",
+    "error": "Something went wrong. Please try again later.",
+    "network": "Network error. Please check your connection and try again."
+  },
+  "weddings": {
+    "title": "Selected Stories",
+    "subtitle": "Documenting love across Europe and beyond",
+    "viewStory": "View Story",
+    "coverAlt": "{title} wedding photography in {location}"
+  },
+  "editorials": {
+    "title": "Selected Editorials",
+    "subtitle": "Portrait stories across Europe and beyond",
+    "viewStory": "View Story",
+    "coverAlt": "{title} editorial photography in {location}"
+  },
+  "story": {
+    "notFound": "Story not found",
+    "editorialNotes": "Editorial notes",
+    "fullStoryLabel": "Atmosphere",
+    "fullStoryTitle": "The Full Story",
+    "frameAlt": "{title} — frame {n}",
+    "showPrevious": "Show previous photos",
+    "showNext": "Show next photos",
+    "wedding": {
+      "labelClassic": "Editorial Wedding Story",
+      "labelCinematic": "Cinematic Wedding Story",
+      "labelMinimal": "Intimate Wedding Story",
+      "heroAlt": "{title} wedding photography in {location}",
+      "sceneAlt": "{title} wedding in {location} — the scene",
+      "portraitAlt": "{title} wedding in {location} — couple portrait",
+      "detailAlt": "{title} wedding in {location} — wedding details",
+      "finaleAlt": "{title} wedding in {location} — wedding finale"
+    },
+    "editorial": {
+      "labelClassic": "Editorial Story",
+      "labelCinematic": "Cinematic Editorial Story",
+      "labelAtmosphere": "Atmosphere Editorial Story",
+      "labelMinimal": "Intimate Editorial Story",
+      "heroAlt": "{title} editorial photography in {location}",
+      "sceneAlt": "{title} editorial in {location} — the scene",
+      "portraitAlt": "{title} editorial in {location} — portrait",
+      "detailAlt": "{title} editorial in {location} — detail",
+      "finaleAlt": "{title} editorial in {location} — finale",
+      "finaleAltCinematic": "{title} editorial finale in {location}"
+    }
+  },
+  "portfolio": {
+    "title": "My Recent Work",
+    "imageAlt": "Wedding and portrait photography by Denys Stepaniuk, Prague — {n}",
+    "lightboxAlt": "Denys Stepaniuk photography portfolio {n}"
+  },
+  "lightbox": {
+    "close": "Close",
+    "previous": "Previous photo",
+    "next": "Next photo"
+  },
+  "cookie": {
+    "title": "Your privacy",
+    "text": "We use analytics technologies to understand how our website is used and to improve your experience. You can accept or decline analytics cookies at any time. Read our",
+    "and": "and",
+    "decline": "Decline",
+    "accept": "Accept"
+  },
+  "legal": {
+    "settingsButton": "Cookie settings",
+    "metaBefore": "For privacy-related questions or requests, please use the contact form available on the",
+    "metaLink": "Contact page",
+    "privacy": {
+      "title": "Privacy Policy",
+      "description": "How Denys Stepaniuk Photography handles your personal data.",
+      "sections": [
+        {
+          "heading": "Who we are",
+          "body": "This website is the portfolio of Denys Stepaniuk, a wedding and editorial photographer, who is responsible for the personal data described here."
+        },
+        {
+          "heading": "Information you share",
+          "body": "When you write to me through the contact form, I receive your name, email address and message. I use them only to reply to your enquiry and to discuss your photography, and I never sell or share them for marketing."
+        },
+        {
+          "heading": "Analytics",
+          "body": "Only if you accept, anonymous usage data is collected through Google Analytics and Microsoft Clarity: pages viewed, device and browser type, approximate location and how the site is navigated. This helps me understand how the site is used and to refine your experience. If you decline, neither service is loaded."
+        },
+        {
+          "heading": "Legal basis",
+          "body": "Replying to enquiries rests on your request and on legitimate interest. Analytics rest on your consent (GDPR Art. 6(1)(a)), which you may withdraw at any time without affecting earlier processing."
+        },
+        {
+          "heading": "Third parties and transfers",
+          "body": "Messages from the contact form are delivered to my email by the Web3Forms service. Google and Microsoft act as service providers for analytics. Data may be processed outside the European Economic Area under the safeguards those providers maintain, such as standard contractual clauses."
+        },
+        {
+          "heading": "Retention",
+          "body": "Enquiries are kept for as long as needed to respond and to manage any resulting booking, then deleted. Analytics data is retained according to the settings of each provider."
+        },
+        {
+          "heading": "Your rights",
+          "body": "You may request access, correction, deletion, restriction or portability of your data, and object to its processing. You may also lodge a complaint with your local data protection authority. To exercise any right, please use the contact form available on the Contact page."
+        }
+      ]
+    },
+    "cookies": {
+      "title": "Cookie Policy",
+      "description": "Which cookies this website uses and how to control them.",
+      "sections": [
+        {
+          "heading": "Essential storage",
+          "body": "Your choice is saved in your browser's local storage under the key “cookie-consent”. It is strictly necessary to remember your decision and contains no personal information."
+        },
+        {
+          "heading": "Analytics cookies",
+          "body": "Google Analytics and Microsoft Clarity use cookies to measure traffic and to understand how visitors move through the site. They are loaded only after you press Accept; if you decline, they are never loaded and no analytics cookies are set."
+        },
+        {
+          "heading": "Changing your mind",
+          "body": "You may accept or decline analytics cookies at any time using the button below. Declining after accepting stops further data collection; you can also clear existing cookies in your browser settings.",
+          "action": true
+        }
+      ]
+    }
+  },
+  "notFound": {
+    "text": "The page you are looking for doesn't exist or has been moved.",
+    "back": "Back to home",
+    "title": "Page not found"
+  }
+}

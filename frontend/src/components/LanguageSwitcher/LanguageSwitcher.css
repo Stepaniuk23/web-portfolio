@@ -1,0 +1,65 @@
+/* Переключатель языка — типографика как у пунктов меню в Header.css */
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-main);
+  font-weight: 300;
+  color: var(--color-dark);
+}
+
+.lang-switcher-item {
+  display: inline-flex;
+  align-items: center;
+}
+
+.lang-switcher-dot {
+  padding: 0 0.5em;
+  opacity: 0.4;
+}
+
+/* .lang-switcher перед классом — чтобы стили были сильнее общих правил .mobile-menu a */
+.lang-switcher .lang-switcher-link {
+  font: inherit;
+  letter-spacing: inherit;
+  color: var(--color-dark);
+  text-decoration: none;
+  opacity: 0.45;
+  transition: opacity var(--transition-smooth);
+}
+
+.lang-switcher .lang-switcher-link:hover,
+.lang-switcher .lang-switcher-link.is-active {
+  opacity: 1;
+}
+
+.lang-switcher .lang-switcher-link.is-active {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+}
+
+.lang-switcher .lang-switcher-link:focus-visible {
+  outline: 1px solid var(--color-accent-deep);
+  outline-offset: 5px;
+}
+
+/* В шапке на компьютере — отделяем от меню тонкой линией */
+.lang-switcher--desktop {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  padding-left: clamp(18px, 2.2vw, 36px);
+  border-left: 1px solid var(--color-black-25);
+}
+
+/* В мобильном меню — крупнее, как пункты мобильного меню */
+.lang-switcher--mobile {
+  margin-top: 16px;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+}
+
+.lang-switcher--mobile .lang-switcher-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px; /* удобная зона нажатия пальцем */
+}

@@ -10,7 +10,16 @@ import "./variables.css";
 // задаёт свои теги через <Helmet>, поэтому убираем статические, чтобы не было дублей.
 document
   .querySelectorAll(
-    'head > title, head > meta[name="description"], head > link[rel="canonical"]',
+    [
+      "head > title",
+      'head > meta[name="description"]',
+      'head > link[rel="canonical"]',
+      'head > link[rel="alternate"][hreflang]',
+      'head > meta[property="og:title"]',
+      'head > meta[property="og:description"]',
+      'head > meta[property="og:url"]',
+      'head > meta[property="og:locale"]',
+    ].join(", "),
   )
   .forEach((el) => el.remove());
 

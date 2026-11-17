@@ -1,6 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import Seo from "../../i18n/Seo";
+import { useLanguage, useT } from "../../i18n/LanguageContext";
+import { fill } from "../../i18n/languages";
+import { localizeStory } from "../../i18n/localizeStory";
+import { useFitTitle } from "../../hooks/useFitTitle";
 import FullStory from "../../components/FullStory/FullStory";
 import { editorialsData } from "../../data/editorialsData";
 import "../Weddings/WeddingDetail.css";
@@ -8,7 +12,13 @@ import "../Weddings/WeddingDetail.css";
 function EditorialDetail() {
   const { id } = useParams();
 
-  const story = editorialsData.find((item) => item.id === id);
+  const { lang } = useLanguage();
+  const t = useT();
+  const story = localizeStory(
+    editorialsData.find((item) => item.id === id),
+    lang,
+    "editorials",
+  );
   const isCinematic = story?.templateType === "cinematic";
   const isAtmosphere = story?.templateType === "atmosphere";
   const isModernMinimal = story?.templateType === "modern-minimal";
@@ -18,6 +28,8 @@ function EditorialDetail() {
   const fullStoryRef = useRef(null);
 
   const heroRef = useRef(null);
+  // Подгоняет размер имён в HERO, чтобы длинные имена не обрезались
+  const titleRef = useFitTitle(story?.title);
   const introRef = useRef(null);
   const gridRef = useRef(null);
   const momentRef = useRef(null);
@@ -72,34 +84,26 @@ function EditorialDetail() {
   if (!story) {
     return (
       <div className="story-not-found">
-        <Helmet>
-          <meta name="robots" content="noindex, nofollow" />
-        </Helmet>
-        Story not found
+        <Seo title={t("story.notFound")} noindex />
+        {t("story.notFound")}
       </div>
     );
   }
 
   const titleLines = story.title.split(" ").filter(Boolean);
   const cinematicLabel = isAtmosphere
-    ? "Atmosphere Editorial Story"
-    : "Cinematic Editorial Story";
+    ? t("story.editorial.labelAtmosphere")
+    : t("story.editorial.labelCinematic");
 
   return (
     <div
       className={`story-article template-${story.templateType}${isAtmosphere ? " template-cinematic" : ""}`}
     >
-      <Helmet>
-        <title>{story.title} | Editorial Story | Denys Stepaniuk</title>
-        <meta
-          name="description"
-          content={`${story.title} editorial photography in ${story.location} by Denys Stepaniuk.`}
-        />
-        <link
-          rel="canonical"
-          href={`https://www.denysstepaniuk.com/editorials/${story.id}`}
-        />
-      </Helmet>
+      <Seo
+        title={fill(t("seo.editorialStory.title"), story)}
+        description={fill(t("seo.editorialStory.description"), story)}
+        path={`/editorials/${story.id}`}
+      />
       {usesCinematicLayout ? (
         <section
           ref={heroRef}
@@ -108,12 +112,12 @@ function EditorialDetail() {
           <div className="hero-cinematic-media" aria-hidden="true">
             <img
               src={story.images.hero}
-              alt={`${story.title} editorial photography in ${story.location}`}
+              alt={fill(t("story.editorial.heroAlt"), story)}
             />
           </div>
           <div className="hero-cinematic-content">
             <span className="hero-cinematic-label">{cinematicLabel}</span>
-            <h1 className="hero-cinematic-title">
+            <h1 ref={titleRef} className="hero-cinematic-title">
               {titleLines.map((line, index) => (
                 <span
                   key={`${line}-${index}`}
@@ -134,8 +138,10 @@ function EditorialDetail() {
           className={`hero-split story-section-reveal ${visibleSections.hero ? "is-visible" : ""}`}
         >
           <div className="hero-split-text">
-            <span className="hero-split-label">Intimate Editorial Story</span>
-            <h1 className="hero-split-title">
+            <span className="hero-split-label">
+              {t("story.editorial.labelMinimal")}
+            </span>
+            <h1 ref={titleRef} className="hero-split-title">
               {titleLines.map((line, index) => (
                 <span
                   key={`${line}-${index}`}
@@ -153,7 +159,7 @@ function EditorialDetail() {
           <div className="hero-split-media" aria-hidden="true">
             <img
               src={story.images.hero}
-              alt={`${story.title} editorial photography in ${story.location}`}
+              alt={fill(t("story.editorial.heroAlt"), story)}
             />
           </div>
         </section>
@@ -164,8 +170,10 @@ function EditorialDetail() {
         >
           <div className="hero-magazine-container">
             <div className="hero-magazine-text">
-              <span className="hero-magazine-label">Editorial Story</span>
-              <h1 className="hero-magazine-title">
+              <span className="hero-magazine-label">
+                {t("story.editorial.labelClassic")}
+              </span>
+              <h1 ref={titleRef} className="hero-magazine-title">
                 {titleLines.map((line, index) => (
                   <span
                     key={`${line}-${index}`}
@@ -182,7 +190,7 @@ function EditorialDetail() {
             <div className="hero-magazine-image">
               <img
                 src={story.images.hero}
-                alt={`${story.title} editorial photography in ${story.location}`}
+                alt={fill(t("story.editorial.heroAlt"), story)}
               />
             </div>
           </div>
@@ -206,13 +214,13 @@ function EditorialDetail() {
       >
         <div className="story-grid-container">
           <div className="grid-item item-wide">
-            <img src={story.images.gridWide} alt={`${story.title} editorial in ${story.location} — the scene`} loading="lazy" />
+            <img src={story.images.gridWide} alt={fill(t("story.editorial.sceneAlt"), story)} loading="lazy" />
           </div>
           <div className="grid-item item-portrait">
-            <img src={story.images.gridPortrait} alt={`${story.title} editorial in ${story.location} — portrait`} loading="lazy" />
+            <img src={story.images.gridPortrait} alt={fill(t("story.editorial.portraitAlt"), story)} loading="lazy" />
           </div>
           {introColumns.length ? (
-            <div className="grid-item item-copy" aria-label="Editorial notes">
+            <div className="grid-item item-copy" aria-label={t("story.editorialNotes")}>
               <div className="grid-copy-columns">
                 {introColumns.map((paragraph, index) => (
                   <p key={`grid-copy-${index}`}>{paragraph}</p>
@@ -221,7 +229,7 @@ function EditorialDetail() {
             </div>
           ) : null}
           <div className="grid-item item-accent">
-            <img src={story.images.gridSquare} alt={`${story.title} editorial in ${story.location} — detail`} loading="lazy" />
+            <img src={story.images.gridSquare} alt={fill(t("story.editorial.detailAlt"), story)} loading="lazy" />
           </div>
         </div>
       </section>
@@ -268,7 +276,7 @@ function EditorialDetail() {
             <div className="finale-image-full">
               <img
                 src={story.images.finale}
-                alt={`${story.title} editorial finale in ${story.location}`}
+                alt={fill(t("story.editorial.finaleAltCinematic"), story)}
                 style={{
                   objectPosition:
                     story.images.finaleObjectPosition || "center center",
@@ -280,7 +288,7 @@ function EditorialDetail() {
           <div className="finale-image-full">
             <img
               src={story.images.finale}
-              alt={`${story.title} editorial in ${story.location} — finale`}
+              alt={fill(t("story.editorial.finaleAlt"), story)}
               loading="lazy"
               style={{
                 objectPosition:
@@ -295,8 +303,8 @@ function EditorialDetail() {
         ref={fullStoryRef}
         images={story.images.fullGallery}
         isVisible={visibleSections.fullStory}
-        label="Atmosphere"
-        title="The Full Story"
+        label={t("story.fullStoryLabel")}
+        title={t("story.fullStoryTitle")}
       />
     </div>
   );

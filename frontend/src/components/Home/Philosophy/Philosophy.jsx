@@ -1,12 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import "./Philosophy.css";
 import philosophyBg from "../../../assets/philosophy/philosophy-bg.jpg";
+import { useT } from "../../../i18n/LanguageContext";
 
 function Philosophy() {
   const ref = useRef(null);
   const imageRef = useRef(null);
   const [visible, setVisible] = useState(false);
   const [offset, setOffset] = useState(0);
+  const t = useT();
+  const [titleStart, titleAnd, titleEnd] = t("home.philosophy.title");
 
   useEffect(() => {
     const el = ref.current;
@@ -56,7 +59,7 @@ function Philosophy() {
           ref={imageRef}
           src={philosophyBg}
           className="philosophy-parallax-img"
-          alt="Philosophy Background"
+          alt={t("home.philosophy.alt")}
           style={{
             transform: `translateX(var(--philosophy-mobile-shift-x, 0px)) translateY(calc(${offset}px + 150px)) scale(var(--philosophy-parallax-scale, 1))`,
           }}
@@ -64,21 +67,14 @@ function Philosophy() {
       </div>
 
       <div className="philosophy-inner">
-        <p className="philosophy-kicker">
-          Known for a visual language built on
-        </p>
+        <p className="philosophy-kicker">{t("home.philosophy.kicker")}</p>
         <h2 className="philosophy-title">
-          HONEST <span className="italic-word">and</span> TIMELESS
+          {titleStart} <span className="italic-word">{titleAnd}</span>{" "}
+          {titleEnd}
         </h2>
         <div className="philosophy-divider" aria-hidden="true" />
-        <p className="philosophy-text">
-          I believe in capturing honest, elegant, and timeless imagery —
-          photographs that feel effortless, poetic, and deeply personal.
-        </p>
-        <p className="philosophy-text">
-          Every wedding is a story of connection. My approach is calm,
-          observant, and intentional, allowing real moments to unfold naturally.
-        </p>
+        <p className="philosophy-text">{t("home.philosophy.text1")}</p>
+        <p className="philosophy-text">{t("home.philosophy.text2")}</p>
       </div>
     </section>
   );

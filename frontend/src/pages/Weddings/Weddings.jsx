@@ -1,6 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import Seo from "../../i18n/Seo";
+import LangLink from "../../i18n/LangLink";
+import { useLanguage, useT } from "../../i18n/LanguageContext";
+import { fill } from "../../i18n/languages";
+import { localizeStory } from "../../i18n/localizeStory";
 import "./Weddings.css";
 // 1. ИМПОРТИРУЕМ НАШ ЕДИНЫЙ ИСТОЧНИК ПРАВДЫ:
 import { storiesData } from "../../data/storiesData";
@@ -10,6 +13,8 @@ function Weddings() {
   const gridRef = useRef(null);
   const [headerVisible, setHeaderVisible] = useState(false);
   const [gridVisible, setGridVisible] = useState(false);
+  const { lang } = useLanguage();
+  const t = useT();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -39,21 +44,18 @@ function Weddings() {
 
   return (
     <div className="weddings-page">
-      <Helmet>
-        <title>Wedding Stories | Denys Stepaniuk Photography</title>
-        <meta
-          name="description"
-          content="Selected wedding stories documenting real couples in Prague, Ukraine and across Europe by Denys Stepaniuk."
-        />
-        <link rel="canonical" href="https://www.denysstepaniuk.com/weddings" />
-      </Helmet>
+      <Seo
+        title={t("seo.weddings.title")}
+        description={t("seo.weddings.description")}
+        path="/weddings"
+      />
       <header
         ref={headerRef}
         className={`weddings-header ${headerVisible ? "is-visible" : ""}`}
       >
         <div className="weddings-container">
-          <h1>Selected Stories</h1>
-          <p className="subtitle">Documenting love across Europe and beyond</p>
+          <h1>{t("weddings.title")}</h1>
+          <p className="subtitle">{t("weddings.subtitle")}</p>
         </div>
       </header>
 
@@ -62,31 +64,34 @@ function Weddings() {
         className={`stories-grid ${gridVisible ? "is-visible" : ""}`}
       >
         {/* 2. ТЕПЕРЬ ОБХОДИМ ЦИКЛОМ storiesData ВМЕСТО СТАРОГО МАССИВА */}
-        {storiesData.map((story, index) => (
+        {storiesData.map((baseStory, index) => {
+          const story = localizeStory(baseStory, lang, "stories");
+          return (
           <div
             key={story.id}
             className="story-card"
             style={{ "--story-delay": `${index * 140}ms` }}
           >
-            <Link to={`/weddings/${story.id}`}>
+            <LangLink to={`/weddings/${story.id}`}>
               <div className="story-image-wrap">
                 {/* 3. КАРТИНКУ БЕРЕМ ИЗ СВОЙСТВА images.cover */}
                 <img
                   src={story.images.cover}
-                  alt={`${story.title} wedding photography in ${story.location}`}
+                  alt={fill(t("weddings.coverAlt"), story)}
                   loading="lazy"
                 />
                 <div className="story-overlay">
-                  <span>View Story</span>
+                  <span>{t("weddings.viewStory")}</span>
                 </div>
               </div>
               <div className="story-info">
                 <span className="story-location">{story.location}</span>
                 <h3 className="story-title">{story.title}</h3>
               </div>
-            </Link>
+            </LangLink>
           </div>
-        ))}
+          );
+        })}
       </section>
     </div>
   );

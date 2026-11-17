@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import LangLink from "../../i18n/LangLink";
+import { useLanguage, useLocalizePath, useT } from "../../i18n/LanguageContext";
+import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
 import { FaInstagram, FaFacebookF, FaPinterestP } from "react-icons/fa6";
 import "./Header.css";
 
@@ -7,24 +10,27 @@ function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation();
+  const { path } = useLanguage();
+  const localize = useLocalizePath();
+  const t = useT();
 
   const handleHomeNavigation = (event) => {
     event.preventDefault();
     setMenuOpen(false);
 
-    if (location.pathname === "/") {
+    if (path === "/") {
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
     }
 
-    navigate("/");
+    navigate(localize("/"));
     window.scrollTo(0, 0);
   };
 
   const renderLogoNameBlock = () => (
     <div className="logo-name-block">
       <span className="logo-name-main">Denys Stepaniuk</span>
+      {/* Логотип всегда на английском — это часть бренда */}
       <span className="logo-name-tagline">
         Wedding & Editorial Photographer
       </span>
@@ -82,57 +88,67 @@ function Header() {
       {/* DESKTOP HEADER — VOGUE STYLE */}
       <div className="desktop-header">
         <div className="desktop-logo-block">
-          <Link to="/" onClick={handleHomeNavigation}>
+          <LangLink to="/" onClick={handleHomeNavigation}>
             {renderLogoNameBlock()}
-          </Link>
+          </LangLink>
         </div>
         <nav className="nav-desktop">
-          <Link to="/" onClick={handleHomeNavigation}>
-            HOME
-          </Link>
-          <Link to="/weddings">WEDDINGS</Link>
-          <Link to="/editorials">EDITORIALS</Link>
-          <Link to="/about">ABOUT</Link>
-          <Link to="/contact">CONTACT</Link>
+          <LangLink to="/" onClick={handleHomeNavigation}>
+            {t("nav.home").toUpperCase()}
+          </LangLink>
+          <LangLink to="/weddings">{t("nav.weddings").toUpperCase()}</LangLink>
+          <LangLink to="/editorials">
+            {t("nav.editorials").toUpperCase()}
+          </LangLink>
+          <LangLink to="/about">{t("nav.about").toUpperCase()}</LangLink>
+          <LangLink to="/contact">{t("nav.contact").toUpperCase()}</LangLink>
+          <LanguageSwitcher variant="desktop" />
         </nav>
       </div>
 
       {/* MOBILE HEADER */}
       <div className="header-container">
-        <Link to="/" className="logo" onClick={handleHomeNavigation}>
+        <LangLink to="/" className="logo" onClick={handleHomeNavigation}>
           {renderLogoNameBlock()}
-        </Link>
+        </LangLink>
 
         <button
           type="button"
           className="menu-toggle"
           onClick={() => setMenuOpen(!menuOpen)}
-          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-label={
+            menuOpen ? t("header.menuCloseAria") : t("header.menuOpenAria")
+          }
           aria-expanded={menuOpen}
           aria-controls="mobile-navigation"
         >
-          {menuOpen ? "Close" : "Menu"}
+          {menuOpen ? t("header.close") : t("header.menu")}
         </button>
 
         <aside
           id="mobile-navigation"
           className={`mobile-menu ${menuOpen ? "open" : ""}`}
         >
-          <Link to="/" onClick={handleHomeNavigation}>
-            HOME
-          </Link>
-          <Link to="/weddings" onClick={() => setMenuOpen(false)}>
-            WEDDINGS
-          </Link>
-          <Link to="/editorials" onClick={() => setMenuOpen(false)}>
-            EDITORIALS
-          </Link>
-          <Link to="/about" onClick={() => setMenuOpen(false)}>
-            ABOUT
-          </Link>
-          <Link to="/contact" onClick={() => setMenuOpen(false)}>
-            CONTACT
-          </Link>
+          <LangLink to="/" onClick={handleHomeNavigation}>
+            {t("nav.home").toUpperCase()}
+          </LangLink>
+          <LangLink to="/weddings" onClick={() => setMenuOpen(false)}>
+            {t("nav.weddings").toUpperCase()}
+          </LangLink>
+          <LangLink to="/editorials" onClick={() => setMenuOpen(false)}>
+            {t("nav.editorials").toUpperCase()}
+          </LangLink>
+          <LangLink to="/about" onClick={() => setMenuOpen(false)}>
+            {t("nav.about").toUpperCase()}
+          </LangLink>
+          <LangLink to="/contact" onClick={() => setMenuOpen(false)}>
+            {t("nav.contact").toUpperCase()}
+          </LangLink>
+
+          <LanguageSwitcher
+            variant="mobile"
+            onNavigate={() => setMenuOpen(false)}
+          />
 
           <div className="socials">
             <a

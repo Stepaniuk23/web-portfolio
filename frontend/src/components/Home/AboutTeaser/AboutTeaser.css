@@ -115,3 +115,13 @@
     margin: 12px 0 0;
   }
 }
+
+/* Чешский, украинский и русский: длинные слова («внимательный») на телефоне
+   не должны выходить за край экрана — размер подстраивается под ширину */
+@media (max-width: 900px) {
+  :lang(cs) .about-teaser-title,
+  :lang(uk) .about-teaser-title,
+  :lang(ru) .about-teaser-title {
+    font-size: clamp(30px, 9.5vw, 42px);
+  }
+}

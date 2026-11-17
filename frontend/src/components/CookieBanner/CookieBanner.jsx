@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import LangLink from "../../i18n/LangLink";
+import { useT } from "../../i18n/LanguageContext";
 import {
   OPEN_SETTINGS_EVENT,
   getConsent,
@@ -10,6 +11,7 @@ import "./CookieBanner.css";
 function CookieBanner() {
   const [visible, setVisible] = useState(() => getConsent() === null);
   const headingRef = useRef(null);
+  const t = useT();
 
   useEffect(() => {
     const reopen = () => setVisible(true);
@@ -46,14 +48,13 @@ function CookieBanner() {
           ref={headingRef}
           tabIndex={-1}
         >
-          Your privacy
+          {t("cookie.title")}
         </h2>
         <p id="cookie-banner-text" className="cookie-banner-text">
-          We use analytics technologies to understand how our website is used
-          and to improve your experience. You can accept or decline analytics
-          cookies at any time. Read our{" "}
-          <Link to="/privacy-policy">Privacy Policy</Link> and{" "}
-          <Link to="/cookie-policy">Cookie Policy</Link>.
+          {t("cookie.text")}{" "}
+          <LangLink to="/privacy-policy">{t("footer.privacy")}</LangLink>{" "}
+          {t("cookie.and")}{" "}
+          <LangLink to="/cookie-policy">{t("footer.cookies")}</LangLink>.
         </p>
       </div>
       <div className="cookie-banner-actions">
@@ -62,14 +63,14 @@ function CookieBanner() {
           className="btn-ghost cookie-banner-btn"
           onClick={() => choose("denied")}
         >
-          Decline
+          {t("cookie.decline")}
         </button>
         <button
           type="button"
           className="btn-ghost cookie-banner-btn cookie-banner-btn-primary"
           onClick={() => choose("granted")}
         >
-          Accept
+          {t("cookie.accept")}
         </button>
       </div>
     </section>

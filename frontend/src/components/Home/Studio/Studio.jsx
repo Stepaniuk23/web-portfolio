@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import LangLink from "../../../i18n/LangLink";
+import { useT } from "../../../i18n/LanguageContext";
+import { fill } from "../../../i18n/languages";
 import "./Studio.css";
 
 // Импортируй свои вертикальные фото
@@ -14,6 +16,8 @@ function Studio() {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
   const [index, setIndex] = useState(0);
+  const t = useT();
+  const [subtitleStart, subtitleAnd, subtitleEnd] = t("home.studio.subtitle");
 
   // Fade-in при появлении блока
   useEffect(() => {
@@ -46,11 +50,12 @@ function Studio() {
   return (
     <section ref={ref} className={`studio ${visible ? "is-visible" : ""}`}>
       <div className="studio-inner">
-        <p className="studio-title">THE STUDIO</p>
+        <p className="studio-title">{t("home.studio.kicker")}</p>
 
         <h2 className="studio-subtitle">
-          Crafting imagery shaped by light, elegance{" "}
-          <span className="studio-subtitle-and">and</span> quiet emotion
+          {subtitleStart}{" "}
+          <span className="studio-subtitle-and">{subtitleAnd}</span>{" "}
+          {subtitleEnd}
         </h2>
 
         <div className="studio-slider">
@@ -58,21 +63,19 @@ function Studio() {
             <img
               key={i}
               src={src}
-              alt={`Fine Art wedding photography by Denys Stepaniuk - showcase ${i + 1}`}
+              alt={fill(t("home.studio.slideAlt"), { n: i + 1 })}
               className={`studio-slide ${i === index ? "active" : ""}`}
             />
           ))}
         </div>
 
         <p className="studio-text">
-          From intimate celebrations in Prague to timeless weddings across
-          Europe, my work is guided by light, emotion and the beauty of real
-          moments.
+          {t("home.studio.text")}
         </p>
 
-        <Link to="/weddings" className="btn-ghost studio-cta">
-          View All Weddings
-        </Link>
+        <LangLink to="/weddings" className="btn-ghost studio-cta">
+          {t("home.studio.cta")}
+        </LangLink>
       </div>
     </section>
   );
